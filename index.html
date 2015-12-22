@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html ng-app="ftApp">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>Online Market</title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <link href="css/ionic.min.css" rel="stylesheet">
+    <script src="js/main.js"></script>
+    <script src="js/ionic.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <link href="css/main.css" rel="stylesheet">
+    <script>
+
+    </script>
+</head>
+
+<body ng-controller="ftCtrl">
+<ion-nav-bar>
+    <ion-nav-back-button>ba</ion-nav-back-button>
+</ion-nav-bar>
+<ion-nav-view animation="slide-left-right"></ion-nav-view>
+
+<script id="tabs.html" type="text/ng-template">
+    <ion-tabs class="tabs-icon-top tabs-dark ft-indent-tab">
+        <ion-tab title="首页" icon-on="ion-ios-home" icon-off="ion-ios-home-outline" href="#/tab/home">
+            <ion-nav-view name="home-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="分类" icon-on="ion-ios-list" icon-off="ion-ios-list-outline" href="#/tab/sort">
+            <ion-nav-view name="sort-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="购物车" icon-on="ion-ios-cart" icon-off="ion-ios-cart-outline" ui-sref="tabs.cart" badge="12">
+            <ion-nav-view name="cart-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="我的" icon-on="ion-ios-person" icon-off="ion-ios-person-outline" ui-sref="tabs.account">
+            <ion-nav-view name="account-tab"></ion-nav-view>
+        </ion-tab>
+    </ion-tabs>
+</script>
+
+<script id="home.html" type="text/ng-template">
+    <ion-view title="首页" ng-controller="homeCtrl">
+
+        <ion-nav-title>
+            <div class="bar bar-header item-input-inset">
+                <label class="item-input-wrapper">
+                    <i class="icon ion-ios-search placeholder-icon"></i>
+                    <input type="search" placeholder="Search">
+                </label>
+                <a class="button button-clear ion-ios-chatbubble-outline msgicon"></a>
+            </div>
+            <!--search bar ends -->
+        </ion-nav-title>
+
+
+        <ion-content class="ft-bg-color-stable">
+
+            <ion-slide-box does-continue="true" show-pager="true">
+                <ion-slide>
+                    <img src="images/im1.png">
+                </ion-slide>
+                <ion-slide>
+                    <img src="images/im1.png">
+                </ion-slide>
+                <ion-slide>
+                    <img src="images/im1.png">
+                </ion-slide>
+            </ion-slide-box>
+
+
+            <ion-refresher
+                    pulling-text="Pull to refresh..."
+                    on-refresh="doRefresh()" spinner="bubbles" class="icon-bubbles">
+            </ion-refresher>
+
+            <div class="ft-nav-icon-list">
+                <ul class="ft-home-icon-list">
+                    <li ng-repeat="list in lists"><a href="" class=""><img src="images/{{list.icon}}" alt="">
+
+                        <p>标签{{list.tag}}</p></a></li>
+                </ul>
+            </div>
+            <div class="ft-marq" id="fixs">
+                <div class="ft-marq-title">商城<span>头条</span> :</div>
+                <div class="ft-marq-scroll">
+                    <div id="marqBox" class="marqBox">
+                        <ul>
+                            <li ng-repeat="activity in activities"><a href="#"><span
+                                    class="ft-tag-red">{{activity.tag}}</span>{{activity.title}}元还包邮！还抽奖！不能更爽了！点击参加活动！</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="ft-second">
+                <div class="ft-second-title">
+                    <span class="ft-red">秒杀</span> · <h2>8点场</h2>
+
+                    <div class="ft-counter">
+                        <span class="ft-count-time">01</span>
+                        <span class="ft-count-colon">:</span>
+                        <span class="ft-count-time">23</span>
+                        <span class="ft-count-colon">:</span>
+                        <span class="ft-count-time">56</span>
+                    </div>
+                    <i class="icon ion-ios-arrow-right"></i>
+                    <a href="" class="ft-more-red"><span>三只松鼠周年庆秒</span></a>
+                </div>
+                <ul class="ft-sec-items">
+                    <li class="ft-sec-item">
+                        <a href="">
+                            <p><img src="images/home/second/im2.jpg" alt=""><span class="ft-hot">超级秒</span></p>
+                            <span class="ft-price-new">￥1.00</span>
+                            <span class="ft-price-old">￥499.00</span>
+                        </a>
+                    </li>
+                    <li class="ft-sec-item">
+                        <a href="">
+                            <p><img src="images/home/second/im1.jpg" alt=""><span class="ft-sun">超值</span></p>
+                            <span class="ft-price-new">￥399.00</span>
+                            <span class="ft-price-old">￥499.00</span>
+                        </a>
+                    </li>
+                    <li class="ft-sec-item">
+                        <a href="">
+                            <p><img src="images/home/second/im2.jpg" alt=""><span class=""></span></p>
+                            <span class="ft-price-new">￥399.00</span>
+                            <span class="ft-price-old">￥499.00</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ft-nav-static3">
+                <a href=""><img src="images/home/static/566aa09cN076c88d3.jpg" alt=""></a>
+                <a href=""><img src="images/home/static/566d50b6N9feebfbf.jpg" alt=""></a>
+                <a href=""><img src="images/home/static/5653d4ffN6b65b208.jpg" alt=""></a>
+            </div>
+            <div class="ft-nav-static4">
+                <a href=""><img src="images/home/static/566a9511N462641f6.jpg" alt=""></a>
+                <a href=""><img src="images/home/static/566ab171N4123783c.jpg" alt=""></a>
+                <a href=""><img src="images/home/static/566ab171N4123783c.jpg" alt=""></a>
+                <a href=""><img src="images/home/static/566b0577Ne7106996.jpg" alt=""></a>
+            </div>
+            <div class="ft-middle-banner">
+                <ion-slide-box does-continue="true" show-pager="true">
+                    <ion-slide>
+                        <img src="images/home/banner/banner1.jpg">
+                    </ion-slide>
+                    <ion-slide>
+                        <img src="images/home/banner/banner1.jpg">
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+            <div class="ft-nav-feature">
+                <h2 class="title">特色市场</h2>
+
+                <div class="ft-feature">
+                    <a href="" class="ft-feature-left"><img src="images/home/feature/item1.jpg" alt=""></a>
+                    <a href="" class="ft-feature-right-up"><img src="images/home/feature/item2.jpg" alt=""></a>
+                    <a href="" class="ft-feature-right-down-left"><img src="images/home/feature/item1.jpg" alt=""></a>
+                    <a href="" class="ft-feature-right-down-right"><img src="images/home/feature/item1.jpg" alt=""></a>
+                </div>
+            </div>
+            <div class="ft-middle-banner">
+                <ion-slide-box does-continue="true" show-pager="true">
+                    <ion-slide>
+                        <img src="images/home/banner/banner1.jpg">
+                    </ion-slide>
+                    <ion-slide>
+                        <img src="images/home/banner/banner1.jpg">
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+            <div class="ft-nav-feature">
+                <div class="ft-feature-title">
+                    <h2 class="title">主题街</h2>
+                    <a href="">更多主题 <i class="icon ion-ios-arrow-right"></i></a>
+                </div>
+                <div class="ft-feature">
+                    <a href="" class="ft-feature-left"><img src="images/home/feature/item1.jpg" alt=""></a>
+                    <a href="" class="ft-feature-right-up"><img src="images/home/feature/item2.jpg" alt=""></a>
+                    <a href="" class="ft-feature-right-down-left"><img src="images/home/feature/item1.jpg" alt=""></a>
+                    <a href="" class="ft-feature-right-down-right"><img src="images/home/feature/item1.jpg" alt=""></a>
+                </div>
+            </div>
+            <div class="ft-nav-static8">
+                <a href=""><img src="images/home/feature/item4.jpg" alt=""></a>
+                <a href=""><img src="images/home/feature/item4.jpg" alt=""></a>
+                <a href=""><img src="images/home/feature/item4.jpg" alt=""></a>
+                <a href=""><img src="images/home/feature/item4.jpg" alt=""></a>
+                <a href=""><img src="images/home/feature/item4.jpg" alt=""></a>
+                <a href=""><img src="images/home/feature/item4.jpg" alt=""></a>
+                <a href=""><img src="images/home/feature/item4.jpg" alt=""></a>
+                <a href=""><img src="images/home/feature/item4.jpg" alt=""></a>
+            </div>
+            <div class="ft-middle-banner">
+                <ion-slide-box does-continue="true" show-pager="true">
+                    <ion-slide>
+                        <img src="images/home/banner/banner1.jpg">
+                    </ion-slide>
+                    <ion-slide>
+                        <img src="images/home/banner/banner1.jpg">
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+            <div class="ft-nav-brand">
+                <div class="ft-brand-title">
+                    <h2 class="title">品牌推荐</h2>
+                </div>
+                <div class="ft-brand-thin">
+                    <a href="" class="ft-brand-left-thin"><img src="images/home/feature/item1.jpg" alt=""></a>
+                    <a href="" class="ft-brand-middle-right"><img src="images/home/feature/item5.jpg" alt=""></a>
+                    <a href="" class="ft-brand-middle-right"><img src="images/home/feature/item6.jpg" alt=""></a>
+
+                    <div class="ft-brand-logo">
+                        <a href=""><img src="images/home/feature/brand1.png" alt=""></a>
+                        <a href=""><img src="images/home/feature/brand2.png" alt=""></a>
+                        <a href=""><img src="images/home/feature/brand1.png" alt=""></a>
+
+                        <div class="brand-all">
+                            <a href="">全部品牌<i class="icon ion-ios-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ft-pic-box">
+                <a href="">
+                    <img src="images/home/banner/banner1.jpg">
+                </a>
+            </div>
+            <div class="ft-divider">
+                <div class="ft-line-box"></div>
+                <div class="ft-note-wrapper"><p class="ft-notification"><i
+                        class="icon ion-ios-arrow-thin-down ft-icon-border"></i>11:00 为你推荐已更新</p></div>
+            </div>
+            <div class="ft-recommend">
+                <ul class="">
+                    <li class="item" ng-repeat="item in items">
+                        <div class="ft-list-wrapper">
+                            <a ui-sref="merchandise" nav-transition="ios" nav-direction="forward">
+                                <img src="images/home/recommend/im1.jpg" alt="">
+
+                                <h3>{{item}}【百草味】坚果炒货 腰果190g*2袋 炭烧</h3>
+                            </a>
+
+                            <div class="ft-bottom-wrapper">
+                                <span class="">￥99.99</span>
+                                <a href="">看相似</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <ion-infinite-scroll on-infinite="load_more();" spinner="lines">
+            </ion-infinite-scroll>
+        </ion-content>
+    </ion-view>
+</script>
+<!--sort page-->
+<script id="sort.html" type="text/ng-template">
+    <ion-view title="分类" class="padding">
+        <ion-nav-title>
+            <div class="bar bar-header item-input-inset">
+                <label class="item-input-wrapper">
+                    <i class="icon ion-ios-search placeholder-icon"></i>
+                    <input type="search" placeholder="Search">
+                </label>
+                <a class="button button-clear ion-ios-chatbubble-outline msgicon" ui-sref="tabs.merchandise"
+                   nav-transition="ios" nav-direction="forward"></a>
+            </div>
+            <!--search bar ends -->
+        </ion-nav-title>
+        <ion-content>
+            <div class="ft-content-wrapper">
+                <div class="ft-vertical-list-left">
+                    <ion-scroll id="scrollBox" zooming="true" direction="y" style="width: 90px; height: 500px">
+                        <ul>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                            <li><a href="">sort {{soList}}</a></li>
+                        </ul>
+                    </ion-scroll>
+                </div>
+                <div class="ft-vertical-content-right">
+                    <ion-scroll class="" zooming="true" direction="y" style="width: 235px; height:500px">
+                        <div class="ft-sort-wrapper">
+                            <div class="ft-sort-div-head">
+                                <a href=""><img src="images/sort/sort_banner.jpg" alt=""></a>
+                            </div>
+                            <div class="ft-sort-div-block">
+                                <h4>热卖品类</h4>
+                                <ul>
+                                    <li><a href=""><img src="images/sort/sort1.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort2.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort3.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort8.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort4.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort5.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort6.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort7.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort8.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort5.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort2.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort7.jpg" alt=""><span>分类1</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="ft-sort-div-block">
+                                <h4>热卖品类</h4>
+                                <ul>
+                                    <li><a href=""><img src="images/sort/sort1.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort1.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort1.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort1.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort1.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort1.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort1.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort1.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort1.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort1.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort1.jpg" alt=""><span>分类1</span></a></li>
+                                    <li><a href=""><img src="images/sort/sort1.jpg" alt=""><span>分类1</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </ion-scroll>
+                </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="cart.html" type="text/ng-template">
+    <ion-view title="购物车" ng-controller="cartCtrl">
+        <ion-content class="account-content">
+            <ion-refresher pulling-text="松开更新" on-refresh="doRefresh()" pulling-icon="ion-ios-reload"
+                           spinner="ripple" class="icon-bubbles">
+            </ion-refresher>
+            <div class="ft-cart-list">
+                <ion-list class="list ft-sm-thumb">
+                    <div ng-repeat="cartitem in cartitems">
+                        <ion-item class="item item-icon-right ft-ol-first" href="#">
+                            <span class="ft-discount">满减</span>满199.00元即享优惠{{cartitem.activity}}
+                            <i class="icon ion-ios-arrow-right"></i>
+                        </ion-item>
+                        <ion-checkbox ng-model="cartitem.selected" class="ft-cart-check"></ion-checkbox>
+                        <ion-item class="item item-thumbnail-left ft-ol-second" ui-sref="contact">
+                            <img src="images/{{cartitem.pic}}">
+
+                            <h2>商品名称{{cartitem.name}}</h2>
+                        <span class="ft-price-red">
+                          ￥{{cartitem.price}}
+                        </span>
+                            <ion-option-button class="button-stable ft-move-to-fav">移入<br>关注</ion-option-button>
+                            <ion-option-button class="button-assertive">删除</ion-option-button>
+                        </ion-item>
+                        <ion-item class="item ft-ol-third" href="#">
+                            <div class="ft-number-wrapper">
+                                <span class="ft-decrease" ng-click="deCount(cartitem.count)">-</span>
+                                <input class="ft-num-input-box" type="tel" ng-model="cartitem.count"
+                                       value="{{cartitem.count}}">
+                                <span class="ft-increase" ng-click="inCount()">+</span>
+                            </div>
+                            <span class="ft-expend">小计：￥{{cartitem.price*cartitem.count}}</span>
+                        </ion-item>
+                    </div>
+                </ion-list>
+            </div>
+        </ion-content>
+        <div class="list ft-footer-bar">
+            <ion-checkbox ng-model="cartitem.selected" class="ft-cart-all-check">全选</ion-checkbox>
+            <div class="ft-bill-wrapper">
+                <span class="ft-bill-in-all">合计：￥9933.00</span>
+                <span class="ft-bill-detail">总额：￥10232.00 立减：￥223.00</span>
+            </div>
+            <button class="ft-button-full">
+                去结算
+            </button>
+        </div>
+    </ion-view>
+</script>
+
+<script id="account.html" type="text/ng-template">
+    <ion-view title="我的" ng-controller="accCtrl">
+        <ion-nav-buttons side="right">
+            <a class="button button-clear icon ion-ios-chatbubble-outline" ui-sref="msgcenter"
+               nav-direction="forward"></a>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-gear-outline" ui-sref="moresettings" nav-direction="forward"></a>
+        </ion-nav-buttons>
+        <ion-content class="account-content">
+            <ion-refresher pulling-text="松开更新" on-refresh="doRefresh()" pulling-icon="ion-ios-refresh-outline"
+                           spinner="ripple" class="icon-bubbles">
+            </ion-refresher>
+            <div class="ft-info-box">
+                <div class="ft-info-inner" ui-sref="accountsettings" nav-direction="forward">
+                    <div class="ft-pic-wrapper">
+                        <img src="images/im3.png" alt="">
+                    </div>
+                    <div class="ft-summery">
+                        <h3>user_13237007000</h3>
+
+                        <p>银牌用户</p>
+                        <span>账户管理、收货地址 <i class="icon ion-ios-arrow-right"></i></span>
+                    </div>
+                </div>
+                <div class="ft-list-block ft-list-block-info">
+                    <div class="row">
+                        <div class="col">
+                            <a href="" class="ft-block-item">
+                                <span class="tab-title ng-binding">12</span>
+                                <span class="tab-title ng-binding">关注的商品</span>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="" class="ft-block-item">
+                                <span class="tab-title ng-binding">22</span>
+                                <span class="tab-title ng-binding">浏览记录</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="all-order-list">
+                <div class="list">
+                    <a class="item item-icon-left item-icon-right" ui-sref="order" nav-direction="forward">
+                        <i class="icon ion-clipboard"></i>
+                        我的订单
+                        <span class="item-note">
+                          查看全部订单
+                        </span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="ft-list-block ft-indent-tab">
+                    <div class="row">
+                        <div class="col ft-order-list-col">
+                            <a href="" class="ft-block-item">
+                                <i class="icon ion-card"></i>
+                                <span class="tab-title ng-binding">待付款</span>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="" class="ft-block-item">
+                                <i class="icon ion-android-plane"></i>
+                                <span class="tab-title ng-binding">待收货</span>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="" class="ft-block-item">
+                                <i class="icon ion-ios-chatboxes-outline"></i>
+                                <span class="tab-title ng-binding">待评价</span>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="" class="ft-block-item">
+                                <i class="icon ion-ios-photos-outline"></i>
+                                <span class="tab-title ng-binding">退换货</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="all-order-list">
+                <div class="list">
+                    <a class="item item-icon-left item-icon-right" href="#">
+                        <i class="icon ion-folder"></i>
+                        我的钱包
+                        <span class="item-note">
+                          小金库、白条等
+                        </span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="ft-list-block">
+                    <div class="row">
+                        <div class="col ft-order-list-col">
+                            <a href="" class="ft-block-item">
+                                <span class="tab-title ng-binding">0.00</span>
+                                <span class="tab-title ng-binding">账户余额</span>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="" class="ft-block-item">
+                                <span class="tab-title ng-binding">2</span>
+                                <span class="tab-title ng-binding">优惠券</span>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="" class="ft-block-item">
+                                <span class="tab-title ng-binding">24</span>
+                                <span class="tab-title ng-binding">{{myMarket}}币</span>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="" class="ft-block-item">
+                                <span class="tab-title ng-binding">0</span>
+                                <span class="tab-title ng-binding">{{myMarket}}卡</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="all-order-list">
+                <div class="list">
+                    <a class="item item-icon-left item-icon-right" href="#">
+                        <i class="icon ion-compose"></i>
+                        服务与反馈
+                        <span class="item-note">
+                          意见反馈放这儿了
+                        </span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <a class="item item-icon-left item-icon-right" href="#">
+                        <i class="icon ion-ribbon-b"></i>
+                        {{myMarket}}会员
+                        <span class="item-note">
+                          会员俱乐部
+                        </span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="moresettings.html" type="text/ng-template">
+    <ion-nav-view name="moresettings"></ion-nav-view>
+    <ion-view title="更多设置">
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-content>
+            <div class="all-order-list">
+                <div class="list">
+                    <a class="item item-toggle">
+                        非wifi环境手动加载图片
+                        <label class="toggle toggle-assertive">
+                            <input type="checkbox">
+
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </a>
+                    <a class="item item-icon-right" href="#">
+                        新浪微博
+                        <span class="item-note">
+                          未绑定
+                        </span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <a class="item item-icon-right" href="#">
+                        关于
+                        <span class="item-note">
+                          V1.0.1
+                        </span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <a class="button button-assertive ft-wide-button">退出登录</a>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="order.html" type="text/ng-template">
+    <ion-nav-view name="order"></ion-nav-view>
+    <ion-view title="全部订单">
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-content class="account-content">
+            <div class="all-order-list">
+                <div class="list ft-sm-thumb">
+                    <div class="item item-icon-right item-icon-left ft-ol-first" href="#">
+                        <i class="icon ion-ios-flame"></i>
+                        {{myMarket}}
+                        <i class="icon ion-ios-trash-outline"></i>
+                    </div>
+                    <a class="item item-thumbnail-left ft-ol-second" href="#">
+                        <img src="images/im3.png">
+
+                        <h2>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</h2>
+                    </a>
+
+                    <div class="item ft-ol-third" href="#">
+                        实付款 <span class="expend">￥217.90</span>
+                        <span class="ft-btn-sm-red">
+                          评价晒单
+                        </span>
+                        <span class="ft-btn-sm-red">
+                          再次购买
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="all-order-list">
+                <div class="list ft-sm-thumb">
+                    <div class="item item-icon-right item-icon-left ft-ol-first" href="#">
+                        <i class="icon ion-ios-flame"></i>
+                        {{myMarket}}
+                        <i class="icon ion-ios-trash-outline"></i>
+                    </div>
+                    <a class="item item-thumbnail-left ft-ol-second" href="#">
+                        <img src="images/im3.png">
+
+                        <h2>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</h2>
+                    </a>
+
+                    <div class="item ft-ol-third" href="#">
+                        实付款 <span class="expend">￥217.90</span>
+                        <span class="ft-btn-sm-red">
+                          评价晒单
+                        </span>
+                        <span class="ft-btn-sm-red">
+                          再次购买
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="accountsettings.html" type="text/ng-template">
+    <ion-nav-view name="accountsettings"></ion-nav-view>
+    <ion-view title="我的账户">
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-content class="account-content">
+            <div class="all-order-list">
+                <div class="list">
+                    <a class="item item-icon-right" ng-click="showMenu()">
+                        头像
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <a class="item" href="#">
+                        用户名
+                        <span class="item-note">
+                          user_12912912919
+                        </span>
+                    </a>
+                    <a class="item item-icon-right" href="#">
+                        昵称
+                        <span class="item-note">
+                          user_12912912919
+                        </span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <a class="item item-icon-right" href="#">
+                        性别
+                        <span class="item-note">
+                          男
+                        </span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <a class="item item-icon-right" href="#">
+                        出生日期
+                        <span class="item-note">
+                          2015年12月1日
+                        </span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="list ft-margin-top-list">
+                    <a class="item item-icon-right">
+                        地址管理
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <a class="item item-icon-right" href="#">
+                        账户安全
+                        <span class="item-note">
+                          可修改密码
+                        </span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="msgcenter.html" type="text/ng-template">
+    <ion-nav-view name="msgcenter"></ion-nav-view>
+    <ion-view title="消息中心" name="msgcenter">
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <a class="button button-clear icon ion-gear-b" ui-sref="msgsetting" nav-direction="forward"></a>
+        </ion-nav-buttons>
+        <ion-content>
+            <div class="list ft-thumbnail-list">
+                <a class="item item-thumbnail-left" href="#">
+                    <img src="images/im3.png">
+
+                    <h2>{{myMarket}}客服</h2>
+                    <span class="ft-time">12:09</span>
+
+                    <p>点击查看您与客服的沟通记录</p>
+                </a>
+                <a class="item item-thumbnail-left" href="#">
+                    <img src="images/im3.png">
+
+                    <h2>优惠促销</h2>
+                    <span class="ft-time">12月7日</span>
+
+                    <p>全场3免1！9000万件商品任你挑选！还有满499减50优惠券叠加使用！倒计时48小时，快戳活动链接</p>
+                </a>
+                <a class="item item-thumbnail-left" href="#">
+                    <img src="images/im3.png">
+
+                    <h2>物流通知</h2>
+                    <span class="ft-time">12月7日</span>
+
+                    <p>您的订单F11435454556576已完成，感谢您对我们的支持，欢迎再次光临。期待您对本次购物进行评价。</p>
+                </a>
+                <a class="item item-thumbnail-left" href="#">
+                    <img src="images/im3.png">
+
+                    <h2>我的资产</h2>
+                    <span class="ft-time">12月7日</span>
+
+                    <p>您昨日收到一张优惠券，优惠额20元，快去看看吧！</p>
+                </a>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="msgsetting.html" type="text/ng-template">
+    <ion-nav-view name="msgsetting"></ion-nav-view>
+    <ion-view title="消息设置">
+        <ion-content>
+            <div class="ft-msg-setting all-order-list">
+                <ul class="list">
+                    <li class="item item-toggle">
+                        物流通知
+                        <label class="toggle toggle-assertive">
+                            <input type="checkbox">
+
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
+                    <li class="item item-toggle">
+                        优惠促销
+                        <label class="toggle toggle-assertive">
+                            <input type="checkbox">
+
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
+                    <li class="item item-toggle">
+                        商品提醒
+                        <label class="toggle toggle-assertive">
+                            <input type="checkbox">
+
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
+                    <li class="item item-toggle">
+                        我的资产
+                        <label class="toggle toggle-assertive">
+                            <input type="checkbox">
+
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
+                    <li class="item item-toggle">
+                        系统通知
+                        <label class="toggle toggle-assertive">
+                            <input type="checkbox">
+
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
+                    <li class="item item-toggle">
+                        会员动态
+                        <label class="toggle toggle-assertive">
+                            <input type="checkbox">
+
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+                <div class="list">
+                    <a class="item item-icon-right" href="#">
+                        静音免打扰时段
+                        <span class="item-note">
+                          从22:00至7:00
+                        </span>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="contact.html" type="text/ng-template">
+    <ion-view title="Contact" ng-controller="ctCtrl">
+
+        <ion-nav-bar class="bar-balanced">
+
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
+                        ui-sref="tabs.cart">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content>
+            <p>@IonicFramework</p>
+
+            <p>@DriftyCo</p>
+            <a class="button" nav-transition="ios" nav-direction="back" ng-click="go_back()">back</a>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="merchandise.html" type="text/ng-template">
+    <ion-view title="商品详情" ng-controller="merchCtrl">
+        <ion-side-menus>
+            <ion-side-menu-content>
+                <ion-nav-bar class="bar-stable">
+                    <ion-nav-buttons side="left">
+                        <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
+                                ui-sref="tabs.home">
+                        </button>
+                    </ion-nav-buttons>
+                </ion-nav-bar>
+                <ion-content class="ft-merch-content">
+                    <div class="ft-display">
+                        <div class="ft-slide-wrapper">
+                            <ion-slide-box auto-play="false" on-slide-changed="showPager($index)" show-pager="false">
+                                <ion-slide>
+                                    <img src="images/merchandise/dis1.jpg">
+                                </ion-slide>
+                                <ion-slide>
+                                    <img src="images/merchandise/dis3.jpg">
+                                </ion-slide>
+                                <ion-slide>
+                                    <img src="images/merchandise/dis5.jpg">
+                                </ion-slide>
+                            </ion-slide-box>
+                        </div>
+                        <div class="ft-slide-detail">
+                            <div class="arrow-box">
+                                <i class="icon ion-ios-arrow-thin-right"></i>
+                            </div>
+    					<span class="inner">
+    						滑动查看详情
+    					</span>
+                        </div>
+                        <div class="ft-pager">
+                            <em class="page-s">{{index}}</em>
+                            <em class="page-divider">/</em>
+                            <em class="page-a">{{count}}3</em>
+                        </div>
+                    </div>
+                    <div class="basic-info">
+                        <div class="ft-goods-title">
+                            <a href="#">
+                                <i class="icon ion-ios-arrow-right"></i>
+                                <span class="title-text">【好丽友】Orion 好丽友 薯愿 三连罐 312g/组（104*3 薯片）</span>
+                            </a>
+                        </div>
+                        <div class="ft-goods-act">圣诞狂欢 满88包邮 1元起 首页领券178减10 圣诞狂欢 满88包邮 1元起 首页领券178减10圣诞狂欢 满88包邮 1元起
+                            首页领券178减10
+                        </div>
+                        <div class="ft-price-wrapper">
+                            <span class="ft-goods-price">¥26.90</span>
+                            <span class="ft-decline-note">降价通知</span>
+                        </div>
+
+                    </div>
+                    <div class="ft-detail-list">
+                        <div class="item item-icon-right">
+                            领券
+                            <i class="icon ion-ios-arrow-right"></i>
+                        </div>
+                        <div class="item item-icon-right" ng-click="toggleSide()">
+                            已选
+                            <span>1个</span>
+                            <i class="icon ion-ios-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="send-wrapper">
+                        <div class="send-to">
+                            <span class="">送至</span>
+
+                            <div class="send_loc">
+                                <span id="provinceName">江西省</span>
+                                <span id="cityName">南昌市</span>
+                                <span id="countryName">青山湖区</span>
+                                <span id="townName"></span> <i class="icon ion-location"></i>
+                            </div>
+                            <p class="" id="">
+                                <span class="isExist">现货</span>
+                            </p>
+                        </div>
+                        <div class="ft-send-fee">
+                            <span class="">运费</span>
+
+                            <p class="">店铺单笔订单不满88元，货到付款运费8元，在线支付运费8元</p>
+                        </div>
+                        <div class="ft-service">
+                            <span class="">服务</span>
+
+                            <p class="">由好丽友品牌旗舰店发货并提供售后服务</p>
+
+                            <div class="ft-service-detail">
+                        <span>
+                            <i class=""><img src="images/merchandise/icon.jpg" width="12" height="12">货到付款</i>
+                        </span>
+                        <span>
+                            <i class=""><img src="images/merchandise/icon.jpg" width="12" height="12">货到付款</i>
+                        </span>
+                                <i class="icon ion-ios-information-outline"></i>
+                                <!--<span class="">支持送货上门后再收款，支持现金、POS机刷卡等方式</span>-->
+                            </div>
+                        </div>
+                        <div class="ft-tips">
+                            <span class="">提示</span>
+
+                            <p class="">支持7天无理由退货</p>
+                        </div>
+                    </div>
+                    <div class="ft-comment ft-detail-list">
+                        <div class="item item-icon-right">
+                            商品评价
+                            <i class="icon ion-ios-arrow-right"></i>
+                            <p><span class="dark">好评度</span> <span class="red">97%</span> 6677人评论</p>
+                        </div>
+                        <ul class="ft-comment-list">
+                            <li class="ft-comment-list-item">
+                                <div class="comment-item-top">
+                                    <span class="stars">
+                                        <i class="icon ion-ios-star"></i>
+                                        <i class="icon ion-ios-star"></i>
+                                        <i class="icon ion-ios-star"></i>
+                                        <i class="icon ion-ios-star"></i>
+                                        <i class="icon ion-ios-star"></i>
+                                    </span>
+                                    <span class="customer">j***5</span>
+                                    <span class="time">2015-12-21 11:00:12</span>
+                                </div>
+                                <div class="comment-text">
+                                    不错 很好 下次再来 不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来
+                                </div>
+                                <div class="comment-pic">
+                                    <div class="pic-wrapper"><img src="images/merchandise/comment2.jpg" alt=""></div>
+                                    <div class="pic-wrapper"><img src="images/merchandise/comment1.jpg" alt=""></div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="comment-btn-wrapper">
+                            <a href="" class="comment-has-pic">有图评价<span>(500)</span></a>
+                            <a href="" class="shop-questions">购买咨询<span>(100)</span></a>
+                        </div>
+                    </div>
+                    <div class="ft-service-wrapper">
+                        <a href=""><i class="icon ion-ios-people-outline"></i>联系客服</a>
+                    </div>
+                </ion-content>
+                <div class="ft-detail-footer">
+                    <ul>
+                        <li><i class="icon ion-ios-people-outline"></i><span>客服</span></li>
+                        <li><i class="icon ion-ios-heart-outline"></i><span>关注</span></li>
+                        <li><i class="icon ion-ios-cart-outline"></i><span>购物车</span></li>
+                    </ul>
+                    <div class="ft-add-to">
+                        加入购物车
+                    </div>
+                </div>
+            </ion-side-menu-content>
+
+
+            <ion-side-menu side="right" width="250">
+                <ion-content class="ft-side-content">
+                    <div class="item item-thumbnail-left ft-side-thumb" href="#">
+                        <img src="images/merchandise/dis1.jpg">
+
+                        <h2>￥26.00</h2>
+
+                        <p>商品编号： 1861611</p>
+                    </div>
+                    <div class="ft-select-box">
+                        <div class="ft-select-color">
+                            颜色
+                            <span class="ft-selected">经典原味</span>
+                            <span>榛果口味</span>
+                        </div>
+                        <div class="count-wrapper">
+                            数量
+                            <div class="ft-number-wrapper ft-side-count">
+                                <span class="ft-decrease" ng-click="">-</span>
+                                <input class="ft-num-input-box" type="tel"
+                                       value="1">
+                                <span class="ft-increase" ng-click="">+</span>
+                            </div>
+                        </div>
+                    </div>
+                </ion-content>
+                <div class="ft-side-footer-bar">
+                    <div class="easy-buy"><i class="icon ion-bag"></i><span>轻松购</span></div>
+                    <div class="side-add-to-cart">加入购物车</div>
+                    <div class="ft-lack">到货通知</div>
+                </div>
+            </ion-side-menu>
+        </ion-side-menus>
+    </ion-view>
+</script>
+
+<script id="contactt.html" type="text/ng-template">
+    <ion-view title="Contactt">
+        <ion-content>
+            <p>@Contactttttttttttttttttttttttttt</p>
+
+            <a class="button" ng-click="go_back()" nav-direction="forward">back</a>
+        </ion-content>
+    </ion-view>
+</script>
+
+</body>
+</html>

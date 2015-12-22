@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html ng-app="ftApp">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>Ionic Tabs and Navigation</title>
+
+    <link href="css/ionic.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+    <script src="js/ionic.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+
+</head>
+
+<body>
+
+<ion-nav-view animation="slide-left-right"></ion-nav-view>
+
+<script id="tabs.html" type="text/ng-template">
+    <ion-tabs class="tabs-icon-top tabs-positive tabs-dark">
+
+        <ion-tab title="首页" icon-on="ion-ios-home" icon-off="ion-ios-home-outline" href="#/tab/home">
+            <ion-nav-view name="home-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="分类" icon-on="ion-ios-grid-view" icon-off="ion-ios-grid-view-outline" href="#/tab/sort">
+            <ion-nav-view name="sort-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="购物车" icon-on="ion-ios-cart" icon-off="ion-ios-cart-outline" ui-sref="tabs.cart" badge="12">
+            <ion-nav-view name="cart-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="我的" icon-on="ion-ios-person" icon-off="ion-ios-person-outline" ui-sref="tabs.account">
+            <ion-nav-view name="account-tab"></ion-nav-view>
+        </ion-tab>
+
+    </ion-tabs>
+</script>
+
+<script id="home.html" type="text/ng-template">
+    <ion-view title="首页">
+
+        <ion-content ng-controller="refCtrl">
+            <ion-refresher
+                    pulling-text="Pull to refresh..."
+                    on-refresh="doRefresh()" spinner="bubbles" class="icon-bubbles">
+            </ion-refresher>
+            <ul class="list">
+                <li class="item" ng-repeat="item in items" ui-sref="tabs.contacte" nav-transition="ios" nav-direction="forward">{{item}}</li>
+            </ul>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="sort.html" type="text/ng-template">
+    <ion-view title="分类" class="padding">
+        <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder="Search">
+            </label>
+            <button class="button button-clear">
+                Cancel
+            </button>
+        </div>
+        <ion-content>
+            <p>Banging your head against a wall uses 150 calories an hour.</p>
+
+            <p>Dogs have four toes on their hind feet, and five on their front feet.</p>
+
+            <p>The ant can lift 50 times its own weight, can pull 30 times its own weight and always falls over on its
+                right side when intoxicated.</p>
+
+            <p>A cockroach will live nine days without it's head, before it starves to death.</p>
+
+            <p>Polar bears are left handed.</p>
+
+            <p>
+                <a class="button icon ion-home" href="#/tab/home"> Home</a>
+                <a class="button icon icon-right ion-chevron-right" href="#/tab/facts2">More Facts</a>
+            </p>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="cart.html" type="text/ng-template">
+    <ion-view title="购物车">
+        <ion-nav-bar class="nav-title-slide-ios7 bar-positive">
+            <ion-nav-back-button class="button-icon ion-ios-arrow-back">back
+            </ion-nav-back-button>
+        </ion-nav-bar>
+        <ion-content class="padding">
+            <p>111,111,111 x 111,111,111 = 12,345,678,987,654,321</p>
+
+            <p>1 in every 4 Americans has appeared on T.V.</p>
+
+            <p>11% of the world is left-handed.</p>
+
+            <p>1 in 8 Americans has worked at a McDonalds restaurant.</p>
+
+            <p>$283,200 is the absolute highest amount of money you can win on Jeopardy.</p>
+
+            <p>101 Dalmatians, Peter Pan, Lady and the Tramp, and Mulan are the only Disney cartoons where both parents
+                are present and don't die throughout the movie.</p>
+
+            <p>
+                <a class="button icon ion-home" ui-sref="contact" nav-direction="forward"> cob</a>
+                <a class="button icon ion-home" href="#/tab/contacte" >ee cob</a>
+                <a class="button icon ion-chevron-left" href="#/tab/contactt"> #/contactt/ s</a>
+                <a class="button icon ion-chevron-left" ui-sref="contacttt"> uisref  from s</a>
+            </p>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="account.html" type="text/ng-template">
+    <ion-view title="我的">
+        <ion-nav-bar class="nav-title-slide-ios7 bar-positive">
+            <ion-nav-back-button class="button-icon ion-ios-arrow-back">back
+            </ion-nav-back-button>
+        </ion-nav-bar>
+        <ion-content class="">
+            <ion-list>
+                <ion-item ui-sref="contact" class="item-icon-right">
+                    全部订单
+                    <i class="icon ion-chevron-right"></i>
+                </ion-item>
+            </ion-list>
+            <h3>Create hybrid mobile apps with the web technologies you love.</h3>
+
+            <p>Free and open source, Ionic offers a library of mobile-optimized HTML, CSS and JS components for building
+                highly interactive apps.</p>
+
+            <p>Built with Sass and optimized for AngularJS.</p>
+
+            <p>
+                <a class="button icon icon-right ion-chevron-right" href="#/tab/test">tst Nav Stack</a>
+            </p>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="test.html" type="text/ng-template">
+    <ion-view title="test">
+        <ion-content>
+            <p>@IonicFramework666666666666666666</p>
+
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="contact.html" type="text/ng-template">
+    <ion-view title="Contact" ng-controller="ftCtrl">
+
+        <ion-nav-bar class="bar-balanced">
+
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-chevron-left"  nav-transition="ios"  nav-direction="back" ui-sref="tabs.cart">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content>
+            <p>@IonicFramework</p>
+
+            <p>@DriftyCo</p>
+            <a class="button"  nav-transition="ios"  nav-direction="back" ng-click="go_back()">back</a>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="contacte.html" type="text/ng-template">
+    <ion-view title="Contacte" ng-controller="ftCtrl">
+        <ion-nav-bar class="bar-assertive">
+            <ion-nav-back-button></ion-nav-back-button>
+        </ion-nav-bar>
+        <ion-content>
+            <p>@contacte</p>
+
+            <a class="button" ng-click="go_back()"  nav-direction="back">...back</a>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="contactt.html" type="text/ng-template">
+    <ion-view title="Contactt" ng-controller="ftCtrl">
+        <ion-content>
+            <p>@Contactttttttttttttttttttttttttt</p>
+
+            <a class="button" ng-click="go_back()"  nav-direction="forward">back</a>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="contacttt.html" type="text/ng-template">
+    <ion-view title="Contactt" ng-controller="ftCtrl">
+        <ion-content>
+            <p>@Contactttttttttttttttttttttttttt</p>
+
+            <a class="button" ng-click="go_back()"  nav-direction="forward">back</a>
+        </ion-content>
+    </ion-view>
+</script>
+
+</body>
+</html>

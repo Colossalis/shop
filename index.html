@@ -10,7 +10,7 @@
     <link href="css/ionic.min.css" rel="stylesheet">
     <script src="js/main.js"></script>
     <script src="js/ionic.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js" charset="utf-8"></script>
     <link href="css/main.css" rel="stylesheet">
     <script>
 
@@ -943,13 +943,13 @@
 
                             <p class="">由好丽友品牌旗舰店发货并提供售后服务</p>
 
-                            <div class="ft-service-detail">
-                        <span>
-                            <i class=""><img src="images/merchandise/icon.jpg" width="12" height="12">货到付款</i>
-                        </span>
-                        <span>
-                            <i class=""><img src="images/merchandise/icon.jpg" width="12" height="12">货到付款</i>
-                        </span>
+                            <div class="ft-service-detail" ng-click="showHints()">
+                                <span>
+                                    <img src="images/merchandise/icon.jpg" width="11" height="11"><i class="">货到付款</i>
+                                </span>
+                                <span>
+                                    <img src="images/merchandise/icon.jpg" width="11" height="11"><i class="">隔日达</i>
+                                </span>
                                 <i class="icon ion-ios-information-outline"></i>
                                 <!--<span class="">支持送货上门后再收款，支持现金、POS机刷卡等方式</span>-->
                             </div>
@@ -964,6 +964,7 @@
                         <div class="item item-icon-right">
                             商品评价
                             <i class="icon ion-ios-arrow-right"></i>
+
                             <p><span class="dark">好评度</span> <span class="red">97%</span> 6677人评论</p>
                         </div>
                         <ul class="ft-comment-list">
@@ -976,11 +977,47 @@
                                         <i class="icon ion-ios-star"></i>
                                         <i class="icon ion-ios-star"></i>
                                     </span>
-                                    <span class="customer">j***5</span>
-                                    <span class="time">2015-12-21 11:00:12</span>
+                                    <span class="customer">j***5 2015-12-21 11:00:12</span>
                                 </div>
                                 <div class="comment-text">
-                                    不错 很好 下次再来 不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来
+                                    不错 很好 下次再来 不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错
+                                    很好 下次再来
+                                </div>
+                                <div class="comment-pic">
+                                    <div class="pic-wrapper"><img src="images/merchandise/comment2.jpg" alt=""></div>
+                                    <div class="pic-wrapper"><img src="images/merchandise/comment1.jpg" alt=""></div>
+                                </div>
+                            </li>
+                            <li class="ft-comment-list-item">
+                                <div class="comment-item-top">
+                                    <span class="stars">
+                                        <i class="icon ion-ios-star"></i>
+                                        <i class="icon ion-ios-star"></i>
+                                        <i class="icon ion-ios-star"></i>
+                                        <i class="icon ion-ios-star"></i>
+                                        <i class="icon ion-ios-star"></i>
+                                    </span>
+                                    <span class="customer">j***5 2015-12-21 11:00:12</span>
+                                </div>
+                                <div class="comment-text">
+                                    不错 很好 下次再来 不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错
+                                    很好 下次再来
+                                </div>
+                            </li>
+                            <li class="ft-comment-list-item">
+                                <div class="comment-item-top">
+                                    <span class="stars">
+                                        <i class="icon ion-ios-star"></i>
+                                        <i class="icon ion-ios-star"></i>
+                                        <i class="icon ion-ios-star"></i>
+                                        <i class="icon ion-ios-star"></i>
+                                        <i class="icon ion-ios-star"></i>
+                                    </span>
+                                    <span class="customer">j***5 2015-12-21 11:00:12</span>
+                                </div>
+                                <div class="comment-text">
+                                    不错 很好 下次再来 不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错
+                                    很好 下次再来
                                 </div>
                                 <div class="comment-pic">
                                     <div class="pic-wrapper"><img src="images/merchandise/comment2.jpg" alt=""></div>
@@ -994,7 +1031,7 @@
                         </div>
                     </div>
                     <div class="ft-service-wrapper">
-                        <a href=""><i class="icon ion-ios-people-outline"></i>联系客服</a>
+                        <a href=""><i class="icon ion-chatbubbles"></i>联系客服</a>
                     </div>
                 </ion-content>
                 <div class="ft-detail-footer">

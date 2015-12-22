@@ -235,7 +235,7 @@ angular.module('ftApp', ['ionic'])
             $scope.$broadcast("scroll.refreshComplete");
         };
     })
-    .controller("merchCtrl", function ($scope,$ionicSlideBoxDelegate,$ionicSideMenuDelegate) {
+    .controller("merchCtrl", function ($scope,$ionicSlideBoxDelegate,$ionicSideMenuDelegate,$ionicPopup) {
         $scope.index = 1;
         $scope.count = $ionicSlideBoxDelegate.slidesCount();
         $scope.showPager=function($index){
@@ -245,5 +245,12 @@ angular.module('ftApp', ['ionic'])
         $scope.toggleSide = function(){
             $ionicSideMenuDelegate.toggleRight();
         };
+        $scope.showHints = function() {
+            $ionicPopup.alert({
+                title: "<div class='ft-pop-title'>service declare</div>",
+                template: "<div class='ft-pop-blocks'><img src='./images/merchandise/icon.jpg'><i>after</i><p>This goods supports paying after you receive it.</p></div><div class='ft-pop-blocks'><img src='./images/merchandise/icon.jpg'><i>after</i><p>This goods supports paying after you receive it.</p></div>"
+            });
+        };
+
     });
 

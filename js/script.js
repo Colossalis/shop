@@ -237,7 +237,7 @@ angular.module('ftApp', ['ionic'])
     })
     .controller("merchCtrl", function ($scope,$ionicSlideBoxDelegate,$ionicSideMenuDelegate,$ionicPopup) {
         $scope.index = 1;
-        $scope.count = $ionicSlideBoxDelegate.slidesCount();
+        $scope.count = $ionicSlideBoxDelegate.slidesCount()+1;
         $scope.showPager=function($index){
             $ionicSlideBoxDelegate.slide($index);
             $scope.index = $index +1;
@@ -248,7 +248,13 @@ angular.module('ftApp', ['ionic'])
         $scope.showHints = function() {
             $ionicPopup.alert({
                 title: "<div class='ft-pop-title'>service declare</div>",
-                template: "<div class='ft-pop-blocks'><img src='./images/merchandise/icon.jpg'><i>after</i><p>This goods supports paying after you receive it.</p></div><div class='ft-pop-blocks'><img src='./images/merchandise/icon.jpg'><i>after</i><p>This goods supports paying after you receive it.</p></div>"
+                template: "<div class='ft-pop-blocks'><img src='./images/merchandise/icon.jpg'><i>after</i><p>This goods supports paying after you receive it.</p></div><div class='ft-pop-blocks'><img src='./images/merchandise/icon.jpg'><i>after</i><p>This goods supports paying after you receive it.</p></div>",
+                buttons: [
+                    {
+                        text: "<b>OK</b>",
+                        type: "button-assertive"
+                    }
+                ]
             });
         };
 

@@ -1092,9 +1092,10 @@ input[type=tel].ft-num-input-box {
     top: 0;
     width: 20%;
     right: 0;
-    background-color: #f03e2b;
+    background-color: #E44848;
     border: none;
     color: #fff;
+    font-weight: 600;
 }
 
 .ft-bill-wrapper {
@@ -1110,7 +1111,200 @@ input[type=tel].ft-num-input-box {
 }
 
 /*shopping cart ends*/
-
+/*cart->fill order starts*/
+.ft-fill-content{
+    background-color: #f1f1f1;
+}
+.ft-address-wrapper{
+    position: relative;
+    padding: 15px 12px;
+    background-color: #FFFAE7;
+}
+.right-arrow{
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    font-size: 28px;
+    color: #ccc;
+    margin-top: -14px;
+}
+.add-borderT{
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: url("../images/cart/fillOrder/border.png") repeat-x;
+    background-size: 64px 3px;
+}
+.add-borderB{
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: url("../images/cart/fillOrder/border.png") repeat-x;
+    background-size: 64px 3px;
+}
+.ft-add-top{
+    padding: 0 0 .725em 0;
+    overflow: hidden;
+    color: #252525;
+}
+.ft-add-top span{
+    vertical-align: text-bottom;
+}
+.ft-add-top .add-tel{
+    margin-left: 2.6em;
+    float: left;
+    font-size: 1em;
+}
+.ft-add-top .add-name{
+    float: left;
+    font-size: 1em;
+}
+.ft-add-top .add-name span{
+    display: inline-block;
+    vertical-align: top;
+}
+.add-name .ft-icon-wrapper{
+    border: 1px solid #f15757;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    display: inline-block;
+}
+.ft-add-top .add-name i{
+    width: 100%;
+    display: block;
+}
+.ft-add-top i{
+    margin-right: 3px;
+    font-size: 19px;
+    color: #f15757;
+}
+.ft-add-info{
+    font-size: .8125em;
+    color: #686868;
+    line-height: 1.325em;
+    padding-right: 2.5em;
+}
+.ft-goods-wrapper{
+    overflow: hidden;
+    margin-top: 10px;
+    background-color: #fff;
+    padding: 12px;
+    position: relative;
+}
+.ft-goods-wrapper .goods-inner{
+    width: 100%;
+}
+.ft-goods-wrapper .pic-wrapper{
+    width: 68%;
+    padding-right: 2.5%;
+    float: left;
+    text-align: center;
+    overflow: hidden;
+}
+.ft-goods-wrapper .pic-wrapper div{
+    width: 28%;
+    float: left;
+}
+.ft-goods-wrapper .dots{
+    margin-top: 32px;
+    width: 12%;
+    height: 1em;
+    background: url("../images/cart/fillOrder/dots.png") no-repeat;
+    background-size: 22px 4px;
+    float: left;
+    padding-right: .6em;
+    font-size: .875em;
+    color: #686868;
+}
+.preview-goods{
+    width: 3.125em;
+    float: left;
+    margin-right: 10px;
+    position: relative;
+}
+.preview-goods img{
+    max-width: 100%;
+}
+.preview-goods p{
+    font-size: 13px;
+    display: block;
+    height: 14px;
+    color: #848689;
+    width: 50px;
+    text-align: center;
+    margin: 0;
+}
+.ft-goods-wrapper .total{
+    margin-top: 25px;
+    padding-top: 0;
+    color: #252525;
+    font-size: 13px;
+}
+.fill-step3{
+    overflow: hidden;
+    margin-top: 10px;
+    background-color: #fff;
+    padding: 12px;
+    position: relative;
+}
+.fill-step3 a{
+    display: block;
+    overflow: hidden;
+    width: 100%;
+}
+.fill-step3 a .send{
+    display: block;
+    padding: 15px 18px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+.fill-step3 a .time{
+    background-color: #f0f0f0;
+    display: block;
+    margin-bottom: 15px;
+}
+.fill-step3 a .send .way{
+    font-size: 14px;
+    line-height: 17px;
+    color: #686868;
+    padding: 10px 0 25px 0;
+    float: left;
+}
+.send-pay-way{
+    float: right;
+}
+.pay-way, .send-way {
+    font-size: 13px;
+    color: #252525;
+    display: block;
+    text-align: right;
+    padding-bottom: 10px;
+}
+.send-time-title{
+    font-size: 12px;
+    color: #848689;
+    text-align: right;
+    padding: 10px 17px 10px 0;
+}
+.send-time{
+    padding: 10px 17px 10px 10px;
+}
+.send-time span{
+    font-size: 14px;
+    line-height: 17px;
+    color: #252525;
+    float: right;
+}
+/*cart->fill order ends*/
 /*merchandise details start*/
 .ft-merch-content{
     margin-bottom: 51px;

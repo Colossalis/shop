@@ -365,7 +365,8 @@
                             <i class="icon ion-ios-arrow-right"></i>
                         </ion-item>
                         <ion-checkbox ng-model="cartitem.selected" class="ft-cart-check"></ion-checkbox>
-                        <ion-item class="item item-thumbnail-left ft-ol-second" ui-sref="contact">
+                        <ion-item class="item item-thumbnail-left ft-ol-second" ui-sref="merchandise"
+                                  nav-transition="ios" nav-direction="forward">
                             <img src="images/{{cartitem.pic}}">
 
                             <h2>商品名称{{cartitem.name}}</h2>
@@ -378,6 +379,7 @@
                         <ion-item class="item ft-ol-third" href="#">
                             <div class="ft-number-wrapper">
                                 <span class="ft-decrease" ng-click="deCount(cartitem.count)">-</span>
+
                                 <input class="ft-num-input-box" type="tel" ng-model="cartitem.count"
                                        value="{{cartitem.count}}">
                                 <span class="ft-increase" ng-click="inCount()">+</span>
@@ -394,7 +396,7 @@
                 <span class="ft-bill-in-all">合计：￥9933.00</span>
                 <span class="ft-bill-detail">总额：￥10232.00 立减：￥223.00</span>
             </div>
-            <button class="ft-button-full">
+            <button class="ft-button-full" ui-sref="fillorder" nav-transition="ios" nav-direction="forward">
                 去结算
             </button>
         </div>
@@ -613,6 +615,7 @@
                           评价晒单
                         </span>
                         <span class="ft-btn-sm-red">
+
                           再次购买
                         </span>
                     </div>
@@ -833,21 +836,87 @@
     </ion-view>
 </script>
 
-<script id="contact.html" type="text/ng-template">
-    <ion-view title="Contact" ng-controller="ctCtrl">
+<script id="fillorder.html" type="text/ng-template">
+    <ion-view title="填写订单" ng-controller="fillorderCtrl">
 
-        <ion-nav-bar class="bar-balanced">
-
+        <ion-nav-bar class="bar-stable">
             <ion-nav-buttons side="left">
                 <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
-                        ui-sref="tabs.cart">
+                        ng-click="go_back()">
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
-        <ion-content>
-            <p>@IonicFramework</p>
+        <ion-content class="ft-fill-content">
+            <div class="ft-wrapper">
+                <div class="ft-address-wrapper">
+                    <a href="">
+                        <div class="ft-add-top">
+                            <div class="add-name">
+                                <span class="ft-icon-wrapper"><i
+                                        class="icon ion-android-contact"></i></span><span>陶同学</span>
+                            </div>
+                            <div class="add-tel">
+                                <span><i class="icon ion-iphone"></i></span><span>123****7890</span>
+                            </div>
+                        </div>
+                        <div class="ft-add-info">
+                            <i class="ft-tag-red">默认</i>
+                            江西南昌市昌北区蛟桥镇下罗双港路华东交通大学南区
+                        </div>
+                    </a>
+                    <i class="icon ion-ios-arrow-right right-arrow"></i>
+                    <b class="add-borderT"></b>
+                    <b class="add-borderB"></b>
+                </div>
+                <div class="ft-goods-wrapper">
+                    <div class="goods-inner">
+                        <div class="pic-wrapper">
+                            <div class="preview-goods">
+                                <img src="images/cart/fillOrder/goods1.jpg" alt="">
 
-            <p>@DriftyCo</p>
+                                <p>×1</p>
+                            </div>
+                            <div class="preview-goods">
+                                <img src="images/cart/fillOrder/goods1.jpg" alt="">
+
+                                <p>×1</p>
+                            </div>
+                            <div class="preview-goods">
+                                <img src="images/cart/fillOrder/goods1.jpg" alt="">
+
+                                <p>×1</p>
+                            </div>
+                        </div>
+                        <div class="dots"></div>
+                    </div>
+                    <div class="total">
+                        共20件
+                    </div>
+                    <i class="icon ion-ios-arrow-right right-arrow"></i>
+                </div>
+                <div class="fill-step3">
+
+                    <a href="" class="">
+                        <span class="send">
+                                <p class="way">支付配送</p>
+                                <p class="send-pay-way">
+                                    <span class="pay-way"> 在线支付</span>
+                                    <span class="send-way">
+                                        商城快递+商家配送
+                                    </span>
+                                </p>
+                                              <i class="icon ion-ios-arrow-right right-arrow"></i>
+                              </span>
+                            <span class="time">
+                                <p class="send-time-title">
+                                    快递送货时间</p>
+                                <p class="send-time">
+                                    <span>2015-12-25  [周五]  09:00-19:00</span>
+                                </p>
+                            </span>
+                    </a>
+                </div>
+            </div>
             <a class="button" nav-transition="ios" nav-direction="back" ng-click="go_back()">back</a>
         </ion-content>
     </ion-view>
@@ -859,7 +928,7 @@
                 <ion-nav-bar class="bar-stable">
                     <ion-nav-buttons side="left">
                         <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
-                                ui-sref="tabs.home">
+                                ng-click="go_back()">
                         </button>
                     </ion-nav-buttons>
                 </ion-nav-bar>
@@ -954,7 +1023,6 @@
                                     <img src="images/merchandise/icon.jpg" width="11" height="11"><i class="">隔日达</i>
                                 </span>
                                 <i class="icon ion-ios-information-outline"></i>
-                                <!--<span class="">支持送货上门后再收款，支持现金、POS机刷卡等方式</span>-->
                             </div>
                         </div>
                         <div class="ft-tips">
@@ -967,6 +1035,7 @@
                         <div class="item item-icon-right">
                             商品评价
                             <i class="icon ion-ios-arrow-right"></i>
+
                             <p><span class="dark">好评度</span><span class="red">97%</span>6677人评论</p>
                         </div>
                         <ul class="ft-comment-list">
@@ -1013,7 +1082,8 @@
                                         <i class="icon ion-ios-star"></i>
                                         <i class="icon ion-ios-star"></i>
                                         <i class="icon ion-ios-star"></i>
-                                        <i class="icon ion-ios-star"></i>
+                                        <i class="icon ion-ios-star"
+                                                ></i>
                                     </span>
                                     <span class="customer">j***5 2015-12-21 11:00:12</span>
                                 </div>
@@ -1082,16 +1152,6 @@
                 </div>
             </ion-side-menu>
         </ion-side-menus>
-    </ion-view>
-</script>
-
-<script id="contactt.html" type="text/ng-template">
-    <ion-view title="Contactt">
-        <ion-content>
-            <p>@Contactttttttttttttttttttttttttt</p>
-
-            <a class="button" ng-click="go_back()" nav-direction="forward">back</a>
-        </ion-content>
     </ion-view>
 </script>
 

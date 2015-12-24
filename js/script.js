@@ -45,6 +45,9 @@ angular.module('ftApp', ['ionic'])
                 url: "/order",
                 templateUrl: "order.html"
             })
+            .state('fillorder', {
+                templateUrl: "fillorder.html"
+            })
             .state('msgcenter', {
                 templateUrl: "msgcenter.html"
             })
@@ -66,28 +69,9 @@ angular.module('ftApp', ['ionic'])
                     }
                 }
             })
-            .state('contact', {
-                templateUrl: "contact.html"
-            })
             .state('merchandise', {
                 url: "/merchandise",
                 templateUrl: "merchandise.html"
-            })
-            .state('tabs.contactt', {
-                url: "/contactt",
-                views: {
-                    'cart-tab': {
-                        templateUrl: "contactt.html"
-                    }
-                }
-            })
-            .state('contacttt', {
-                url: "contactt",
-                views: {
-                    'cart-tab': {
-                        templateUrl: "contactt.html"
-                    }
-                }
             });
 
 
@@ -211,6 +195,11 @@ angular.module('ftApp', ['ionic'])
             $scope.$broadcast("scroll.refreshComplete");
         };
     })
+    .controller("fillorderCtrl", function ($scope,$ionicHistory) {
+        $scope.go_back = function() {
+            $ionicHistory.goBack();
+        };
+    })
     .controller("cartCtrl", function ($scope) {
         $scope.cartitems = [
             {
@@ -235,9 +224,12 @@ angular.module('ftApp', ['ionic'])
             $scope.$broadcast("scroll.refreshComplete");
         };
     })
-    .controller("merchCtrl", function ($scope,$ionicSlideBoxDelegate,$ionicSideMenuDelegate,$ionicPopup) {
+    .controller("merchCtrl", function ($scope,$ionicSlideBoxDelegate,$ionicSideMenuDelegate,$ionicPopup,$ionicHistory) {
         $scope.index = 1;
         $scope.count = $ionicSlideBoxDelegate.slidesCount()+1;
+        $scope.go_back = function() {
+            $ionicHistory.goBack();
+        };
         $scope.showPager=function($index){
             $ionicSlideBoxDelegate.slide($index);
             $scope.index = $index +1;

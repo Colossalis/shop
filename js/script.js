@@ -1,6 +1,8 @@
-angular.module('ftApp', ['ionic'])
+var app=angular.module('ftApp', ['ionic']);
 
-    .config(function ($stateProvider, $urlRouterProvider) {
+
+
+    app.config(function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider
             .state('tabs', {
@@ -72,14 +74,22 @@ angular.module('ftApp', ['ionic'])
             .state('merchandise', {
                 url: "/merchandise",
                 templateUrl: "merchandise.html"
+            })
+            .state('chooseAddress', {
+                url: "/chooseAddress",
+                templateUrl: "chooseAddress.html"
+            })
+            .state('chooseService', {
+                url: "/chooseService",
+                templateUrl: "chooseService.html"
             });
 
 
         $urlRouterProvider.otherwise("/tab/home");
 
-    })
+    });
 
-    .controller('ftCtrl', function ($scope, $state, $ionicPopover, $ionicHistory, $ionicActionSheet) {
+    app.controller('ftCtrl', function ($scope, $state, $ionicPopover, $ionicHistory, $ionicActionSheet) {
         $scope.myMarket = "Market";
         console.log("ftCtrl");
         $scope.go_back = function () {
@@ -102,11 +112,11 @@ angular.module('ftApp', ['ionic'])
                 }
             });
         };
-    })
-    .controller('HomeTabCtrl', function ($scope) {
+    });
+    app.controller('HomeTabCtrl', function ($scope) {
         console.log('HomeTabCtrl');
-    })
-    .controller("homeCtrl", function ($scope, $ionicSlideBoxDelegate, $interval, $timeout) {
+    });
+    app.controller("homeCtrl", function ($scope, $ionicSlideBoxDelegate, $interval, $timeout) {
         //   alert("a");
         $scope.items = [1, 2];
         var base = 1;
@@ -167,7 +177,7 @@ angular.module('ftApp', ['ionic'])
                 }
             }
         }
-    })
+    });
     //.controller("sortCtrl", function ($scope) {
     //    $scope.soLists = [1,2];
     //    for (var i = 0; i < 20; i++, base++)
@@ -189,18 +199,18 @@ angular.module('ftApp', ['ionic'])
     //    console.log(sreenWidth+"==id");
     //    sreenWidth.style.backgroundColor = "#f00";
     //})
-    .controller("accCtrl", function ($scope) {
+app.controller("accCtrl", function ($scope) {
         $scope.doRefresh = function () {
             // Stop the ion-refresher from spinning
             $scope.$broadcast("scroll.refreshComplete");
         };
-    })
-    .controller("fillorderCtrl", function ($scope,$ionicHistory) {
+    });
+app.controller("fillorderCtrl", function ($scope,$ionicHistory) {
         $scope.go_back = function() {
             $ionicHistory.goBack();
         };
-    })
-    .controller("cartCtrl", function ($scope) {
+    });
+app.controller("cartCtrl", function ($scope) {
         $scope.cartitems = [
             {
                 activity: "HTML5",
@@ -223,8 +233,8 @@ angular.module('ftApp', ['ionic'])
             // Stop the ion-refresher from spinning
             $scope.$broadcast("scroll.refreshComplete");
         };
-    })
-    .controller("merchCtrl", function ($scope,$ionicSlideBoxDelegate,$ionicSideMenuDelegate,$ionicPopup,$ionicHistory) {
+    });
+app.controller("merchCtrl", function ($scope,$ionicSlideBoxDelegate,$ionicSideMenuDelegate,$ionicPopup,$ionicHistory) {
         $scope.index = 1;
         $scope.count = $ionicSlideBoxDelegate.slidesCount()+1;
         $scope.go_back = function() {

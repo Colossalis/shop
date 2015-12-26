@@ -1115,6 +1115,9 @@ input[type=tel].ft-num-input-box {
 .ft-fill-content{
     background-color: #f1f1f1;
 }
+.ft-wrapper{
+    margin-bottom: 46px;
+}
 .ft-address-wrapper{
     position: relative;
     padding: 15px 12px;
@@ -1147,12 +1150,12 @@ input[type=tel].ft-num-input-box {
     background-size: 64px 3px;
 }
 .ft-add-top{
-    padding: 0 0 .725em 0;
+    padding: 0 0 .5em 0;
     overflow: hidden;
     color: #252525;
 }
 .ft-add-top span{
-    vertical-align: text-bottom;
+    vertical-align: top;
 }
 .ft-add-top .add-tel{
     margin-left: 2.6em;
@@ -1166,6 +1169,7 @@ input[type=tel].ft-num-input-box {
 .ft-add-top .add-name span{
     display: inline-block;
     vertical-align: top;
+    margin-right: 5px;
 }
 .add-name .ft-icon-wrapper{
     border: 1px solid #f15757;
@@ -1190,8 +1194,17 @@ input[type=tel].ft-num-input-box {
 .ft-add-info{
     font-size: .8125em;
     color: #686868;
-    line-height: 1.325em;
+    line-height: 1.8em;
     padding-right: 2.5em;
+}
+.ft-add-info .ft-tag-red,.fill-step5 .count{
+    background-color: #f15757;
+    color: #fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: .6em;
+    padding: 1px 5px;
 }
 .ft-goods-wrapper{
     overflow: hidden;
@@ -1209,14 +1222,15 @@ input[type=tel].ft-num-input-box {
     float: left;
     text-align: center;
     overflow: hidden;
+    height: 69px;
 }
 .ft-goods-wrapper .pic-wrapper div{
-    width: 28%;
+    width: 50px;
     float: left;
 }
 .ft-goods-wrapper .dots{
     margin-top: 32px;
-    width: 12%;
+    width: 32px;
     height: 1em;
     background: url("../images/cart/fillOrder/dots.png") no-repeat;
     background-size: 22px 4px;
@@ -1248,12 +1262,14 @@ input[type=tel].ft-num-input-box {
     padding-top: 0;
     color: #252525;
     font-size: 13px;
+    float: right;
+    margin-right: 18px;
 }
 .fill-step3{
     overflow: hidden;
     margin-top: 10px;
     background-color: #fff;
-    padding: 12px;
+    padding: 7px 0 0 12px;
     position: relative;
 }
 .fill-step3 a{
@@ -1263,48 +1279,323 @@ input[type=tel].ft-num-input-box {
 }
 .fill-step3 a .send{
     display: block;
-    padding: 15px 18px 0 0;
+    padding: 0 30px 0 0;
     position: relative;
     overflow: hidden;
+    margin-bottom: 5px;
 }
 .fill-step3 a .time{
     background-color: #f0f0f0;
     display: block;
     margin-bottom: 15px;
+    margin-right: 12px;
+    overflow: hidden;
 }
 .fill-step3 a .send .way{
     font-size: 14px;
     line-height: 17px;
     color: #686868;
-    padding: 10px 0 25px 0;
+    padding: 15px 0;
     float: left;
 }
-.send-pay-way{
+.fill-step3 .send p{
     float: right;
+    margin: 0;
 }
-.pay-way, .send-way {
+.fill-step3 .pay-way,.fill-step3 .send-way {
     font-size: 13px;
     color: #252525;
     display: block;
     text-align: right;
-    padding-bottom: 10px;
+    padding-bottom: 4px;
+    margin-top: 2px;
+}
+.fill-step3 a .time p{
+    margin: 0;
 }
 .send-time-title{
-    font-size: 12px;
+    font-size: 10px;
     color: #848689;
     text-align: right;
-    padding: 10px 17px 10px 0;
+    padding: 7px 17px 0 0;
 }
 .send-time{
-    padding: 10px 17px 10px 10px;
+    padding: 5px 17px 26px 10px;
 }
 .send-time span{
-    font-size: 14px;
+    font-size: 12px;
     line-height: 17px;
     color: #252525;
     float: right;
 }
+.fill-step4, .fill-step5, .fill-step6{
+    overflow: hidden;
+    margin-top: 10px;
+    background-color: #fff;
+    position: relative;
+}
+.fill-step4{
+    padding: 12px;
+}
+.fill-step6{
+    padding: 8px;
+}
+.fill-step4 .check,.fill-step5 .discount, .fill-step6 .fee{
+    font-size: 14px;
+    line-height: 17px;
+    color: #686868;
+    margin: 0;
+    float: left;
+}
+.fill-step4 .check-info{
+    margin: 0px 18px 0 70px;
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 17px;
+}
+.fill-step5 .status{
+    float: right;
+    margin-right: 18px;
+    font-size: 12px;
+}
+.step5-inner{
+    position: relative;
+    padding: 12px;
+}
+.step6-inner{
+    position: relative;
+    padding: 4px;
+    overflow: hidden;
+}
+.fill-step5 .count{
+    margin-left: 10px;
+}
+.fill-step5 .step5-inner-n{
+    border-top: 1px solid #ECECEC;
+}
+.fill-step6 .step6-inner span{
+    float: right;
+    color: #f15757;
+    font-size: 10px;
+}
+.ft-fill-footer{
+    height: 45px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.74);
+    color: #fff;
+}
+.ft-fill-footer .footer-inner {
+    font-size: 10px;
+    line-height: 45px;
+    margin-left: 12px;
+}
+.ft-fill-footer .red-btn {
+    height: 45px;
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+    width: 26%;
+    right: 0;
+    background-color: #E44848;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    line-height: 45px;
+}
+.ft-fill-footer .footer-inner span{
+    font-size: 12px;
+}
+.ft-fill-footer .footer-inner span.price{
+    font-size: 14px;
+    vertical-align: bottom;
+}
 /*cart->fill order ends*/
+/*select address starts*/
+.ft-select-add-wrapper{
+    margin-bottom: 70px;
+    background-color: #f8f8f8;
+}
+.ft-select-add-wrapper .add-item{
+    border-bottom: 1px solid #ededed;
+    overflow: hidden;
+    position: relative;
+}
+.add-item .txt-wrapper{
+    width: 76%;
+    float: left;
+    margin-left: 12px;
+    padding: 12px 0;
+}
+.add-item .txt-wrapper.selected{
+    margin-left: 40px;
+    width: 70%;
+}
+.add-item .check-wrapper{
+    width: 30px;
+    float: left;
+    font-size: 47px;
+    color: #f15757;
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    padding: 22px 12px;
+}
+.txt-wrapper .title .name{
+    font-size: 14px;
+}
+.add-item .add p{
+    float: left;
+    color: #666;
+    font-size: .8125em;
+    line-height: 1.6em;
+    padding-top: .6em;
+    margin: 0;
+}
+.add-item .add .tag-default{
+    background-color: #f15353;
+    color: #fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 0 5px;
+    display: inline-block;
+}
+.add-item .edit-wrapper{
+    float: right;
+    border-left: 1px solid #e3e3e3;
+    padding: 0 0 0 5px;
+    display: inline-block;
+    height: 2.125em;
+    width: 10.875%;
+    position: absolute;
+    right: 3%;
+    top: 50%;
+    margin-top: -17px;
+}
+.add-item .edit-wrapper i{
+    font-size: 2em;
+    margin-left: 20%;
+}
+
+.ft-address-footer{
+    position: fixed;
+    width: 100%;
+    height: 64px;
+    bottom: 0;
+    left: 0;
+    background-color: #f8f8f8;
+}
+.ft-address-footer .red-btn{
+    background-color: #f15353;
+    display: block;
+    color:#fff;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    font-size: 14px;
+    width: 90%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-left: 5%;
+    margin-top: 10px;
+}
+/*select address ends*/
+/*select service starts*/
+.ft-content{
+    background-color: #f8f8f8;
+}
+.ft-select-serve .pay-way{
+    overflow: hidden;
+    border-bottom: 1px solid #ededed;
+    background-color: #fff;
+    padding: 12px;
+}
+.ft-select-serve .send-way{
+    overflow: hidden;
+    border-bottom: 1px solid #ededed;
+    border-top: 1px solid #ededed;
+    background-color: #fff;
+    padding: 12px;
+    margin-top: 10px;
+}
+.ft-select-serve .send-way .send-step1{
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ededed;
+}
+.ft-select-serve .pay-way h2,.ft-select-serve .send-way h2{
+    font-size: 13px;
+    color: #3E3E3E;
+}
+.ft-select-serve .pay-way .btn a,.ft-select-serve .send-way .btn a{
+    display: inline-block;
+    border: 1px solid #ccc;
+    color: #666;
+    line-height: 30px;
+    font-size: 10px;
+    padding: 0 10px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    margin-right: 8px;
+}
+.ft-select-serve .pay-way .btn a.selected,.ft-select-serve .send-way .btn a.selected{
+    border-color: #f15353;
+    color: #f15353;
+}
+.ft-select-serve .send-way .send-info{
+    display: block;
+    padding: 10px 10px 0;
+    position: relative;
+}
+.ft-select-serve .send-way .send-info p{
+    margin: 0;
+    font-size: 10px;
+}
+.ft-select-serve .send-way .send-info span{
+    color: #666;
+    font-size: 10px;
+}
+.ft-select-serve .send-way .send-info i{
+    float: right;
+    color: #f15353;
+    font-size: 25px;
+    position: absolute;
+    right: 7px;
+    top: 18px;
+}
+.ft-select-serve .send-way .send-self{
+    display: block;
+}
+.ft-select-serve .send-way .send-self .address{
+    overflow: hidden;
+    padding: 10px 0 10px 10px;
+    border-bottom: 1px solid #ededed;
+}
+.ft-select-serve .send-way .send-self .time{
+    overflow: hidden;
+    padding: 10px 0 0 10px;
+}
+.ft-select-serve .send-way .send-self .time p,.ft-select-serve .send-way .send-self .address p{
+    float: left;
+    margin: 0;
+}
+.ft-select-serve .send-way .send-self .time span,.ft-select-serve .send-way .send-self .address span{
+    float: right;
+}
+.ft-select-serve .send-way .send-self .time i,.ft-select-serve .send-way .send-self .address i{
+    float: right;
+    font-size: 17px;
+    margin-left: 10px;
+}
+/*select service ends*/
 /*merchandise details start*/
 .ft-merch-content{
     margin-bottom: 51px;

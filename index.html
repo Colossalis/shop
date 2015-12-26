@@ -848,7 +848,7 @@
         </ion-nav-bar>
         <ion-content class="ft-fill-content">
             <div class="ft-wrapper">
-                <div class="ft-address-wrapper">
+                <div class="ft-address-wrapper" ui-sref="chooseAddress">
                     <a href="">
                         <div class="ft-add-top">
                             <div class="add-name">
@@ -886,6 +886,16 @@
 
                                 <p>×1</p>
                             </div>
+                            <div class="preview-goods">
+                                <img src="images/cart/fillOrder/goods1.jpg" alt="">
+
+                                <p>×1</p>
+                            </div>
+                            <div class="preview-goods">
+                                <img src="images/cart/fillOrder/goods1.jpg" alt="">
+
+                                <p>×1</p>
+                            </div>
                         </div>
                         <div class="dots"></div>
                     </div>
@@ -895,14 +905,13 @@
                     <i class="icon ion-ios-arrow-right right-arrow"></i>
                 </div>
                 <div class="fill-step3">
-
-                    <a href="" class="">
+                    <a ui-sref="chooseService">
                         <span class="send">
                                 <p class="way">支付配送</p>
                                 <p class="send-pay-way">
                                     <span class="pay-way"> 在线支付</span>
                                     <span class="send-way">
-                                        商城快递+商家配送
+                                        商城快递 + 商家配送
                                     </span>
                                 </p>
                                               <i class="icon ion-ios-arrow-right right-arrow"></i>
@@ -916,11 +925,169 @@
                             </span>
                     </a>
                 </div>
+                <div class="fill-step4">
+                    <p class="check">发票信息</p>
+
+                    <p class="check-info">非图书商品-明细 | 图书商品部开发票 非图书商品-明细 | 图书商品部开发票</p>
+                    <i class="icon ion-ios-arrow-right right-arrow"></i>
+                </div>
+                <div class="fill-step5">
+                    <div class="step5-inner">
+                        <p class="discount">优惠券</p>
+                        <span class="count">1张可用</span>
+                        <span class="status">未使用</span>
+                        <i class="icon ion-ios-arrow-right right-arrow"></i>
+                    </div>
+                    <div class="step5-inner step5-inner-n">
+                        <p class="discount">E卡</p>
+                        <span class="count">无可用</span>
+                        <span class="status">未使用</span>
+                        <i class="icon ion-ios-arrow-right right-arrow"></i>
+                    </div>
+                </div>
+                <div class="fill-step6">
+                    <div class="step6-inner">
+                        <p class="fee">商品金额</p>
+                        <span>￥999.23</span>
+                    </div>
+                    <div class="step6-inner">
+                        <p class="fee">返现</p>
+                        <span>- ￥99.23</span>
+                    </div>
+                    <div class="step6-inner">
+                        <p class="fee">运费</p>
+                        <span>+ ￥9.00</span>
+                    </div>
+                </div>
             </div>
-            <a class="button" nav-transition="ios" nav-direction="back" ng-click="go_back()">back</a>
         </ion-content>
+        <div class="ft-fill-footer">
+            <div class="footer-inner">
+                <span>实付款： </span><span class="price">￥889.00</span>
+            </div>
+            <div class="red-btn">
+                提交订单
+            </div>
+        </div>
     </ion-view>
 </script>
+
+<script id="chooseAddress.html" type="text/ng-template">
+    <ion-view title="收货地址">
+
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
+                        ng-click="go_back()">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content>
+            <div class="ft-select-add-wrapper">
+                <div class="add-item">
+                    <div class="check-wrapper">
+                        <i class="icon ion-ios-checkmark-empty"></i>
+                    </div>
+                    <div class="txt-wrapper selected">
+                        <div class="title">
+                            <span class="name">陶同学</span>
+                            <span class="tel">123****3456</span>
+                        </div>
+                        <div class="add">
+                            <p>
+                                <i class="tag-default">默认</i>
+                                江西南昌市昌北区蛟桥镇下罗双港路华东交通大学南区
+                            </p>
+                        </div>
+                    </div>
+                    <div class="edit-wrapper">
+                        <i class="icon ion-ios-compose-outline"></i>
+                    </div>
+                </div>
+                <div class="add-item">
+                    <div class="txt-wrapper">
+                        <div class="title">
+                            <span class="name">陶同学</span>
+                            <span class="tel">123****3456</span>
+                        </div>
+                        <div class="add">
+                            <p>
+                                江西南昌市昌北区蛟桥镇下罗双港路华东交通大学南区
+                            </p>
+                        </div>
+                    </div>
+                    <div class="edit-wrapper">
+                        <i class="icon ion-ios-compose-outline"></i>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+        <div class="ft-address-footer">
+            <a class="red-btn">
+                + 新建地址
+            </a>
+        </div>
+    </ion-view>
+</script>
+
+
+<script id="chooseService.html" type="text/ng-template">
+    <ion-view title="选择支付配送方式">
+
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
+                        ng-click="go_back()">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="ft-content">
+            <div class="ft-select-serve">
+                <div class="pay-way">
+                    <h2>支付方式</h2>
+
+                    <div class="btn">
+                        <a class="selected">在线支付</a>
+                        <a>货到付款</a>
+                    </div>
+                </div>
+                <div class="send-way">
+                    <div class="send-step1">
+                        <h2>配送方式</h2>
+
+                        <div class="btn">
+                            <a class="selected">商城快递</a>
+                            <a>上门自提</a>
+                        </div>
+                    </div>
+                    <div class="send-info">
+                        <p>送货时间</p>
+                        <span>2015-12-27  (周日)  09:00-19:00</span>
+                        <i class="icon ion-android-calendar"></i>
+                    </div>
+                    <div class="send-self">
+                        <div class="address">
+                            <p class="">自提地点</p>
+                            <i class="icon ion-ios-arrow-right"></i>
+                            <span class="">华东交通大学</span>
+                        </div>
+                        <div class="time">
+                            <p class="ver-time">自提时间</p>
+                            <i class="icon ion-ios-arrow-right"></i>
+                            <span>12月27日[周日]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+        <div class="ft-address-footer">
+            <a class="red-btn">
+                确定
+            </a>
+        </div>
+    </ion-view>
+</script>
+
 <script id="merchandise.html" type="text/ng-template">
     <ion-view title="商品详情" ng-controller="merchCtrl">
         <ion-side-menus>

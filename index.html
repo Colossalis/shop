@@ -80,8 +80,8 @@
 
             <div class="ft-nav-icon-list">
                 <ul class="ft-home-icon-list">
-                    <li ng-repeat="list in lists"><a href="" class=""><img src="images/{{list.icon}}" alt="">
-
+                    <li ng-repeat="list in lists">
+                        <a href="{{list.url}}" class=""><img src="images/{{list.icon}}" alt="">
                         <p>标签{{list.tag}}</p></a></li>
                 </ul>
             </div>
@@ -376,7 +376,7 @@
                             <ion-option-button class="button-stable ft-move-to-fav">移入<br>关注</ion-option-button>
                             <ion-option-button class="button-assertive">删除</ion-option-button>
                         </ion-item>
-                        <ion-item class="item ft-ol-third" href="#">
+                        <div class="item ft-ol-third" href="#">
                             <div class="ft-number-wrapper">
                                 <span class="ft-decrease" ng-click="deCount(cartitem.count)">-</span>
 
@@ -385,7 +385,7 @@
                                 <span class="ft-increase" ng-click="inCount()">+</span>
                             </div>
                             <span class="ft-expend">小计：￥{{cartitem.price*cartitem.count}}</span>
-                        </ion-item>
+                        </div>
                     </div>
                 </ion-list>
             </div>
@@ -868,7 +868,7 @@
                     <b class="add-borderT"></b>
                     <b class="add-borderB"></b>
                 </div>
-                <div class="ft-goods-wrapper">
+                <div class="ft-goods-wrapper" ui-sref="goodsList">
                     <div class="goods-inner">
                         <div class="pic-wrapper">
                             <div class="preview-goods">
@@ -925,7 +925,7 @@
                             </span>
                     </a>
                 </div>
-                <div class="fill-step4">
+                <div class="fill-step4" ui-sref="invoice">
                     <p class="check">发票信息</p>
 
                     <p class="check-info">非图书商品-明细 | 图书商品部开发票 非图书商品-明细 | 图书商品部开发票</p>
@@ -939,7 +939,7 @@
                         <i class="icon ion-ios-arrow-right right-arrow"></i>
                     </div>
                     <div class="step5-inner step5-inner-n">
-                        <p class="discount">E卡</p>
+                        <p class="discount">积分</p>
                         <span class="count">无可用</span>
                         <span class="status">未使用</span>
                         <i class="icon ion-ios-arrow-right right-arrow"></i>
@@ -1030,7 +1030,6 @@
     </ion-view>
 </script>
 
-
 <script id="chooseService.html" type="text/ng-template">
     <ion-view title="选择支付配送方式">
 
@@ -1045,7 +1044,6 @@
             <div class="ft-select-serve">
                 <div class="pay-way">
                     <h2>支付方式</h2>
-
                     <div class="btn">
                         <a class="selected">在线支付</a>
                         <a>货到付款</a>
@@ -1054,7 +1052,6 @@
                 <div class="send-way">
                     <div class="send-step1">
                         <h2>配送方式</h2>
-
                         <div class="btn">
                             <a class="selected">商城快递</a>
                             <a>上门自提</a>
@@ -1072,7 +1069,7 @@
                             <span class="">华东交通大学</span>
                         </div>
                         <div class="time">
-                            <p class="ver-time">自提时间</p>
+                            <p class="">自提时间</p>
                             <i class="icon ion-ios-arrow-right"></i>
                             <span>12月27日[周日]</span>
                         </div>
@@ -1085,6 +1082,90 @@
                 确定
             </a>
         </div>
+    </ion-view>
+</script>
+
+<script id="invoice.html" type="text/ng-template">
+    <ion-view title="发票信息">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
+                        ng-click="go_back()">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="ft-content" ng-controller="invoiceCtrl">
+            <div class="ft-invoice-wrapper">
+                <div class="invoice-type">
+                    <h2>发票类型</h2>
+
+                    <div class="btn">
+                        <a class="selected">纸质发票</a>
+                        <a>电子发票</a>
+                        <a>增值税发票</a>
+                    </div>
+                </div>
+                <div class="invoice-name">
+                    <h2>发票抬头</h2>
+
+                    <div class="">
+                        <input type="text" placeholder="可输入个人/单位名称" value="陶同学">
+                    </div>
+                </div>
+                <div class="invoice-content-title">
+                    <h2>发票内容</h2>
+                </div>
+                <div class="invoice-content">
+                    <h2>非图书商品</h2>
+
+                    <div class="">
+                        <ion-list>
+                            <ion-checkbox  ng-repeat="item in items" ng-model="item.selected">
+                                {{item.label}}
+                            </ion-checkbox>
+                        </ion-list>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+        <div class="ft-address-footer">
+            <a class="red-btn">
+                确定
+            </a>
+        </div>
+    </ion-view>
+</script>
+
+<script id="goodsList.html" type="text/ng-template">
+    <ion-view title="商品清单">
+
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
+                        ng-click="go_back()">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="ft-content">
+            <div class="ft-goods-list">
+                <div class="goods-list-item">
+                    <img src="images/cart/fillOrder/goods1.jpg">
+                    <div class="title-wrapper">
+                        <h2>【百草味】坚果炒货 腰果190g*2袋 炭烧 【百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
+                        <p><span class="back"><img src="images/cart/fillOrder/7days.png" alt="">支持7天无理由退货</span></p>
+                    </div>
+                    <span class="price">￥156.00</span>
+                </div>
+                <div class="goods-list-item">
+                    <img src="images/cart/fillOrder/goods1.jpg">
+                    <div class="title-wrapper">
+                        <h2>【百草味】坚果炒货 腰果190g*2袋 炭烧 【百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
+                        <p><span class="back"><img src="images/cart/fillOrder/7days.png" alt="">支持7天无理由退货</span></p>
+                    </div>
+                    <span class="price">￥156.00</span>
+                </div>
+            </div>
+        </ion-content>
     </ion-view>
 </script>
 

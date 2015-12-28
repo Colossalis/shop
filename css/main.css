@@ -974,7 +974,10 @@ ion-slide img {
     font-size: 15px;
     color: #FB5A5A;
 }
-
+.ft-ol-third{
+    border: none;
+    padding: 0 0 10px 50px
+}
 .ft-number-wrapper {
     border: 1px solid #afafaf;
     width: 92px;
@@ -1486,7 +1489,7 @@ input[type=tel].ft-num-input-box {
 .ft-address-footer{
     position: fixed;
     width: 100%;
-    height: 64px;
+    height: 60px;
     bottom: 0;
     left: 0;
     background-color: #f8f8f8;
@@ -1495,14 +1498,14 @@ input[type=tel].ft-num-input-box {
     background-color: #f15353;
     display: block;
     color:#fff;
-    height: 44px;
-    line-height: 44px;
+    height: 40px;
+    line-height: 40px;
     text-align: center;
     font-size: 14px;
     width: 90%;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     margin-left: 5%;
     margin-top: 10px;
 }
@@ -1531,9 +1534,9 @@ input[type=tel].ft-num-input-box {
 }
 .ft-select-serve .pay-way h2,.ft-select-serve .send-way h2{
     font-size: 13px;
-    color: #3E3E3E;
+    color: #585858;
 }
-.ft-select-serve .pay-way .btn a,.ft-select-serve .send-way .btn a{
+.ft-select-serve .pay-way .btn a,.ft-select-serve .send-way .btn a,.invoice-type .btn a{
     display: inline-block;
     border: 1px solid #ccc;
     color: #666;
@@ -1546,7 +1549,7 @@ input[type=tel].ft-num-input-box {
     text-align: center;
     margin-right: 8px;
 }
-.ft-select-serve .pay-way .btn a.selected,.ft-select-serve .send-way .btn a.selected{
+.ft-select-serve .pay-way .btn a.selected,.ft-select-serve .send-way .btn a.selected,.invoice-type .btn a.selected{
     border-color: #f15353;
     color: #f15353;
 }
@@ -1596,6 +1599,131 @@ input[type=tel].ft-num-input-box {
     margin-left: 10px;
 }
 /*select service ends*/
+/*select invoice starts*/
+
+/*select invoice ends*/
+.ft-invoice-wrapper{
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+.invoice-type,.invoice-name,.invoice-content{
+    margin-bottom: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    padding: 12px;
+}
+.invoice-content-title{
+    padding: 12px 12px 0;
+    background-color: #fff;
+    overflow: hidden;
+    border-bottom: 1px solid #ededed;
+}
+.invoice-type h2,.invoice-name h2,.invoice-content-title h2,.invoice-content h2{
+    font-size: 13px;
+    color: #585858;
+    margin-bottom: 10px;
+}
+.invoice-name{
+    width: 100%;
+}
+.invoice-name input{
+    border:1px solid #ccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    width: 100%;
+    text-indent: 1em;
+    font-size: 12px;
+}
+.invoice-content .item{
+    border: none;
+    font-size: 12px;
+    padding: 8px 8px 12px;
+}
+.invoice-content .checkbox input:checked+.checkbox-icon:before, .invoice-content .checkbox input:checked:before{
+    background: #f15353;
+    border-color: #f15353;
+}
+.invoice-content .checkbox-icon{
+    height: 20px;
+    width: 20px;
+}
+.invoice-content .checkbox-icon:after{
+    top: 30%;
+    left: 23%;
+    width: 10px;
+    height: 5px;
+}
+.invoice-content .item-checkbox {
+    padding-left: 45px;
+}
+/*goods list starts*/
+.ft-goods-list{
+
+}
+.goods-list-item{
+    border-bottom: 1px solid #ededed;
+    padding: 12px 12px 12px 80px;
+    position: relative;
+    background-color: #fff;
+}
+.goods-list-item>img{
+    float: left;
+    position: absolute;
+    left: 12px;
+    width: 58px;
+    height: 58px;
+    border:1px solid #ccc;
+}
+.goods-list-item .title-wrapper{
+    width: 70%;
+}
+.goods-list-item .title-wrapper h2{
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 12px;
+    text-align: left;
+    white-space: normal;
+    height: 30px;
+    text-overflow: ellipsis;
+    line-height: 14px;
+    color: #333;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding: 0 5px;
+    vertical-align: baseline;
+}
+.goods-list-item .title-wrapper p{
+    height: 17px;
+    white-space: nowrap;
+    font-size: 0;
+    line-height: 17px;
+    margin: 30px 0 0;
+}
+.title-wrapper p span{
+    font-size: 13px;
+}
+.title-wrapper p span.back{
+    margin-left: 10px;
+    display: inline-block;
+    height: 17px;
+}
+.title-wrapper p span img{
+    vertical-align: bottom;
+    margin-right: 3px;
+    width: 16px;
+    height: 16px;
+}
+.goods-list-item .price{
+    position: absolute;
+    top: 9px;
+    right: 12px;
+    padding: 0;
+    float: right;
+    color: #f15353;
+    font-size: 12px;
+}
+/*goods list ends*/
 /*merchandise details start*/
 .ft-merch-content{
     margin-bottom: 51px;

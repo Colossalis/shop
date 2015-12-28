@@ -82,6 +82,14 @@ var app=angular.module('ftApp', ['ionic']);
             .state('chooseService', {
                 url: "/chooseService",
                 templateUrl: "chooseService.html"
+            })
+            .state('goodsList', {
+                url: "/goodsList",
+                templateUrl: "goodsList.html"
+            })
+            .state('invoice', {
+                url: "/invoice",
+                templateUrl: "invoice.html"
             });
 
 
@@ -216,7 +224,7 @@ app.controller("cartCtrl", function ($scope) {
                 activity: "HTML5",
                 selected: true,
                 pic: "im5.jpg",
-                name: "item aa aa aa aa aa aa aa aa aa aa",
+                name: "¹ºÎï³µ+++aoaoa",
                 price: 99,
                 count: 2
             },
@@ -234,6 +242,15 @@ app.controller("cartCtrl", function ($scope) {
             $scope.$broadcast("scroll.refreshComplete");
         };
     });
+
+app.controller("invoiceCtrl", function ($scope) {
+        $scope.items = [
+            {label:"computer",selected:true},
+            {label:"detail"},
+            {label:"ECMAScript6"}
+        ];
+    });
+
 app.controller("merchCtrl", function ($scope,$ionicSlideBoxDelegate,$ionicSideMenuDelegate,$ionicPopup,$ionicHistory) {
         $scope.index = 1;
         $scope.count = $ionicSlideBoxDelegate.slidesCount()+1;

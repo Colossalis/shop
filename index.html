@@ -19,7 +19,7 @@
 
 <body ng-controller="ftCtrl">
 <ion-nav-bar>
-    <ion-nav-back-button>ba</ion-nav-back-button>
+    <ion-nav-back-button>what</ion-nav-back-button>
 </ion-nav-bar>
 <ion-nav-view animation="slide-left-right"></ion-nav-view>
 
@@ -62,13 +62,13 @@
 
             <ion-slide-box does-continue="true" show-pager="true">
                 <ion-slide>
-                    <img src="images/im1.png">
+                    <img src="images/account/im1.png">
                 </ion-slide>
                 <ion-slide>
-                    <img src="images/im1.png">
+                    <img src="images/account/im1.png">
                 </ion-slide>
                 <ion-slide>
-                    <img src="images/im1.png">
+                    <img src="images/account/im1.png">
                 </ion-slide>
             </ion-slide-box>
 
@@ -82,7 +82,8 @@
                 <ul class="ft-home-icon-list">
                     <li ng-repeat="list in lists">
                         <a href="{{list.url}}" class=""><img src="images/{{list.icon}}" alt="">
-                        <p>标签{{list.tag}}</p></a></li>
+
+                            <p>{{list.tag}}</p></a></li>
                 </ul>
             </div>
             <div class="ft-marq" id="fixs">
@@ -245,7 +246,7 @@
                             <a ui-sref="merchandise" nav-transition="ios" nav-direction="forward">
                                 <img src="images/home/recommend/im1.jpg" alt="">
 
-                                <h3>{{item}}【百草味】坚果炒货 腰果190g*2袋 炭烧</h3>
+                                <h3>{{item}}【百草味】坚果炒货 腰果190g*2袋 炭烧腰果190g*2袋 炭烧</h3>
                             </a>
 
                             <div class="ft-bottom-wrapper">
@@ -263,7 +264,7 @@
 </script>
 <!--sort page-->
 <script id="sort.html" type="text/ng-template">
-    <ion-view title="分类" class="padding">
+    <ion-view title="分类" class="padding" ng-controller="sortCtrl">
         <ion-nav-title>
             <div class="bar bar-header item-input-inset">
                 <label class="item-input-wrapper">
@@ -280,27 +281,7 @@
                 <div class="ft-vertical-list-left">
                     <ion-scroll id="scrollBox" zooming="true" direction="y" style="width: 90px; height: 500px">
                         <ul>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
-                            <li><a href="">sort {{soList}}</a></li>
+                            <li ng-repeat="soList in soLists"><a href="">{{soList}}</a></li>
                         </ul>
                     </ion-scroll>
                 </div>
@@ -353,15 +334,18 @@
 </script>
 <script id="cart.html" type="text/ng-template">
     <ion-view title="购物车" ng-controller="cartCtrl">
+        <ion-nav-buttons side="right">
+            <a class="button button-clear sm-btn-a">编辑</a>
+        </ion-nav-buttons>
         <ion-content class="account-content">
             <ion-refresher pulling-text="松开更新" on-refresh="doRefresh()" pulling-icon="ion-ios-reload"
                            spinner="ripple" class="icon-bubbles">
             </ion-refresher>
             <div class="ft-cart-list">
                 <ion-list class="list ft-sm-thumb">
-                    <div ng-repeat="cartitem in cartitems">
+                    <div ng-repeat="cartitem in cartitems" class="cart-item-wrapper">
                         <ion-item class="item item-icon-right ft-ol-first" href="#">
-                            <span class="ft-discount">满减</span>满199.00元即享优惠{{cartitem.activity}}
+                            <span class="ft-discount">满减</span>{{cartitem.activity}}
                             <i class="icon ion-ios-arrow-right"></i>
                         </ion-item>
                         <ion-checkbox ng-model="cartitem.selected" class="ft-cart-check"></ion-checkbox>
@@ -369,7 +353,7 @@
                                   nav-transition="ios" nav-direction="forward">
                             <img src="images/{{cartitem.pic}}">
 
-                            <h2>商品名称{{cartitem.name}}</h2>
+                            <h2>{{cartitem.name}}</h2>
                         <span class="ft-price-red">
                           ￥{{cartitem.price}}
                         </span>
@@ -419,7 +403,7 @@
             <div class="ft-info-box">
                 <div class="ft-info-inner" ui-sref="accountsettings" nav-direction="forward">
                     <div class="ft-pic-wrapper">
-                        <img src="images/im3.png" alt="">
+                        <img src="images/account/im3.png" alt="">
                     </div>
                     <div class="ft-summery">
                         <h3>user_13237007000</h3>
@@ -459,25 +443,25 @@
                 <div class="ft-list-block ft-indent-tab">
                     <div class="row">
                         <div class="col ft-order-list-col">
-                            <a href="" class="ft-block-item">
+                            <a ui-sref="orderPay" class="ft-block-item" nav-direction="forward">
                                 <i class="icon ion-card"></i>
                                 <span class="tab-title ng-binding">待付款</span>
                             </a>
                         </div>
                         <div class="col">
-                            <a href="" class="ft-block-item">
+                            <a ui-sref="orderReceive" class="ft-block-item" nav-direction="forward">
                                 <i class="icon ion-android-plane"></i>
                                 <span class="tab-title ng-binding">待收货</span>
                             </a>
                         </div>
                         <div class="col">
-                            <a href="" class="ft-block-item">
+                            <a ui-sref="orderComment" class="ft-block-item" nav-direction="forward">
                                 <i class="icon ion-ios-chatboxes-outline"></i>
                                 <span class="tab-title ng-binding">待评价</span>
                             </a>
                         </div>
                         <div class="col">
-                            <a href="" class="ft-block-item">
+                            <a ui-sref="orderDrawback" class="ft-block-item" nav-direction="forward">
                                 <i class="icon ion-ios-photos-outline"></i>
                                 <span class="tab-title ng-binding">退换货</span>
                             </a>
@@ -604,7 +588,7 @@
                         <i class="icon ion-ios-trash-outline"></i>
                     </div>
                     <a class="item item-thumbnail-left ft-ol-second" href="#">
-                        <img src="images/im3.png">
+                        <img src="images/account/im3.png">
 
                         <h2>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</h2>
                     </a>
@@ -629,7 +613,7 @@
                         <i class="icon ion-ios-trash-outline"></i>
                     </div>
                     <a class="item item-thumbnail-left ft-ol-second" href="#">
-                        <img src="images/im3.png">
+                        <img src="images/account/im3.png">
 
                         <h2>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</h2>
                     </a>
@@ -642,6 +626,165 @@
                         <span class="ft-btn-sm-red">
                           再次购买
                         </span>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="orderPay.html" type="text/ng-template">
+    <ion-nav-view name="order"></ion-nav-view>
+    <ion-view title="待付款订单">
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-content class="ft-content">
+            <div class="all-order-list">
+                <div class="list ft-sm-thumb">
+                    <div class="item item-icon-left ft-ol-first" href="#">
+                        <i class="icon ion-ios-flame"></i>
+                        {{myMarket}}
+                        <i class="status">等待付款</i>
+                    </div>
+                    <a class="item item-thumbnail-left ft-ol-second" href="#">
+                        <img src="images/account/im3.png">
+
+                        <h2>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</h2>
+                    </a>
+
+                    <div class="item ft-ol-third" href="#">
+                        实付款 <span class="expend">￥217.90</span>
+                        <span class="ft-btn-sm-red">去支付</span>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="orderReceive.html" type="text/ng-template">
+    <ion-nav-view name="order"></ion-nav-view>
+    <ion-view title="待收货">
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-content class="ft-content">
+            <div class="all-order-list">
+                <div class="list ft-sm-thumb">
+                    <div class="item item-icon-left ft-ol-first" href="#">
+                        <i class="icon ion-ios-flame"></i>
+                        {{myMarket}}
+                        <i class="status">等待收货</i>
+                    </div>
+                    <a class="item item-thumbnail-left ft-ol-second" href="#">
+                        <img src="images/account/im3.png">
+
+                        <h2>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</h2>
+                    </a>
+
+                    <div class="item ft-ol-third" href="#">
+                        实付款 <span class="expend">￥217.90</span>
+                        <span class="ft-btn-sm-red">确认收货</span>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="orderComment.html" type="text/ng-template">
+    <ion-nav-view name="order"></ion-nav-view>
+    <ion-view title="评价中心">
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <div class="comment-header has-header">
+            <div class="comment-title active">
+                <span>商品评价(9)</span>
+            </div>
+            <div class="comment-title">
+                <span>追加晒单(9)</span>
+            </div>
+            <div class="comment-title">
+                <span>晒单完成(9)</span>
+            </div>
+            <div class="comment-title">
+                <span>服务评价</span>
+            </div>
+        </div>
+        <ion-content class="ft-content">
+            <div class="comment-content">
+                <div class="goods-comment">
+                    <div class="comment-item">
+                        <img src="images/account/im6.jpg" alt="">
+
+                        <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
+                        <a href=""><i class="icon ion-android-create"></i>评价晒单</a>
+                    </div>
+                    <div class="comment-item">
+                        <img src="images/account/im6.jpg" alt="">
+
+                        <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
+                        <a href=""><i class="icon ion-android-create"></i>评价晒单</a>
+                    </div>
+                </div>
+                <div class="add-comment">
+
+                </div>
+                <div class="commented">
+
+                </div>
+                <div class="service-comment">
+                    <div class="comment-item">
+                        <div class="item item-icon-left item-title">
+                            <i class="icon ion-android-create"></i>
+                            宝通
+                            <a href="">服务评价</a>
+                        </div>
+                        <img src="images/account/im6.jpg" alt="">
+
+                        <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
+                    </div>
+                    <div class="comment-item">
+                        <div class="item item-icon-left item-title">
+                            <i class="icon ion-android-create"></i>
+                            宝通
+                            <a href="">服务评价</a>
+                        </div>
+                        <img src="images/account/im6.jpg" alt="">
+
+                        <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="orderDrawback.html" type="text/ng-template">
+    <ion-nav-view name="order"></ion-nav-view>
+    <ion-view title="售后服务-订单列表">
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-content class="ft-content">
+            <div class="all-order-list">
+                <div class="list ft-sm-thumb">
+                    <div class="item item-icon-left ft-ol-first" href="#">
+                        <i class="icon ion-ios-flame"></i>
+                        {{myMarket}}
+                        <i class="status">等待收货</i>
+                    </div>
+                    <a class="item item-thumbnail-left ft-ol-second" href="#">
+                        <img src="images/account/im3.png">
+
+                        <h2>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</h2>
+                    </a>
+
+                    <div class="item ft-ol-third" href="#">
+                        实付款 <span class="expend">￥217.90</span>
+                        <span class="ft-btn-sm-red">去支付</span>
                     </div>
                 </div>
             </div>
@@ -720,7 +863,7 @@
         <ion-content>
             <div class="list ft-thumbnail-list">
                 <a class="item item-thumbnail-left" href="#">
-                    <img src="images/im3.png">
+                    <img src="images/account/im3.png">
 
                     <h2>{{myMarket}}客服</h2>
                     <span class="ft-time">12:09</span>
@@ -728,7 +871,7 @@
                     <p>点击查看您与客服的沟通记录</p>
                 </a>
                 <a class="item item-thumbnail-left" href="#">
-                    <img src="images/im3.png">
+                    <img src="images/account/im3.png">
 
                     <h2>优惠促销</h2>
                     <span class="ft-time">12月7日</span>
@@ -736,7 +879,7 @@
                     <p>全场3免1！9000万件商品任你挑选！还有满499减50优惠券叠加使用！倒计时48小时，快戳活动链接</p>
                 </a>
                 <a class="item item-thumbnail-left" href="#">
-                    <img src="images/im3.png">
+                    <img src="images/account/im3.png">
 
                     <h2>物流通知</h2>
                     <span class="ft-time">12月7日</span>
@@ -744,7 +887,7 @@
                     <p>您的订单F11435454556576已完成，感谢您对我们的支持，欢迎再次光临。期待您对本次购物进行评价。</p>
                 </a>
                 <a class="item item-thumbnail-left" href="#">
-                    <img src="images/im3.png">
+                    <img src="images/account/im3.png">
 
                     <h2>我的资产</h2>
                     <span class="ft-time">12月7日</span>
@@ -928,11 +1071,17 @@
                 <div class="fill-step4" ui-sref="invoice">
                     <p class="check">发票信息</p>
 
-                    <p class="check-info">非图书商品-明细 | 图书商品部开发票 非图书商品-明细 | 图书商品部开发票</p>
+                    <div class="invoice-block">
+                        <p class="check-info">纸质发票</p>
+
+                        <p class="check-info">个人</p>
+
+                        <p class="check-info">电脑配件</p>
+                    </div>
                     <i class="icon ion-ios-arrow-right right-arrow"></i>
                 </div>
                 <div class="fill-step5">
-                    <div class="step5-inner">
+                    <div class="step5-inner" ui-sref="coupon">
                         <p class="discount">优惠券</p>
                         <span class="count">1张可用</span>
                         <span class="status">未使用</span>
@@ -1022,7 +1171,7 @@
                 </div>
             </div>
         </ion-content>
-        <div class="ft-address-footer">
+        <div class="ft-common-footer">
             <a class="red-btn">
                 + 新建地址
             </a>
@@ -1044,6 +1193,7 @@
             <div class="ft-select-serve">
                 <div class="pay-way">
                     <h2>支付方式</h2>
+
                     <div class="btn">
                         <a class="selected">在线支付</a>
                         <a>货到付款</a>
@@ -1052,6 +1202,7 @@
                 <div class="send-way">
                     <div class="send-step1">
                         <h2>配送方式</h2>
+
                         <div class="btn">
                             <a class="selected">商城快递</a>
                             <a>上门自提</a>
@@ -1077,7 +1228,7 @@
                 </div>
             </div>
         </ion-content>
-        <div class="ft-address-footer">
+        <div class="ft-common-footer">
             <a class="red-btn">
                 确定
             </a>
@@ -1120,7 +1271,7 @@
 
                     <div class="">
                         <ion-list>
-                            <ion-checkbox  ng-repeat="item in items" ng-model="item.selected">
+                            <ion-checkbox ng-repeat="item in items" ng-model="item.selected">
                                 {{item.label}}
                             </ion-checkbox>
                         </ion-list>
@@ -1128,7 +1279,7 @@
                 </div>
             </div>
         </ion-content>
-        <div class="ft-address-footer">
+        <div class="ft-common-footer">
             <a class="red-btn">
                 确定
             </a>
@@ -1150,27 +1301,101 @@
             <div class="ft-goods-list">
                 <div class="goods-list-item">
                     <img src="images/cart/fillOrder/goods1.jpg">
+
                     <div class="title-wrapper">
-                        <h2>【百草味】坚果炒货 腰果190g*2袋 炭烧 【百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
-                        <p><span class="back"><img src="images/cart/fillOrder/7days.png" alt="">支持7天无理由退货</span></p>
+                        <h2>坚果炒货 腰果190g*2袋 炭烧 【百草味】坚果炒货 腰果190g*2袋 炭烧炭烧 【百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
+
+                        <p class="color">颜色：家庭优惠装 限量装</p>
+                        <span class="price">￥156.00</span>
+                        <span class="amount">x2</span>
+
+                        <p class="back"><img src="images/cart/fillOrder/7days.png" alt=""><span>支持7天无理由退货</span></p>
                     </div>
-                    <span class="price">￥156.00</span>
                 </div>
                 <div class="goods-list-item">
                     <img src="images/cart/fillOrder/goods1.jpg">
+
                     <div class="title-wrapper">
                         <h2>【百草味】坚果炒货 腰果190g*2袋 炭烧 【百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
-                        <p><span class="back"><img src="images/cart/fillOrder/7days.png" alt="">支持7天无理由退货</span></p>
+
+                        <p class="color">颜色：家庭优惠装 限量装</p>
+                        <span class="price">￥156.00</span>
+                        <span class="amount">x2</span>
+
+                        <p class="back"><img src="images/cart/fillOrder/7days.png" alt=""><span>支持7天无理由退货</span></p>
                     </div>
-                    <span class="price">￥156.00</span>
                 </div>
             </div>
         </ion-content>
     </ion-view>
 </script>
+<script id="coupon.html" type="text/ng-template">
+    <ion-view title="使用优惠券">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
+                        ng-click="go_back()">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+
+        <div class="coupon-header has-header">
+            <div class="coupon-title active">
+                <span>可用优惠券(1)</span>
+            </div>
+            <div class="coupon-title">
+                <span>不可用优惠券(2)</span>
+            </div>
+        </div>
+        <ion-content class="ft-content">
+            <div class="ft-coupon">
+                <div class="coupon-content">
+                    <div class="coupon-none">
+                        <img src="images/cart/fillOrder/coupon.png" alt="">
+
+                        <h3>很遗憾</h3>
+
+                        <p>您暂无可以使用的优惠券</p>
+                    </div>
+                    <div class="coupon-valid">
+                        <div class="coupon-item">
+                            <h2><i class="coupon-a">A券</i>满100减20</h2>
+
+                            <p>使用范围：全品类</p>
+
+                            <p>有效期至：2016/2/20</p>
+                        </div>
+                    </div>
+                    <div class="coupon-invalid">
+                        <div class="coupon-item">
+                            <h2><i class="coupon-a">A券</i>满100减10</h2>
+
+                            <p>使用范围：全品类</p>
+
+                            <p>有效期至：2015/1/20</p>
+                        </div>
+                        <div class="coupon-item">
+                            <h2><i class="coupon-b">B券</i>满100减20</h2>
+
+                            <p>使用范围：全品类</p>
+
+                            <p>有效期至：2015/2/20</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+        <div class="ft-common-footer">
+            <a class="red-btn">
+                确定
+            </a>
+        </div>
+    </ion-view>
+</script>
 
 <script id="merchandise.html" type="text/ng-template">
     <ion-view title="商品详情" ng-controller="merchCtrl">
+
         <ion-side-menus>
             <ion-side-menu-content>
                 <ion-nav-bar class="bar-stable">

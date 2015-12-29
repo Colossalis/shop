@@ -1,8 +1,6 @@
 var app=angular.module('ftApp', ['ionic']);
 
-
-
-    app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider
             .state('tabs', {
@@ -47,6 +45,22 @@ var app=angular.module('ftApp', ['ionic']);
                 url: "/order",
                 templateUrl: "order.html"
             })
+            .state('orderPay', {
+                url: "/orderPay",
+                templateUrl: "orderPay.html"
+            })
+            .state('orderReceive', {
+                url: "/orderReceive",
+                templateUrl: "orderReceive.html"
+            })
+            .state('orderComment', {
+                url: "/orderComment",
+                templateUrl: "orderComment.html"
+            })
+            .state('orderDrawback', {
+                url: "/orderDrawback",
+                templateUrl: "orderDrawback.html"
+            })
             .state('fillorder', {
                 templateUrl: "fillorder.html"
             })
@@ -90,15 +104,16 @@ var app=angular.module('ftApp', ['ionic']);
             .state('invoice', {
                 url: "/invoice",
                 templateUrl: "invoice.html"
+            })
+            .state('coupon', {
+                url: "/coupon",
+                templateUrl: "coupon.html"
             });
-
-
         $urlRouterProvider.otherwise("/tab/home");
-
     });
 
     app.controller('ftCtrl', function ($scope, $state, $ionicPopover, $ionicHistory, $ionicActionSheet) {
-        $scope.myMarket = "Market";
+        $scope.myMarket = "宝通";
         console.log("ftCtrl");
         $scope.go_back = function () {
             console.log("click back");
@@ -106,15 +121,15 @@ var app=angular.module('ftApp', ['ionic']);
         };
         $scope.showMenu = function () {
             var hideSheet = $ionicActionSheet.show({
-                titleText: "����ͷ��",
+                titleText: "设置头像",
                 buttons: [
-                    {text: "����"},
-                    {text: "�ҵ����"}
+                    {text: "拍照"},
+                    {text: "我的相册"}
                 ],
                 buttonClicked: function (index) {
                     return true;
                 },
-                cancelText: "ȡ��",
+                cancelText: "取消",
                 cancel: function () {
                     // add cancel code..
                 }
@@ -128,17 +143,20 @@ var app=angular.module('ftApp', ['ionic']);
         //   alert("a");
         $scope.items = [1, 2];
         var base = 1;
-        $scope.lists = [];
-        for (var j = 0; j < 8; j++) {
-            $scope.lists.push(
-                {icon: "icon" + (j + 1) + ".png", tag: j}
-            );
-        }
-
+        $scope.lists = [
+            {icon: "icon1.png", tag: "物流查询", url: ""},
+            {icon: "icon2.png", tag: "充值中心"},
+            {icon: "icon3.png", tag: "服装城"},
+            {icon: "icon4.png", tag: "优惠券"},
+            {icon: "icon5.png", tag: "白拿白赚"},
+            {icon: "icon6.png", tag: "全球购"},
+            {icon: "icon7.png", tag: "我的关注"},
+            {icon: "icon8.png", tag: "全部"}
+        ];
         $scope.activities = [];
         for (var j = 0; j < 4; j++) {
             $scope.activities.push(
-                {tag: "hot", title: j}
+                {tag: "热", title: j}
             );
             console.log(j);
         }
@@ -186,10 +204,11 @@ var app=angular.module('ftApp', ['ionic']);
             }
         }
     });
-    //.controller("sortCtrl", function ($scope) {
-    //    $scope.soLists = [1,2];
-    //    for (var i = 0; i < 20; i++, base++)
-    //        $scope.soLists.push(["sort name ", base].join(""));
+    app.controller("sortCtrl", function ($scope) {
+        $scope.soLists = [];
+        var base = 1;
+        for (var i = 0; i < 20; i++, base++)
+            $scope.soLists.push(["大类 ", base].join(""));
 
     //    $scope.boxWidth = document.body.clientWidth - 90;
     //    $scope.boxHeight = window.screen.height - 90;
@@ -206,7 +225,7 @@ var app=angular.module('ftApp', ['ionic']);
     //    //angular.element('#scrollBox').css({width:screenWidth,height:screenHeight})
     //    console.log(sreenWidth+"==id");
     //    sreenWidth.style.backgroundColor = "#f00";
-    //})
+    });
 app.controller("accCtrl", function ($scope) {
         $scope.doRefresh = function () {
             // Stop the ion-refresher from spinning
@@ -221,17 +240,17 @@ app.controller("fillorderCtrl", function ($scope,$ionicHistory) {
 app.controller("cartCtrl", function ($scope) {
         $scope.cartitems = [
             {
-                activity: "HTML5",
+                activity: "满99.00元即享优惠",
                 selected: true,
                 pic: "im5.jpg",
-                name: "���ﳵ+++aoaoa",
+                name: "乐事乐事乐事乐事乐事乐事",
                 price: 99,
                 count: 2
             },
-            {activity: "aaaa", selected: false, pic: "im6.jpg", name: "item vvv", price: 9, count: 1},
-            {activity: "555", selected: false, pic: "im7.jpg", name: "item bbb", price: 19, count: 3},
-            {activity: "cccccML5", selected: false, pic: "im7.jpg", name: "item bbb", price: 19, count: 3},
-            {activity: "HTccccccML5", selected: false, pic: "im7.jpg", name: "item bbb", price: 19, count: 3}
+            {activity: "满199.00元即享优惠", selected: false, pic: "im6.jpg", name: "百草味百草味百草味百草味百草味百草味百草味百草味", price: 9, count: 1},
+            {activity: "满299.00元即享优惠", selected: false, pic: "im7.jpg", name: "薯愿薯愿薯愿薯愿薯愿薯愿薯愿薯愿", price: 19, count: 3},
+            {activity: "满499.00元即享优惠", selected: false, pic: "im7.jpg", name: "好丽友好丽友好丽友好丽友", price: 19, count: 3},
+            {activity: "满599.00元即享优惠", selected: false, pic: "im7.jpg", name: "五谷磨房五谷磨房五谷磨房", price: 19, count: 3}
         ];
         $scope.deCount = function (event) {
             event.count = event.count--;
@@ -245,9 +264,10 @@ app.controller("cartCtrl", function ($scope) {
 
 app.controller("invoiceCtrl", function ($scope) {
         $scope.items = [
-            {label:"computer",selected:true},
-            {label:"detail"},
-            {label:"ECMAScript6"}
+            {label:"电脑配件",selected:true},
+            {label:"明细"},
+            {label:"办公用品"},
+            {label:"耗材"}
         ];
     });
 
@@ -266,11 +286,11 @@ app.controller("merchCtrl", function ($scope,$ionicSlideBoxDelegate,$ionicSideMe
         };
         $scope.showHints = function() {
             $ionicPopup.alert({
-                title: "<div class='ft-pop-title'>service declare</div>",
-                template: "<div class='ft-pop-blocks'><img src='./images/merchandise/icon.jpg'><i>after</i><p>This goods supports paying after you receive it.</p></div><div class='ft-pop-blocks'><img src='./images/merchandise/icon.jpg'><i>after</i><p>This goods supports paying after you receive it.</p></div>",
+                title: "<div class='ft-pop-title'>服务说明</div>",
+                template: "<div class='ft-pop-blocks'><img src='./images/merchandise/icon.jpg'><i>货到付款</i><p>支持送货上门后再收款，支持现金、POS机刷卡等方式</p></div><div class='ft-pop-blocks'><img src='./images/merchandise/icon.jpg'><i>自提</i><p>自提免运费，支持自提点，自助提货</p></div>",
                 buttons: [
                     {
-                        text: "<b>OK</b>",
+                        text: "<b>知道了</b>",
                         type: "button-assertive"
                     }
                 ]

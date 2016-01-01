@@ -81,7 +81,7 @@
             <div class="ft-nav-icon-list">
                 <ul class="ft-home-icon-list">
                     <li ng-repeat="list in lists">
-                        <a href="{{list.url}}" class=""><img src="images/{{list.icon}}" alt="">
+                        <a ui-sref="{{list.url}}" class=""><img src="images/{{list.icon}}" alt="">
 
                             <p>{{list.tag}}</p></a></li>
                 </ul>
@@ -100,7 +100,7 @@
             </div>
             <div class="ft-second">
                 <div class="ft-second-title">
-                    <span class="ft-red">秒杀</span> · <h2>8点场</h2>
+                    <span class="ft-red">秒杀</span> · <span>8点场</span>
 
                     <div class="ft-counter">
                         <span class="ft-count-time">01</span>
@@ -351,7 +351,7 @@
                         <ion-checkbox ng-model="cartitem.selected" class="ft-cart-check"></ion-checkbox>
                         <ion-item class="item item-thumbnail-left ft-ol-second" ui-sref="merchandise"
                                   nav-transition="ios" nav-direction="forward">
-                            <img src="images/{{cartitem.pic}}">
+                            <img src="images/account/{{cartitem.pic}}">
 
                             <h2>{{cartitem.name}}</h2>
                         <span class="ft-price-red">
@@ -738,23 +738,27 @@
                 <div class="service-comment">
                     <div class="comment-item">
                         <div class="item item-icon-left item-title">
-                            <i class="icon ion-android-create"></i>
+                            <i class="icon ion-flag"></i>
                             宝通
                             <a href="">服务评价</a>
                         </div>
-                        <img src="images/account/im6.jpg" alt="">
+                        <div class="comment-item-content">
+                            <img src="images/account/im6.jpg" alt="">
 
-                        <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
+                            <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
+                        </div>
                     </div>
                     <div class="comment-item">
                         <div class="item item-icon-left item-title">
-                            <i class="icon ion-android-create"></i>
+                            <i class="icon ion-flag"></i>
                             宝通
                             <a href="">服务评价</a>
                         </div>
-                        <img src="images/account/im6.jpg" alt="">
+                        <div class="comment-item-content">
+                            <img src="images/account/im6.jpg" alt="">
 
-                        <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
+                            <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -765,6 +769,36 @@
 <script id="orderDrawback.html" type="text/ng-template">
     <ion-nav-view name="order"></ion-nav-view>
     <ion-view title="售后服务-订单列表">
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-content class="ft-content">
+            <div class="all-order-list">
+                <div class="list ft-sm-thumb">
+                    <div class="item item-icon-left ft-ol-first" href="#">
+                        <i class="icon ion-ios-flame"></i>
+                        {{myMarket}}
+                        <i class="status">等待收货</i>
+                    </div>
+                    <a class="item item-thumbnail-left ft-ol-second" href="#">
+                        <img src="images/account/im3.png">
+
+                        <h2>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</h2>
+                    </a>
+
+                    <div class="item ft-ol-third" href="#">
+                        实付款 <span class="expend">￥217.90</span>
+                        <span class="ft-btn-sm-red">去支付</span>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+
+<script id="coupon.html" type="text/ng-template">
+    <ion-nav-view name="order"></ion-nav-view>
+    <ion-view title="领券中心">
         <ion-nav-buttons side="left">
             <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
         </ion-nav-buttons>
@@ -1081,7 +1115,7 @@
                     <i class="icon ion-ios-arrow-right right-arrow"></i>
                 </div>
                 <div class="fill-step5">
-                    <div class="step5-inner" ui-sref="coupon">
+                    <div class="step5-inner" ui-sref="myCoupon">
                         <p class="discount">优惠券</p>
                         <span class="count">1张可用</span>
                         <span class="status">未使用</span>
@@ -1329,7 +1363,7 @@
         </ion-content>
     </ion-view>
 </script>
-<script id="coupon.html" type="text/ng-template">
+<script id="myCoupon.html" type="text/ng-template">
     <ion-view title="使用优惠券">
         <ion-nav-bar class="bar-stable">
             <ion-nav-buttons side="left">
@@ -1339,43 +1373,43 @@
             </ion-nav-buttons>
         </ion-nav-bar>
 
-        <div class="coupon-header has-header">
-            <div class="coupon-title active">
+        <div class="mycoupon-header has-header">
+            <div class="mycoupon-title active">
                 <span>可用优惠券(1)</span>
             </div>
-            <div class="coupon-title">
+            <div class="mycoupon-title">
                 <span>不可用优惠券(2)</span>
             </div>
         </div>
         <ion-content class="ft-content">
-            <div class="ft-coupon">
-                <div class="coupon-content">
-                    <div class="coupon-none">
+            <div class="ft-mycoupon">
+                <div class="mycoupon-content">
+                    <div class="mycoupon-none">
                         <img src="images/cart/fillOrder/coupon.png" alt="">
 
                         <h3>很遗憾</h3>
 
                         <p>您暂无可以使用的优惠券</p>
                     </div>
-                    <div class="coupon-valid">
-                        <div class="coupon-item">
-                            <h2><i class="coupon-a">A券</i>满100减20</h2>
+                    <div class="mycoupon-valid">
+                        <div class="mycoupon-item">
+                            <h2><i class="mycoupon-a">A券</i>满100减20</h2>
 
                             <p>使用范围：全品类</p>
 
                             <p>有效期至：2016/2/20</p>
                         </div>
                     </div>
-                    <div class="coupon-invalid">
-                        <div class="coupon-item">
-                            <h2><i class="coupon-a">A券</i>满100减10</h2>
+                    <div class="mycoupon-invalid">
+                        <div class="mycoupon-item">
+                            <h2><i class="mycoupon-a">A券</i>满100减10</h2>
 
                             <p>使用范围：全品类</p>
 
                             <p>有效期至：2015/1/20</p>
                         </div>
-                        <div class="coupon-item">
-                            <h2><i class="coupon-b">B券</i>满100减20</h2>
+                        <div class="mycoupon-item">
+                            <h2><i class="mycoupon-b">B券</i>满100减20</h2>
 
                             <p>使用范围：全品类</p>
 

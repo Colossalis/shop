@@ -870,7 +870,7 @@ ion-slide img {
     font-family: "Microsoft YaHei";
 }
  .item-thumbnail-left.ft-ol-second{
-     padding-left: 98px;
+     /*padding-left: 98px;*/
      min-height: 102px;
 }
 .ft-sm-thumb .item-thumbnail-left > img:first-child {
@@ -926,7 +926,7 @@ ion-slide img {
     top: 12px;
     left: 12px;
 }
-.goods-comment .comment-item h2{
+.goods-comment .comment-item h2, .comment-item-content h2{
     display: -webkit-box;
     overflow: hidden;
     font-size: 12px;
@@ -969,6 +969,46 @@ ion-slide img {
     display: block;
 }
 .service-comment .comment-item{
+    overflow: hidden;
+    background-color: #fff;
+    margin-top: 10px;
+    border-top: 1px solid #ededed;
+    border-bottom: 1px solid #ededed;
+}
+.service-comment .comment-item .item-title{
+    overflow: hidden;
+    font-size: 14px;
+    padding: 8px 12px 8px 40px;
+}
+.service-comment .comment-item .item-title i{
+    font-size: 16px;
+    color: #f15353;
+}
+.service-comment .comment-item .item-title a{
+    float: right;
+    color: #f15353;
+    border: 1px solid #f15353;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    line-height: 20px;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 12px;
+}
+.comment-item-content{
+    position: relative;
+    padding: 25px 12px 25px 80px;
+    min-height: 90px;
+}
+.comment-item-content img{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    left: 12px;
+    top: 10px;
+}
+.comment-item-content h2{
 
 }
 
@@ -1043,7 +1083,7 @@ ion-slide img {
     height: 2.7em;
     line-height: 1.4em;
     white-space: normal;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .ft-cart-list .ft-ol-first a.item-content.ng-binding {
@@ -1092,7 +1132,7 @@ ion-slide img {
 .ft-cart-check {
     width: 40px;
     float: left;
-    height: 101px;
+    height: 103px;
     border: none;
     padding-left: 0;
 }
@@ -1979,11 +2019,11 @@ input[type=tel].ft-num-input-box {
 }
 
 /*goods list ends*/
-/*coupon starts*/
-.ft-coupon{
+/*my coupon starts*/
+.ft-mycoupon{
     margin-top: 55px;
 }
-.coupon-header{
+.mycoupon-header{
     position: fixed;
     z-index: 50;
     overflow: hidden;
@@ -1991,75 +2031,75 @@ input[type=tel].ft-num-input-box {
     height: 44px;
     width: 100%;
 }
-.coupon-title{
+.mycoupon-title{
     width: 50%;
     float: left;
     text-align: center;
 }
-.coupon-title span {
+.mycoupon-title span {
     line-height: 43px;
     display: inline-block;
     font-size: 12px;
     padding: 0 12px;
 }
-.coupon-title.active span{
+.mycoupon-title.active span{
     color: #f15757;
     border-bottom: 1px solid #f15353;
 }
-.coupon-none{
+.mycoupon-none{
     display: none;
     width: 100%;
     height: 100%;
 }
-.coupon-none img{
+.mycoupon-none img{
     margin: 100px auto 0;
     display: block;
 }
-.coupon-none h3{
+.mycoupon-none h3{
     text-align: center;
     color: #252525;
 }
-.coupon-none p{
+.mycoupon-none p{
     text-align: center;
     color: #3e3e3e;
 }
-.coupon-valid{
+.mycoupon-valid{
     display: block;
 }
 
-.coupon-invalid{
+.mycoupon-invalid{
     display: none;
 }
-.coupon-item{
+.mycoupon-item{
     background-color: #fff;
     overflow: hidden;
     padding: 12px;
     margin: 10px 0;
 }
-.coupon-item h2{
+.mycoupon-item h2{
     font-weight: 700;
     font-size: 14px;
 }
-.coupon-item p{
+.mycoupon-item p{
     color: #868686;
     font-size: 12px;
     margin: 0;
 }
-.coupon-item h2 i{
+.mycoupon-item h2 i{
     color: #fff;
     font-size: 10px;
     padding: 3px 7px;
     display: inline-block;
     margin-right: 10px;
 }
-.coupon-a{
+.mycoupon-a{
     background-color: #f15353;
 }
-.coupon-b{
+.mycoupon-b{
     background-color: #46b1f3;
 }
 
-/*coupon ends*/
+/*my coupon ends*/
 /*merchandise details start*/
 .ft-merch-content {
     margin-bottom: 51px;

@@ -101,9 +101,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 url: "/goodsList",
                 templateUrl: "goodsList.html"
             })
+
             .state('invoice', {
                 url: "/invoice",
                 templateUrl: "invoice.html"
+            })
+            .state('myCoupon', {
+                url: "/myCoupon",
+                templateUrl: "myCoupon.html"
             })
             .state('coupon', {
                 url: "/coupon",
@@ -144,14 +149,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         $scope.items = [1, 2];
         var base = 1;
         $scope.lists = [
-            {icon: "icon1.png", tag: "物流查询", url: ""},
-            {icon: "icon2.png", tag: "充值中心"},
-            {icon: "icon3.png", tag: "服装城"},
+            {icon: "icon8.png", tag: "全球购", url: ""},
+            {icon: "icon1.png", tag: "充值中心"},
+            {icon: "icon2.png", tag: "服装城"},
             {icon: "icon4.png", tag: "优惠券"},
             {icon: "icon5.png", tag: "白拿白赚"},
-            {icon: "icon6.png", tag: "全球购"},
-            {icon: "icon7.png", tag: "我的关注"},
-            {icon: "icon8.png", tag: "全部"}
+            {icon: "icon6.png", tag: "我的关注"},
+            {icon: "icon7.png", tag: "物流查询"},
+            {icon: "icon3.png", tag: "全部"}
         ];
         $scope.activities = [];
         for (var j = 0; j < 4; j++) {

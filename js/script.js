@@ -242,7 +242,7 @@ app.controller("fillorderCtrl", function ($scope,$ionicHistory) {
             $ionicHistory.goBack();
         };
     });
-app.controller("cartCtrl", function ($scope) {
+app.controller("cartCtrl", function ($scope,$ionicPopup) {
         $scope.cartitems = [
             {
                 activity: "满99.00元即享优惠",
@@ -265,7 +265,31 @@ app.controller("cartCtrl", function ($scope) {
             // Stop the ion-refresher from spinning
             $scope.$broadcast("scroll.refreshComplete");
         };
-    });
+    $scope.showConfirm = function() {
+        $ionicPopup.confirm({
+            title: "删除商品",
+            template: "确认删除该商品？",
+            buttons: [
+                { text: "取消" },
+                {
+                    text: "<b>确定</b>",
+                    type: "button-assertive",
+                    onTap: function(e) {
+                        return true;
+                    }
+                }
+            ]
+        })
+            .then(function(res) {
+                if(res) {
+                    console.log("已删除");
+                } else {
+                    console.log("取消删除");
+                }
+            });
+    };
+
+});
 
 app.controller("invoiceCtrl", function ($scope) {
         $scope.items = [

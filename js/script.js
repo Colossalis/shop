@@ -41,6 +41,38 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     }
                 }
             })
+            .state('orderComment.goodsComment', {
+                url: "/goodsComment",
+                views: {
+                    'goodsComment-tab': {
+                        templateUrl: "goodsComment.html"
+                    }
+                }
+            })
+            .state('orderComment.addComment', {
+                url: "/addComment",
+                views: {
+                    'addComment-tab': {
+                        templateUrl: "addComment.html"
+                    }
+                }
+            })
+            .state('orderComment.commented', {
+                url: "/commented",
+                views: {
+                    'commented-tab': {
+                        templateUrl: "commented.html"
+                    }
+                }
+            })
+            .state('orderComment.serviceComment', {
+                url: "/serviceComment",
+                views: {
+                    'serviceComment-tab': {
+                        templateUrl: "serviceComment.html"
+                    }
+                }
+            })
             .state('order', {
                 url: "/order",
                 templateUrl: "order.html"
@@ -243,7 +275,9 @@ app.controller("fillorderCtrl", function ($scope,$ionicHistory) {
         };
     });
 app.controller("cartCtrl", function ($scope,$ionicPopup) {
-        $scope.cartitems = [
+    console.log("s11s ++++");
+    //console.log("s11s " + $scope.cartitem.count);
+    $scope.cartitems = [
             {
                 activity: "满99.00元即享优惠",
                 selected: true,
@@ -260,6 +294,11 @@ app.controller("cartCtrl", function ($scope,$ionicPopup) {
         $scope.deCount = function (event) {
             event.count = event.count--;
             console.log("ss" + event.count);
+        };
+    $scope.inCount = function (event) {
+            console.log("s11s " + $scope.cartitem.count);
+            $scope.cartitems.count++;
+            console.log("s22s " + $scope.cartitems.count);
         };
         $scope.doRefresh = function () {
             // Stop the ion-refresher from spinning

@@ -364,8 +364,7 @@
                             <div class="ft-number-wrapper">
                                 <span class="ft-decrease" ng-click="deCount(cartitem.count)">-</span>
 
-                                <input class="ft-num-input-box" type="tel" ng-model="cartitem.count"
-                                       value="{{cartitem.count}}">
+                                <input class="ft-num-input-box" type="tel" ng-model="cartitem.count">
                                 <span class="ft-increase" ng-click="inCount()">+</span>
                             </div>
                             <span class="ft-expend">小计：￥{{cartitem.price*cartitem.count}}</span>
@@ -699,73 +698,135 @@
         <ion-nav-buttons side="left">
             <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
         </ion-nav-buttons>
-        <div class="comment-header has-header">
-            <div class="comment-title active">
-                <span>商品评价(9)</span>
-            </div>
-            <div class="comment-title">
-                <span>追加晒单(9)</span>
-            </div>
-            <div class="comment-title">
-                <span>晒单完成(9)</span>
-            </div>
-            <div class="comment-title">
-                <span>服务评价</span>
-            </div>
-        </div>
-        <ion-content class="ft-content">
-            <div class="comment-content">
-                <div class="goods-comment">
-                    <div class="comment-item">
-                        <img src="images/account/im6.jpg" alt="">
 
-                        <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
-                        <a href=""><i class="icon ion-android-create"></i>评价晒单</a>
-                    </div>
-                    <div class="comment-item">
-                        <img src="images/account/im6.jpg" alt="">
+        <ion-tabs class="tabs-stable tabs-striped tabs-top">
+            <ion-tab href="#/orderComment/goodsComment" title="商品评价(9)">
+                <ion-nav-view name="goodsComment-tab"></ion-nav-view>
+            </ion-tab>
 
-                        <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
-                        <a href=""><i class="icon ion-android-create"></i>评价晒单</a>
-                    </div>
-                </div>
-                <div class="add-comment">
+            <ion-tab href="#/orderComment/addComment" title="追加晒单(9)">
+                <ion-nav-view name="addComment-tab"></ion-nav-view>
+            </ion-tab>
 
-                </div>
-                <div class="commented">
+            <ion-tab ui-sref="orderComment.commented" title="晒单完成(9)">
+                <ion-nav-view name="commented-tab"></ion-nav-view>
+            </ion-tab>
 
-                </div>
-                <div class="service-comment">
-                    <div class="comment-item">
-                        <div class="item item-icon-left item-title">
-                            <i class="icon ion-flag"></i>
-                            宝通
-                            <a href="">服务评价</a>
-                        </div>
-                        <div class="comment-item-content">
-                            <img src="images/account/im6.jpg" alt="">
+            <ion-tab ui-sref="orderComment.serviceComment" title="服务评价">
+                <ion-nav-view name="serviceComment-tab"></ion-nav-view>
+            </ion-tab>
+        </ion-tabs>
+        <!--<div class="comment-header has-header">-->
+            <!--<div class="comment-title active">-->
+                <!--<span>商品评价(9)</span>-->
+            <!--</div>-->
+            <!--<div class="comment-title">-->
+                <!--<span>追加晒单(9)</span>-->
+            <!--</div>-->
+            <!--<div class="comment-title">-->
+                <!--<span>晒单完成(9)</span>-->
+            <!--</div>-->
+            <!--<div class="comment-title">-->
+                <!--<span>服务评价</span>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<ion-content class="ft-content">-->
+            <!--<div class="comment-content">-->
+                <!--<div class="goods-comment">-->
+                    <!--<div class="comment-item">-->
+                        <!--<img src="images/account/im6.jpg" alt="">-->
 
-                            <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
-                        </div>
-                    </div>
-                    <div class="comment-item">
-                        <div class="item item-icon-left item-title">
-                            <i class="icon ion-flag"></i>
-                            宝通
-                            <a href="">服务评价</a>
-                        </div>
-                        <div class="comment-item-content">
-                            <img src="images/account/im6.jpg" alt="">
+                        <!--<h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>-->
+                        <!--<a href=""><i class="icon ion-android-create"></i>评价晒单</a>-->
+                    <!--</div>-->
+                    <!--<div class="comment-item">-->
+                        <!--<img src="images/account/im6.jpg" alt="">-->
 
-                            <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </ion-content>
+                        <!--<h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>-->
+                        <!--<a href=""><i class="icon ion-android-create"></i>评价晒单</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="add-comment">-->
+
+                <!--</div>-->
+                <!--<div class="commented">-->
+
+                <!--</div>-->
+                <!--<div class="service-comment">-->
+                    <!--<div class="comment-item">-->
+                        <!--<div class="item item-icon-left item-title">-->
+                            <!--<i class="icon ion-flag"></i>-->
+                            <!--宝通-->
+                            <!--<a href="">服务评价</a>-->
+                        <!--</div>-->
+                        <!--<div class="comment-item-content">-->
+                            <!--<img src="images/account/im6.jpg" alt="">-->
+
+                            <!--<h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="comment-item">-->
+                        <!--<div class="item item-icon-left item-title">-->
+                            <!--<i class="icon ion-flag"></i>-->
+                            <!--宝通-->
+                            <!--<a href="">服务评价</a>-->
+                        <!--</div>-->
+                        <!--<div class="comment-item-content">-->
+                            <!--<img src="images/account/im6.jpg" alt="">-->
+
+                            <!--<h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</ion-content>-->
     </ion-view>
 </script>
 
+<script id="goodsComment.html" type="text/ng-template">
+    <ion-nav-view name="goodsComment"></ion-nav-view>
+    <ion-view>
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-content class="assertive-bg">
+            goodsComment+++
+        </ion-content>
+    </ion-view>
+</script>
+<script id="addComment.html" type="text/ng-template">
+    <ion-nav-view name="addComment"></ion-nav-view>
+    <ion-view>
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-content class="calm-bg">
+            addComment+++
+        </ion-content>
+    </ion-view>
+</script>
+<script id="commented.html" type="text/ng-template">
+    <ion-nav-view name="commented"></ion-nav-view>
+    <ion-view>
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-content class="balanced-bg">
+            commented+++
+        </ion-content>
+    </ion-view>
+</script>
+<script id="serviceComment.html" type="text/ng-template">
+    <ion-nav-view name="serviceComment"></ion-nav-view>
+    <ion-view>
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-content class="dark-bg">
+            serviceComment+++
+        </ion-content>
+    </ion-view>
+</script>
 <script id="orderDrawback.html" type="text/ng-template">
     <ion-nav-view name="order"></ion-nav-view>
     <ion-view title="售后服务-订单列表">
@@ -1018,8 +1079,7 @@
 
         <ion-nav-bar class="bar-stable">
             <ion-nav-buttons side="left">
-                <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
-                        ng-click="go_back()">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
@@ -1157,11 +1217,9 @@
 
 <script id="chooseAddress.html" type="text/ng-template">
     <ion-view title="收货地址">
-
         <ion-nav-bar class="bar-stable">
             <ion-nav-buttons side="left">
-                <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
-                        ng-click="go_back()">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
@@ -1218,8 +1276,7 @@
 
         <ion-nav-bar class="bar-stable">
             <ion-nav-buttons side="left">
-                <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
-                        ng-click="go_back()">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
@@ -1274,8 +1331,7 @@
     <ion-view title="发票信息">
         <ion-nav-bar class="bar-stable">
             <ion-nav-buttons side="left">
-                <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
-                        ng-click="go_back()">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
@@ -1326,8 +1382,7 @@
 
         <ion-nav-bar class="bar-stable">
             <ion-nav-buttons side="left">
-                <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
-                        ng-click="go_back()">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
@@ -1367,8 +1422,7 @@
     <ion-view title="使用优惠券">
         <ion-nav-bar class="bar-stable">
             <ion-nav-buttons side="left">
-                <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
-                        ng-click="go_back()">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
@@ -1434,8 +1488,7 @@
             <ion-side-menu-content>
                 <ion-nav-bar class="bar-stable">
                     <ion-nav-buttons side="left">
-                        <button class="button button-clear ion-chevron-left" nav-transition="ios" nav-direction="back"
-                                ng-click="go_back()">
+                        <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
                         </button>
                     </ion-nav-buttons>
                 </ion-nav-bar>
@@ -1539,7 +1592,7 @@
                         </div>
                     </div>
                     <div class="ft-comment ft-detail-list">
-                        <div class="item item-icon-right">
+                        <div class="item item-icon-right" ui-sref="commentsList">
                             商品评价
                             <i class="icon ion-ios-arrow-right"></i>
 
@@ -1662,5 +1715,15 @@
     </ion-view>
 </script>
 
+<script id="commentsList.html" type="text/ng-template">
+    <ion-nav-view name="commentsList"></ion-nav-view>
+    <ion-view title="评论列表">
+        <ion-content>
+            <div class="ft-content">
+
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
 </body>
 </html>

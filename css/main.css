@@ -1757,7 +1757,7 @@ input[type=tel].ft-num-input-box {
 /*select address ends*/
 /*select service starts*/
 .ft-content {
-    background-color: #f8f8f8;
+    background-color: #f1f1f5;
 }
 
 .ft-select-serve .pay-way {
@@ -1899,10 +1899,12 @@ input[type=tel].ft-num-input-box {
     -moz-border-radius: 3px;
     border-radius: 3px;
     width: 100%;
-    text-indent: 1em;
+    padding-left: 1em;
     font-size: 12px;
 }
-
+/*.invoice-name input::-webkit-input-placeholder{ text-indent: 1em; }*/
+/*.invoice-name input::-moz-placeholder{ text-indent: 1em; }*/
+/*.invoice-name input:-ms-input-placeholder{ text-indent: 1em; }*/
 .invoice-content .item {
     border: none;
     font-size: 12px;
@@ -2577,8 +2579,9 @@ input[type=tel].ft-num-input-box {
 
 .ft-comment-list-item .comment-text {
     font-size: 13px;
-    line-height: 15px;
+    line-height: 16px;
     margin: 4px 0 5px;
+    color: #3e3e3e;
 }
 
 .ft-comment-list-item .comment-pic {

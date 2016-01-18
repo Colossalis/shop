@@ -834,7 +834,114 @@ ion-slide img {
 }
 
 /*more settings end*/
+/*goods watching list starts*/
+.goods-watching-list{
 
+}
+.goods-watching-list .item .item-content{
+    padding-bottom: 6px;
+    padding-right: 12px;
+    background-color: #f7f7f5;
+}
+.goods-watching-list .item-thumbnail-left .item-content>img:first-child{
+    max-width: 90px;
+    max-height: 90px;
+}
+.goods-watching-list img{
+    border:1px solid #ccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.goods-watching-list h2{
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 12px;
+    text-align: left;
+    white-space: normal;
+    height: 30px;
+    text-overflow: ellipsis;
+    line-height: 14px;
+    color: #333;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding: 0 2px;
+}
+.goods-watching-list .price{
+    color: #f15353;
+    font-size: 14px;
+    line-height: 24px;
+}
+.goods-watching-list a{
+    color: #666;
+    border: 1px solid #ccc;
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #fff;
+    width: 5.8em;
+}
+.goods-watching-list .activities{
+    color: #888;
+    font-size: 10px;
+    margin-top: 5px;
+}
+.goods-watching-list .activities span{
+    background-color: #f15353;
+    color: #fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    padding-left: 9px;
+    padding-right: 9px;
+    margin-right: 1em;
+    border-radius: 3px;
+}
+.goods-watching-list .button-stable.btn-light{
+    background-color: #E0E0E0;
+    color: #696969;
+}
+/*goods watching list ends*/
+/*view history list starts*/
+
+.view-history-list{
+}
+.view-history-list .item-complex .item-content{
+    background-color: #f5f5f5;
+}
+.view-history-list .item-thumbnail-left .item-content{
+    padding-left: 84px;
+}
+.view-history-list .item-thumbnail-left .item-content{
+    min-height: 82px;
+}
+.view-history-list .item-complex .item-content{
+    padding: 12px 12px 12px 86px;
+}
+.view-history-list .item-thumbnail-left{
+    min-height: 80px;
+}
+.view-history-list .item-thumbnail-left .item-content>img:first-child{
+    max-width: 60px;
+    max-height: 60px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.view-history-list  h2{
+    font-size: 14px;
+    margin-top: 7px;
+}
+.view-history-list .price{
+    margin-top: 10px;
+    font-size: 15px;
+    color:#f15353;
+}
+
+/*view history list ends*/
 /*all order list starts*/
 .ft-btn-sm-red {
     float: right;
@@ -901,15 +1008,15 @@ ion-slide img {
     display: inline-block;
     font-size: 12px;
 }
-.comment-title.active span{
+.comment-tabs .tabs-striped.tabs-stable .tab-item.tab-item-active{
     color: #f15353;
-    border-bottom: 1px solid #f15353;
+    border-color: #f15353;
 }
 .comment-content{
     margin-top: 50px;
 }
 .goods-comment{
-    display: none;
+    display: block;
 }
 .goods-comment .comment-item{
     padding: 12px 12px 12px 100px;

@@ -62,13 +62,19 @@
 
             <ion-slide-box does-continue="true" show-pager="true">
                 <ion-slide>
-                    <img src="images/account/im1.png">
+                    <img src="images/home/hb1.jpg">
                 </ion-slide>
                 <ion-slide>
-                    <img src="images/account/im1.png">
+                    <img src="images/home/hb2.jpg">
                 </ion-slide>
                 <ion-slide>
-                    <img src="images/account/im1.png">
+                    <img src="images/home/hb3.jpg">
+                </ion-slide>
+                <ion-slide>
+                    <img src="images/home/hb4.jpg">
+                </ion-slide>
+                <ion-slide>
+                    <img src="images/home/hb5.jpg">
                 </ion-slide>
             </ion-slide-box>
 
@@ -246,7 +252,7 @@
                             <a ui-sref="merchandise" nav-transition="ios" nav-direction="forward">
                                 <img src="images/home/recommend/im1.jpg" alt="">
 
-                                <h3>{{item}}【百草味】坚果炒货 腰果190g*2袋 炭烧腰果190g*2袋 炭烧</h3>
+                                <h3>{{item}}</h3>
                             </a>
 
                             <div class="ft-bottom-wrapper">
@@ -358,7 +364,7 @@
                           ￥{{cartitem.price}}
                         </span>
                             <ion-option-button class="button-stable ft-move-to-fav">移入<br>关注</ion-option-button>
-                            <ion-option-button class="button-assertive" ng-click="showConfirm();">删除</ion-option-button>
+                            <ion-option-button class="button-assertive" ng-click="showConfirm(cartitem);">删除</ion-option-button>
                         </ion-item>
                         <div class="item ft-ol-third" href="#">
                             <div class="ft-number-wrapper">
@@ -414,13 +420,13 @@
                 <div class="ft-list-block ft-list-block-info">
                     <div class="row">
                         <div class="col">
-                            <a href="" class="ft-block-item">
+                            <a ui-sref="goodsWatching" nav-direction="forward" class="ft-block-item">
                                 <span class="tab-title ng-binding">12</span>
                                 <span class="tab-title ng-binding">关注的商品</span>
                             </a>
                         </div>
                         <div class="col">
-                            <a href="" class="ft-block-item">
+                            <a ui-sref="viewHist" nav-direction="forward" class="ft-block-item">
                                 <span class="tab-title ng-binding">22</span>
                                 <span class="tab-title ng-binding">浏览记录</span>
                             </a>
@@ -571,6 +577,48 @@
         </ion-content>
     </ion-view>
 </script>
+<script id="goodsWatching.html" type="text/ng-template">
+    <ion-nav-view name="goodsWatching"></ion-nav-view>
+    <ion-view title="关注的商品">
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-content ng-controller="gWCtrl" class="ft-content">
+            <ion-list class="goods-watching-list">
+                <ion-item class="item item-thumbnail-left" ng-repeat="item in items">
+                    <img src="./images/account/goodsWatching/im{{item.image}}.jpg">
+                    <h2>{{item.title}}</h2>
+                    <p class="price">￥{{item.price}}</p>
+                    <a href="" class="">降价通知</a>
+                    <p class="activities"><span>满减</span>{{item.activities}}</p>
+                    <ion-option-button class="button-stable btn-light">加入购物车</ion-option-button>
+                    <ion-option-button class="button-assertive" ng-click="delete_item(item)">取消关注</ion-option-button>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="viewHist.html" type="text/ng-template">
+    <ion-nav-view name="viewHist"></ion-nav-view>
+    <ion-view title="浏览记录">
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <a class="button button-clear sm-btn-a">清空</a>
+        </ion-nav-buttons>
+        <ion-content ng-controller="vHCtrl" class="ft-content">
+            <ion-list class="view-history-list">
+                <ion-item class="item item-thumbnail-left" ng-repeat="item in items">
+                    <img src="./images/account/viewHistory/im{{item.image}}.jpg">
+                    <h2>{{item.title}}</h2>
+                    <p class="price">￥{{item.price}}</p>
+                    <ion-option-button class="button-assertive" ng-click="delete_item(item)">删除</ion-option-button>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-view>
+</script>
 
 <script id="order.html" type="text/ng-template">
     <ion-nav-view name="order"></ion-nav-view>
@@ -699,7 +747,7 @@
             <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
         </ion-nav-buttons>
 
-        <ion-tabs class="tabs-stable tabs-striped tabs-top">
+        <ion-tabs class="tabs-striped tabs-top comment-tabs">
             <ion-tab href="#/orderComment/goodsComment" title="商品评价(9)">
                 <ion-nav-view name="goodsComment-tab"></ion-nav-view>
             </ion-tab>
@@ -789,8 +837,21 @@
         <ion-nav-buttons side="left">
             <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
         </ion-nav-buttons>
-        <ion-content class="assertive-bg">
-            goodsComment+++
+        <ion-content class="ft-content">
+            <div class="goods-comment">
+                <div class="comment-item">
+                    <img src="images/account/im6.jpg" alt="">
+
+                    <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
+                    <a href=""><i class="icon ion-android-create"></i>评价晒单</a>
+                </div>
+                <div class="comment-item">
+                    <img src="images/account/im6.jpg" alt="">
+
+                    <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
+                    <a href=""><i class="icon ion-android-create"></i>评价晒单</a>
+                </div>
+            </div>
         </ion-content>
     </ion-view>
 </script>
@@ -801,7 +862,9 @@
             <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
         </ion-nav-buttons>
         <ion-content class="calm-bg">
-            addComment+++
+            <div class="add-comment">
+
+            </div>
         </ion-content>
     </ion-view>
 </script>
@@ -812,7 +875,9 @@
             <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
         </ion-nav-buttons>
         <ion-content class="balanced-bg">
-            commented+++
+            <div class="commented">
+
+            </div>
         </ion-content>
     </ion-view>
 </script>
@@ -822,8 +887,33 @@
         <ion-nav-buttons side="left">
             <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
         </ion-nav-buttons>
-        <ion-content class="dark-bg">
-            serviceComment+++
+        <ion-content class="ft-content">
+            <div class="service-comment">
+                <div class="comment-item">
+                    <div class="item item-icon-left item-title">
+                        <i class="icon ion-flag"></i>
+                        宝通
+                        <a href="">服务评价</a>
+                    </div>
+                    <div class="comment-item-content">
+                        <img src="images/account/im6.jpg" alt="">
+
+                        <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
+                    </div>
+                </div>
+                <div class="comment-item">
+                    <div class="item item-icon-left item-title">
+                        <i class="icon ion-flag"></i>
+                        宝通
+                        <a href="">服务评价</a>
+                    </div>
+                    <div class="comment-item-content">
+                        <img src="images/account/im6.jpg" alt="">
+
+                        <h2>百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧百草味】坚果炒货 腰果190g*2袋 炭烧</h2>
+                    </div>
+                </div>
+            </div>
         </ion-content>
     </ion-view>
 </script>

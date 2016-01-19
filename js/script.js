@@ -77,6 +77,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "goodsWatching",
             templateUrl: "goodsWatching.html"
         })
+        .state('searchResult', {
+            url: "searchResult",
+            templateUrl: "searchResult.html"
+        })
         .state('viewHist', {
             url: "/viewHist",
             templateUrl: "viewHist.html"
@@ -140,6 +144,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('goodsList', {
             url: "/goodsList",
             templateUrl: "goodsList.html"
+        })
+        .state('declineNote', {
+            url: "/declineNote",
+            templateUrl: "declineNote.html"
+        })
+        .state('commentsList', {
+            url: "/commentsList",
+            templateUrl: "commentsList.html"
         })
 
         .state('invoice', {
@@ -249,7 +261,7 @@ app.controller("homeCtrl", function ($scope, $ionicSlideBoxDelegate, $interval, 
         }
     }
 });
-app.controller("sortCtrl", function ($scope) {
+app.controller("sortCtrl", function ($scope, $ionicModal) {
     $scope.soLists = [];
     var base = 1;
     for (var i = 0; i < 20; i++, base++)
@@ -270,6 +282,19 @@ app.controller("sortCtrl", function ($scope) {
     //    //angular.element('#scrollBox').css({width:screenWidth,height:screenHeight})
     //    console.log(sreenWidth+"==id");
     //    sreenWidth.style.backgroundColor = "#f00";
+
+});
+app.controller('resultCtrl', function ($scope) {
+    console.log('resultCtrl');
+    $scope.items=[];
+    for(var i=0;i<5000;i++)
+        $scope.items.push(
+            {title:[i+1,"Chinese坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:33.99,rate:97,image:1,amount:136654},
+            {title:[i+1,"England坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:11.99,rate:97,image:2,amount:116654},
+            {title:[i+1,"America坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:33.99,rate:96,image:3,amount:106654},
+            {title:[i+1,"Japan坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:22.99,rate:95,image:4,amount:16654},
+            {title:[i+1,"French坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:33.99,rate:94,image:5,amount:13654}
+        );
 });
 app.controller("accCtrl", function ($scope) {
     $scope.doRefresh = function () {
@@ -283,8 +308,7 @@ app.controller("gWCtrl", function ($scope,$ionicPopup) {
         {title:"England坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧",price:11.99,activities:"满66减5 满166减15 满266减25 满366减35 满466减45 满566减55 满666减65 满766减75 满866减85",image:2},
         {title:"America坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧",price:33.99,activities:"满66减5 满166减15 满266减25 满366减35 满466减45 满566减55 满666减65 满766减75 满866减85",image:3},
         {title:"Japan坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧",price:22.99,activities:"满66减5 满166减15 满266减25 满366减35 满466减45 满566减55 满666减65 满766减75 满866减85",image:4},
-        {title:"French坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧",price:33.99,activities:"满66减5 满166减15 满266减25 满366减35 满466减45 满566减55 满666减65 满766减75 满866减85",image:5},
-        {title:"wtf坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧",price:55.99,activities:"满66减5 满166减15 满266减25 满366减35 满466减45 满566减55 满666减65 满766减75 满866减85",image:1}
+        {title:"French坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧",price:33.99,activities:"满66减5 满166减15 满266减25 满366减35 满466减45 满566减55 满666减65 满766减75 满866减85",image:5}
     ];
     console.log("gWCtrl++++++++");
     $scope.delete_item=function(item){
@@ -320,6 +344,33 @@ app.controller("vHCtrl", function ($scope,$ionicPopup) {
         {title:"wtf坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧",price:55.99,image:3},
         {title:"wtf坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧",price:55.99,image:5}
     ];
+    var count=$scope.items.length;
+    console.log("gWCtrl22222222");
+    $scope.clear_all=function(){
+        console.log("co"+count);
+        $ionicPopup.confirm({
+            title: "清空记录",
+            template: "确认清空浏览记录？",
+            buttons: [
+                {text: "取消"},
+                {
+                    text: "<b>确定</b>",
+                    type: "button-assertive",
+                    onTap: function (e) {
+                        return true;
+                    }
+                }
+            ]
+        })
+            .then(function (res) {
+                if (res) {
+                    console.log("已删除");
+                    $scope.items.splice(0,count);
+                } else {
+                    console.log("取消删除");
+                }
+            });
+    };
     console.log("gWCtrl++++++++");
     $scope.delete_item=function(item){
         var idx = $scope.items.indexOf(item);
@@ -351,6 +402,9 @@ app.controller("fillorderCtrl", function ($scope, $ionicHistory) {
     $scope.go_back = function () {
         $ionicHistory.goBack();
     };
+});
+app.controller("dNCtrl", function ($scope, $ionicHistory) {
+console.log("as");
 });
 app.controller("cartCtrl", function ($scope, $ionicPopup) {
     console.log("s11s ++++");

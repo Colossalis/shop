@@ -705,7 +705,103 @@ ion-slide img {
 }
 
 /*sort page ends*/
+/*search result starts*/
 
+.search-result .bar .button.button-clear.back-btn{
+    padding-left: 0;
+    padding-right: 10px;
+    font-size: 32px;
+}
+.search-result .item-input-inset{
+    padding:0;
+}
+.search-result .bar .title{
+    margin:0;
+}
+.search-result.bar .title{
+    margin:0;
+}
+.search-condition{
+    width: 100%;
+    margin-top: 34px;
+    position: fixed;
+    overflow: hidden;
+    background-color: #fff;
+    margin-left: -10px;
+    z-index: 9;
+}
+.search-condition ul{
+    width: 100%;
+}
+.search-condition li{
+    width: 25%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: inline-block;
+    color: #3e3e3e;
+    line-height: 26px;
+}
+.search-condition li.selected{
+    color: #f15353;
+}
+.search-result-list{
+    margin-top: 27px;
+}
+.search-result-list .item-thumbnail-left{
+    padding-left: 110px;
+}
+.search-result-list .item-thumbnail-left>img:first-child{
+    max-width: 90px;
+    max-height: 90px;
+}
+.search-result-list .item{
+    background-color: #f1f1f5;
+    padding-right: 12px;
+    padding-bottom: 13px;
+}
+.search-result-list .item h2{
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 12px;
+    text-align: left;
+    white-space: normal;
+    height: 32px;
+    text-overflow: ellipsis;
+    line-height: 16px;
+    color: #333;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding: 0 2px;
+    margin-top: 6px;
+}
+.search-result-list .item p{
+    color: #f15353;
+    font-size: 14px;
+    line-height: 14px;
+    margin: 15px 0 0;
+}
+.search-result-list span{
+    font-size: 10px;
+    color: #666;
+}
+.search-result-list a{
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border:1px solid #e2e2e2;
+    background-color: #fff;
+    color: #f15353;
+    text-align: center;
+    float: right;
+    line-height: 21px;
+    font-size: 18px;
+    right: 0;
+    padding: 0 4px;
+}
+
+/*search result ends*/
 /*account page styles*/
 
 .ft-info-box {
@@ -859,9 +955,9 @@ ion-slide img {
     font-size: 12px;
     text-align: left;
     white-space: normal;
-    height: 30px;
+    height: 32px;
     text-overflow: ellipsis;
-    line-height: 14px;
+    line-height: 16px;
     color: #333;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -905,6 +1001,42 @@ ion-slide img {
     color: #696969;
 }
 /*goods watching list ends*/
+/*decline notification starts*/
+
+.decline-notification{
+
+}
+.decline-notification .item{
+    margin-top: 10px;
+}
+.decline-notification p{
+    font-size: 10px;
+    color: #888;
+    line-height: 17px;
+    margin: 10px 12px;
+}
+.decline-notification .ok-btn{
+    width: 100%;
+}
+.decline-notification .ok-btn a{
+    width: 90%;
+    margin-left: 5%;
+    background-color: #f15353;
+    color: #fff;
+    text-align: center;
+    line-height: 35px;
+    font-size: 14px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    display: block;
+}
+.decline-notification .item-input-wrapper{
+    background-color: #fff;
+    display: inline-block;
+}
+/*decline notification ends*/
+
 /*view history list starts*/
 
 .view-history-list{
@@ -2705,7 +2837,6 @@ input[type=tel].ft-num-input-box {
     border-radius: 4px;
     border: 1px solid #ccc;
     overflow: hidden;
-
 }
 
 .ft-comment-list-item .pic-wrapper img {
@@ -2719,7 +2850,35 @@ input[type=tel].ft-num-input-box {
     overflow: hidden;
     padding: 0 10px;
 }
-
+.comment-list{
+    overflow: hidden;
+    display: block;
+}
+.comment-list-item{
+    overflow: hidden;
+    display: block;
+    background-color: #fff;
+    margin-top: 10px;
+}
+.comment-list-item .comment-item-top{
+    overflow: hidden;
+}
+.comment-list-item .comment-item-top .account{
+    float: left;
+}
+.comment-list-item .comment-pic .pic-wrapper{
+    max-width: 100px;
+    max-height: 100px;
+    display: inline-block;
+    overflow: hidden;
+    margin: 5px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.comment-list-item .comment-pic .pic-wrapper img{
+    width: 100%;
+}
 .comment-btn-wrapper a {
     border: #ccc solid 1px;
     -webkit-border-radius: 3px;
@@ -2733,8 +2892,6 @@ input[type=tel].ft-num-input-box {
     display: inline-block;
     padding: 0 8px;
     width: 48%;
-    font-size: 12px;
-
 }
 
 .comment-has-pic {

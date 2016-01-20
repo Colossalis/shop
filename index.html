@@ -382,14 +382,15 @@
         </div>
         <ion-content class="ft-content">
             <div class="search-result-list">
-                <div class="item item-thumbnail-left" collection-repeat="item in items">
-                    <img src="./images/account/viewHistory/im{{item.image}}.jpg">
+                <div class="item item-thumbnail-left" collection-repeat="item in items" ui-sref="{{item.url}}">
+                        <img src="./images/account/viewHistory/im{{item.image}}.jpg">
 
-                    <h2>{{item.title}}</h2>
+                        <h2>{{item.title}}</h2>
 
-                    <p class="price">￥{{item.price}}</p>
-                    <span>好评{{item.rate}}% {{item.amount}}人</span>
-                    <a href=""><i class="icon ion-ios-cart-outline"></i></a>
+                        <p class="price">￥{{item.price}}</p>
+                        <span>好评{{item.rate}}% {{item.amount}}人</span>
+                        <a href=""><i class="icon ion-ios-cart-outline"></i></a>
+
                 </div>
             </div>
         </ion-content>
@@ -1718,7 +1719,7 @@
                         </div>
                         <div class="ft-price-wrapper">
                             <span class="ft-goods-price">¥26.90</span>
-                            <span class="ft-decline-note">降价通知</span>
+                            <span class="ft-decline-note" ui-sref="declineNote">降价通知</span>
                         </div>
 
                     </div>
@@ -1774,13 +1775,13 @@
                         </div>
                     </div>
                     <div class="ft-comment ft-detail-list">
-                        <div class="item item-icon-right" ui-sref="commentsList">
+                        <div class="item item-icon-right" ui-sref="commentsList" nav-direction="forward">
                             商品评价
                             <i class="icon ion-ios-arrow-right"></i>
 
                             <p><span class="dark">好评度</span><span class="red">97%</span>6677人评论</p>
                         </div>
-                        <ul class="ft-comment-list">
+                        <ul class="ft-comment-list" ui-sref="commentsList" nav-direction="forward">
                             <li class="ft-comment-list-item">
                                 <div class="comment-item-top">
                                     <span class="stars">
@@ -1898,8 +1899,44 @@
 </script>
 
 <script id="commentsList.html" type="text/ng-template">
-    <ion-nav-view name="commentsList"></ion-nav-view>
-    <ion-view title="评论列表">
+    <ion-nav-view name="order"></ion-nav-view>
+    <ion-view title="商品评价">
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-tabs class="tabs-top goods-comment-tabs">
+            <ion-tab href="#/commentsList/allComment" title="全部评价<span class='ft-tabs-count'>123445</span>">
+
+                <ion-nav-view name="allComment-tab"></ion-nav-view>
+            </ion-tab>
+
+            <ion-tab href="#/commentsList/highComment" title="好评<span class='ft-tabs-count'>123445</span>">
+                <ion-nav-view name="highComment-tab"></ion-nav-view>
+            </ion-tab>
+
+            <ion-tab ui-sref="commentsList.mediumComment" title="中评<span class='ft-tabs-count'>123445</span>">
+                <ion-nav-view name="mediumComment-tab"></ion-nav-view>
+            </ion-tab>
+
+            <ion-tab ui-sref="commentsList.lowComment" title="差评<span class='ft-tabs-count'>123445</span>">
+                <ion-nav-view name="lowComment-tab"></ion-nav-view>
+            </ion-tab>
+            <ion-tab ui-sref="commentsList.picComment" title="晒图<span class='ft-tabs-count'>123445</span>">
+                <ion-nav-view name="picComment-tab"></ion-nav-view>
+            </ion-tab>
+        </ion-tabs>
+
+    </ion-view>
+</script>
+
+<script id="allComment.html" type="text/ng-template">
+    <ion-view title="全部评论">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
         <ion-content class="ft-content">
             <div>
                 <ul class="comment-list">
@@ -1912,20 +1949,22 @@
                             </div>
                             <span class="customer">2015-12-21 11:00:12</span>
                         </div>
-                        <span class="stars"><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i
-                                class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i
-                                class="icon ion-ios-star"></i></span>
-                        <div class="comment-text">
-                            不错 很好 下次再来 不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错
-                            很好 下次再来
-                        </div>
-                        <div class="comment-pic">
-                            <div class="pic-wrapper"><img src="images/merchandise/comment2.jpg" alt=""></div>
-                            <div class="pic-wrapper"><img src="images/merchandise/comment1.jpg" alt=""></div>
-                        </div>
-                        <div class="info">
-                            <p>颜色：芝士口味</p>
-                            <p>购买日期：2016-01-02 13:19:22</p>
+                        <div class="comment-info-wrapper">
+                            <span class="stars"><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i
+                                    class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i
+                                    class="icon ion-ios-star"></i></span>
+                            <div class="comment-text">
+                                不错 很好 下次再来 不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错
+                                很好 下次再来
+                            </div>
+                            <div class="comment-pic">
+                                <div class="pic-wrapper"><img src="images/merchandise/comment2.jpg" alt=""></div>
+                                <div class="pic-wrapper"><img src="images/merchandise/comment1.jpg" alt=""></div>
+                            </div>
+                            <div class="info">
+                                <p>颜色：芝士口味</p>
+                                <p>购买日期：2016-01-02 13:19:22</p>
+                            </div>
                         </div>
                         <div class="comment-btn-wrapper">
                             <a href="" class="comment-has-pic"><i class="icon ion-ios-heart-outline"></i><span>(500)</span></a>
@@ -1941,20 +1980,22 @@
                             </div>
                             <span class="customer">2015-12-21 11:00:12</span>
                         </div>
-                        <span class="stars"><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i
-                                class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i
-                                class="icon ion-ios-star"></i></span>
-                        <div class="comment-text">
-                            不错 很好 下次再来 不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错
-                            很好 下次再来
-                        </div>
-                        <div class="comment-pic">
-                            <div class="pic-wrapper"><img src="images/merchandise/comment2.jpg" alt=""></div>
-                            <div class="pic-wrapper"><img src="images/merchandise/comment1.jpg" alt=""></div>
-                        </div>
-                        <div class="info">
-                            <p>颜色：芝士口味</p>
-                            <p>购买日期：2016-01-02 13:19:22</p>
+                        <div class="comment-info-wrapper">
+                            <span class="stars"><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i
+                                    class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i
+                                    class="icon ion-ios-star"></i></span>
+                            <div class="comment-text">
+                                不错 很好 下次再来 不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错
+                                很好 下次再来
+                            </div>
+                            <div class="comment-pic">
+                                <div class="pic-wrapper"><img src="images/merchandise/comment2.jpg" alt=""></div>
+                                <div class="pic-wrapper"><img src="images/merchandise/comment1.jpg" alt=""></div>
+                            </div>
+                            <div class="info">
+                                <p>颜色：芝士口味</p>
+                                <p>购买日期：2016-01-02 13:19:22</p>
+                            </div>
                         </div>
                         <div class="comment-btn-wrapper">
                             <a href="" class="comment-has-pic"><i class="icon ion-ios-heart-outline"></i><span>(500)</span></a>
@@ -1962,6 +2003,161 @@
                         </div>
                     </li>
                 </ul>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="highComment.html" type="text/ng-template">
+    <ion-view title="好评">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="ft-content">
+            <div>
+                <ul class="comment-list">
+                    <li class="comment-list-item">
+                        <div class="comment-item-top">
+                            <div class="account">
+                                <img src="" alt="">
+                                <p>j***5好评</p>
+                                <img src="" alt="">
+                            </div>
+                            <span class="customer">2015-12-21 11:00:12</span>
+                        </div>
+                        <div class="comment-info-wrapper">
+                            <span class="stars"><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i
+                                    class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i
+                                    class="icon ion-ios-star"></i></span>
+                            <div class="comment-text">
+                                不错 很好 下次再来 不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错
+                                很好 下次再来
+                            </div>
+                            <div class="comment-pic">
+                                <div class="pic-wrapper"><img src="images/merchandise/comment2.jpg" alt=""></div>
+                                <div class="pic-wrapper"><img src="images/merchandise/comment1.jpg" alt=""></div>
+                            </div>
+                            <div class="info">
+                                <p>颜色：芝士口味</p>
+                                <p>购买日期：2016-01-02 13:19:22</p>
+                            </div>
+                        </div>
+                        <div class="comment-btn-wrapper">
+                            <a href="" class="comment-has-pic"><i class="icon ion-ios-heart-outline"></i><span>(500)</span></a>
+                            <a href="" class="shop-questions"><i class="icon ion-ios-chatbubble-outline"></i><span>(100)</span></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="mediumComment.html" type="text/ng-template">
+    <ion-view title="中评">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="ft-content">
+            <div>
+                <ul class="comment-list">
+                    <li class="comment-list-item">
+                        <div class="comment-item-top">
+                            <div class="account">
+                                <img src="" alt="">
+                                <p>中评j***5</p>
+                                <img src="" alt="">
+                            </div>
+                            <span class="customer">2015-12-21 11:00:12</span>
+                        </div>
+                        <div class="comment-info-wrapper">
+                            <span class="stars"><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i
+                                    class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i
+                                    class="icon ion-ios-star"></i></span>
+                            <div class="comment-text">
+                                不错 很好 下次再来 不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错
+                                很好 下次再来
+                            </div>
+                            <div class="comment-pic">
+                                <div class="pic-wrapper"><img src="images/merchandise/comment2.jpg" alt=""></div>
+                                <div class="pic-wrapper"><img src="images/merchandise/comment1.jpg" alt=""></div>
+                            </div>
+                            <div class="info">
+                                <p>颜色：芝士口味</p>
+                                <p>购买日期：2016-01-02 13:19:22</p>
+                            </div>
+                        </div>
+                        <div class="comment-btn-wrapper">
+                            <a href="" class="comment-has-pic"><i class="icon ion-ios-heart-outline"></i><span>(500)</span></a>
+                            <a href="" class="shop-questions"><i class="icon ion-ios-chatbubble-outline"></i><span>(100)</span></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="lowComment.html" type="text/ng-template">
+    <ion-view title="差评">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="ft-content">
+            <div>
+                <ul class="comment-list">
+                    <li class="comment-list-item">
+                        <div class="comment-item-top">
+                            <div class="account">
+                                <img src="" alt="">
+                                <p>j差评***5</p>
+                                <img src="" alt="">
+                            </div>
+                            <span class="customer">2015-12-21 11:00:12</span>
+                        </div>
+                        <div class="comment-info-wrapper">
+                            <span class="stars"><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i
+                                    class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i
+                                    class="icon ion-ios-star"></i></span>
+                            <div class="comment-text">
+                                不错 很好 下次再来 不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错 很好 下次再来不错
+                                很好 下次再来
+                            </div>
+                            <div class="comment-pic">
+                                <div class="pic-wrapper"><img src="images/merchandise/comment2.jpg" alt=""></div>
+                                <div class="pic-wrapper"><img src="images/merchandise/comment1.jpg" alt=""></div>
+                            </div>
+                            <div class="info">
+                                <p>颜色：芝士口味</p>
+                                <p>购买日期：2016-01-02 13:19:22</p>
+                            </div>
+                        </div>
+                        <div class="comment-btn-wrapper">
+                            <a href="" class="comment-has-pic"><i class="icon ion-ios-heart-outline"></i><span>(500)</span></a>
+                            <a href="" class="shop-questions"><i class="icon ion-ios-chatbubble-outline"></i><span>(100)</span></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="picComment.html" type="text/ng-template">
+    <ion-view title="晒图">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="ft-content calm-bg">
+            <div>
 
             </div>
         </ion-content>

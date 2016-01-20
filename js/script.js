@@ -73,6 +73,46 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('commentsList.allComment', {
+            url: "/allComment",
+            views: {
+                'allComment-tab': {
+                    templateUrl: "allComment.html"
+                }
+            }
+        })
+        .state('commentsList.highComment', {
+            url: "/highComment",
+            views: {
+                'highComment-tab': {
+                    templateUrl: "highComment.html"
+                }
+            }
+        })
+        .state('commentsList.mediumComment', {
+            url: "/mediumComment",
+            views: {
+                'mediumComment-tab': {
+                    templateUrl: "mediumComment.html"
+                }
+            }
+        })
+        .state('commentsList.lowComment', {
+            url: "/lowComment",
+            views: {
+                'lowComment-tab': {
+                    templateUrl: "lowComment.html"
+                }
+            }
+        })
+        .state('commentsList.picComment', {
+            url: "/picComment",
+            views: {
+                'picComment-tab': {
+                    templateUrl: "picComment.html"
+                }
+            }
+        })
         .state('goodsWatching', {
             url: "goodsWatching",
             templateUrl: "goodsWatching.html"
@@ -201,10 +241,10 @@ app.controller("homeCtrl", function ($scope, $ionicSlideBoxDelegate, $interval, 
     $scope.items = ["111【百草味】坚果炒货 腰果190g*2袋 炭烧腰果190g*2袋 炭烧", "222【百草味】坚果炒货 腰果190g*2袋 炭烧腰果190g*2袋 炭烧"];
     var base = 1;
     $scope.lists = [
-        {icon: "icon8.png", tag: "全球购", url: ""},
+        {icon: "icon8.png", tag: "全球购"},
         {icon: "icon1.png", tag: "充值中心"},
         {icon: "icon2.png", tag: "服装城"},
-        {icon: "icon4.png", tag: "优惠券"},
+        {icon: "icon4.png", tag: "优惠券", url: "coupon"},
         {icon: "icon5.png", tag: "白拿白赚"},
         {icon: "icon6.png", tag: "我的关注"},
         {icon: "icon7.png", tag: "物流查询"},
@@ -289,11 +329,11 @@ app.controller('resultCtrl', function ($scope) {
     $scope.items=[];
     for(var i=0;i<5000;i++)
         $scope.items.push(
-            {title:[i+1,"Chinese坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:33.99,rate:97,image:1,amount:136654},
-            {title:[i+1,"England坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:11.99,rate:97,image:2,amount:116654},
-            {title:[i+1,"America坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:33.99,rate:96,image:3,amount:106654},
-            {title:[i+1,"Japan坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:22.99,rate:95,image:4,amount:16654},
-            {title:[i+1,"French坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:33.99,rate:94,image:5,amount:13654}
+            {title:[i+1,"Chinese坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:33.99,rate:97,image:1,amount:136654,url:"coupon"},
+            {title:[i+1,"England坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:11.99,rate:97,image:2,amount:116654,url:"merchandise"},
+            {title:[i+1,"America坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:33.99,rate:96,image:3,amount:106654,url:"merchandise"},
+            {title:[i+1,"Japan坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:22.99,rate:95,image:4,amount:16654,url:"merchandise"},
+            {title:[i+1,"French坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:33.99,rate:94,image:5,amount:13654,url:"merchandise"}
         );
 });
 app.controller("accCtrl", function ($scope) {
@@ -482,7 +522,7 @@ app.controller("invoiceCtrl", function ($scope) {
 
 app.controller("merchCtrl", function ($scope, $ionicSlideBoxDelegate, $ionicSideMenuDelegate, $ionicPopup, $ionicHistory) {
     $scope.index = 1;
-    $scope.count = $ionicSlideBoxDelegate.slidesCount() + 1;
+    $scope.count = $ionicSlideBoxDelegate.slidesCount();
     $scope.go_back = function () {
         $ionicHistory.goBack();
     };

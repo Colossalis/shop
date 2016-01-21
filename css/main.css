@@ -774,13 +774,12 @@ ion-slide img {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     padding: 0 2px;
-    margin-top: 6px;
 }
 .search-result-list .item p{
     color: #f15353;
     font-size: 14px;
     line-height: 14px;
-    margin: 15px 0 0;
+    margin: 25px 0 4px;
 }
 .search-result-list span{
     font-size: 10px;
@@ -1449,10 +1448,12 @@ input[type=tel].ft-num-input-box {
     height: 45px;
     width: 100%;
     position: fixed;
-    bottom: 49px;
     left: 0;
     background-color: rgba(0, 0, 0, 0.74);
     color: #fff;
+}
+.sum-footer{
+    bottom: 49px;
 }
 
 .ft-cart-list .checkbox-icon:before {
@@ -2982,3 +2983,136 @@ input[type=tel].ft-num-input-box {
 }
 
 /*merchandise details end*/
+/*charge tabs starts*/
+.nav-bar-tabs-top.hide~.view-container .tabs-top.charge-tabs .tabs{
+    top: 44px;
+}
+.tabs-striped.charge-tabs .tab-item.tab-item-active{
+    color: #ff5656;
+    border-color: #ff7272;
+}
+.charge-tabs .tab-item{
+    margin: 0 8px;
+}
+.recharge-footer{
+    bottom: 0;
+    font-size: 14px;
+}
+.recharge-tel{
+    bottom: 55px;
+}
+.charge-number-wrapper{
+    padding-right: 70px;
+    position: relative;
+    background-color: #fff;
+    border-bottom: 1px solid #e2e2e2;
+    border-top: 1px solid #e2e2e2;
+    overflow: hidden;
+}
+.charge-number-wrapper .item{
+    /*border: none;*/
+    padding-right: 10px;
+}
+.charge-number{
+    width: 100%;
+}
+.charge-number-wrapper .item-input-wrapper{
+    background-color: #fff;
+    color: #999;
+}
+.choose-number{
+    position: absolute;
+    width: 70px;
+    right: 0;
+    top: 0;
+    text-align: center;
+}
+.choose-number i{
+    display: block;
+    color: #f15353;
+    font-size: 25px;
+}
+.choose-number span{
+    display: block;
+    font-size: 10px;
+}
+.recharge-tel .money-block{
+    overflow: hidden;
+    background-color: #fff;
+    padding: 5px;
+    border-bottom: 1px solid #e2e2e2;
+}
+.recharge-tel .money-block ul{
+
+}
+.recharge-tel .money-block ul li{
+    width: 33.3%;
+    float: left;
+    margin: 0;
+    padding: 6px;
+}
+.recharge-tel .money-block ul li a{
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border:1px solid #e2e2e2;
+    background-color: #fff;
+    color: #3e3e3e;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    display: block;
+}
+.recharge-tel .money-block ul li a.selected{
+    border:1px solid #f15353;
+    background-color: #f15353;
+    color: #fff;
+}
+.recharge-tel .discount {
+    margin-top: 10px;
+}
+.recharge-tel .discount .item .account-point{
+    color: #3e3e3e;
+    margin-left: 5px;
+}
+.recharge-tel .discount a{
+    color: #888;
+    font-size: 14px;
+}
+.recharge-tel .discount p{
+    float: right;
+    font-size: 10px;
+    color: #3e3e3e;
+}
+span.red-tag{
+    background-color: #f15353;
+    color: #fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 0 5px;
+    display: inline-block;
+    font-size: 10px;
+    line-height: 16px;
+    margin-left: 5px;
+}
+.recharge-footer p{
+    float: left;
+    margin-left: 12px;
+    line-height: 38px;
+    font-size: 16px;
+}
+.recharge-footer p span{
+    color: #ccc;
+    font-size: 13px;
+}
+.recharge-footer a{
+    float: right;
+    right: 0;
+    background-color: #f15353;
+    line-height: 44px;
+    display: block;
+    padding: 0 12px;
+    color: #fff;
+}
+/*charge tabs ends*/

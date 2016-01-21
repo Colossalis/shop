@@ -2998,8 +2998,13 @@ input[type=tel].ft-num-input-box {
     bottom: 0;
     font-size: 14px;
 }
-.recharge-tel{
-    bottom: 55px;
+.recharge-content{
+    padding-bottom: 55px;
+}
+.recharge-content .hints{
+    margin: 8px 12px;
+    color: #888;
+    font-size: 10px;
 }
 .charge-number-wrapper{
     padding-right: 70px;
@@ -3036,22 +3041,22 @@ input[type=tel].ft-num-input-box {
     display: block;
     font-size: 10px;
 }
-.recharge-tel .money-block{
+.recharge-content .money-block{
     overflow: hidden;
     background-color: #fff;
     padding: 5px;
     border-bottom: 1px solid #e2e2e2;
 }
-.recharge-tel .money-block ul{
+.recharge-content .money-block ul{
 
 }
-.recharge-tel .money-block ul li{
+.recharge-content .money-block ul li{
     width: 33.3%;
     float: left;
     margin: 0;
     padding: 6px;
 }
-.recharge-tel .money-block ul li a{
+.recharge-content .money-block ul li a{
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -3063,23 +3068,23 @@ input[type=tel].ft-num-input-box {
     font-size: 14px;
     display: block;
 }
-.recharge-tel .money-block ul li a.selected{
+.recharge-content .money-block ul li a.selected{
     border:1px solid #f15353;
     background-color: #f15353;
     color: #fff;
 }
-.recharge-tel .discount {
+.charge-discount {
     margin-top: 10px;
 }
-.recharge-tel .discount .item .account-point{
+.charge-discount .item .account-point{
     color: #3e3e3e;
     margin-left: 5px;
 }
-.recharge-tel .discount a{
+.charge-discount .item{
     color: #888;
     font-size: 14px;
 }
-.recharge-tel .discount p{
+.charge-discount p{
     float: right;
     font-size: 10px;
     color: #3e3e3e;
@@ -3104,7 +3109,7 @@ span.red-tag{
 }
 .recharge-footer p span{
     color: #ccc;
-    font-size: 13px;
+    font-size: 12px;
 }
 .recharge-footer a{
     float: right;
@@ -3114,5 +3119,32 @@ span.red-tag{
     display: block;
     padding: 0 12px;
     color: #fff;
+}
+.charge-img-wrapper{
+    width: 100%;
+    height: 120px;
+}
+.charge-img-wrapper .slider{
+    width: 100%;
+    height: 100%;
+}
+.charge-img-wrapper img{
+    width: 100%;
+    height: 100%;
+}
+.charge-list .item{
+    color: #888;
+    font-size: 14px;
+}
+.charge-list .item i,.charge-discount .item i{
+    font-size: 20px;
+    color: #666;
+}
+.charge-list span,.charge-list label{
+    color: #3e3e3e;
+    margin-left: 5px;
+}
+.charge-list label{
+    background-color: #fff;
 }
 /*charge tabs ends*/

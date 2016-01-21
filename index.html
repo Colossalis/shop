@@ -2200,22 +2200,24 @@
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
-        <ion-content class="ft-content recharge-tel">
-            <div class="">
-                <ion-slide-box does-continue="true" show-pager="true">
-                    <ion-slide>
-                        <img src="images/home/hb1.jpg">
-                    </ion-slide>
-                    <ion-slide>
-                        <img src="images/home/hb2.jpg">
-                    </ion-slide>
-                    <ion-slide>
-                        <img src="images/home/hb3.jpg">
-                    </ion-slide>
-                    <ion-slide>
-                        <img src="images/home/hb4.jpg">
-                    </ion-slide>
-                </ion-slide-box>
+        <ion-content class="ft-content">
+            <div class="recharge-content">
+                <div class="charge-img-wrapper">
+                    <ion-slide-box does-continue="true" show-pager="true">
+                        <ion-slide>
+                            <img src="images/home/hb1.jpg">
+                        </ion-slide>
+                        <ion-slide>
+                            <img src="images/home/hb2.jpg">
+                        </ion-slide>
+                        <ion-slide>
+                            <img src="images/home/hb3.jpg">
+                        </ion-slide>
+                        <ion-slide>
+                            <img src="images/home/hb4.jpg">
+                        </ion-slide>
+                    </ion-slide-box>
+                </div>
                 <div class="charge-number-wrapper">
                     <div class="item item-input charge-number">
                         <label class="item-input-wrapper" for="telnumber">
@@ -2241,7 +2243,7 @@
                         <li><a href="">10元</a></li>
                     </ul>
                 </div>
-                <div class="discount">
+                <div class="charge-discount">
                     <a class="item item-icon-right" href="#">
                         优惠券
                         <span class="red-tag">
@@ -2251,7 +2253,7 @@
                         <p>未使用</p>
                         <i class="icon ion-ios-arrow-right"></i>
                     </a>
-                    <a class="item item-toggle">
+                    <div class="item item-toggle">
                         积分
                         <span class="account-point">可用26积分，抵￥0.26</span>
                         <label class="toggle toggle-assertive">
@@ -2261,7 +2263,7 @@
                                 <div class="handle"></div>
                             </div>
                         </label>
-                    </a>
+                    </div>
                 </div>
             </div>
 
@@ -2275,18 +2277,84 @@
     </ion-view>
 </script>
 <script id="rechargeData.html" type="text/ng-template">
-    <ion-view title="流量充值">
+    <ion-view title="流量充值" ng-controller="rDataCtrl">
         <ion-nav-bar class="bar-stable">
             <ion-nav-buttons side="left">
                 <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
-        <ion-content class="ft-content calm-bg">
-            <div>
-                流量充值
+        <ion-content class="ft-content">
+            <div class="recharge-content">
+                <div class="charge-img-wrapper">
+                    <ion-slide-box does-continue="true" show-pager="true">
+                        <ion-slide>
+                            <img src="images/home/hb1.jpg">
+                        </ion-slide>
+                        <ion-slide>
+                            <img src="images/home/hb2.jpg">
+                        </ion-slide>
+                        <ion-slide>
+                            <img src="images/home/hb3.jpg">
+                        </ion-slide>
+                        <ion-slide>
+                            <img src="images/home/hb4.jpg">
+                        </ion-slide>
+                    </ion-slide-box>
+                </div>
+                <div class="charge-number-wrapper">
+                    <div class="item item-input charge-number">
+                        <label class="item-input-wrapper" for="telnum">
+                            <input type="tel" id="telnum" ng-model="accNumber"> 号码备注
+                        </label>
+
+                    </div>
+                    <div class="choose-number">
+                        <i class="icon ion-ios-personadd-outline"></i>
+                        <span>选联系人</span>
+                    </div>
+                </div>
+                <p class="hints">江西联通 全国通用，当月有效，支持2G/3G/4G</p>
+                <div class="money-block">
+                    <ul>
+                        <li><a href="">20M</a></li>
+                        <li><a href="">50M</a></li>
+                        <li><a href="">100M</a></li>
+                        <li><a href="" class="selected">200M</a></li>
+                        <li><a href="">500M</a></li>
+                        <li><a href="">1G</a></li>
+                    </ul>
+                </div>
+                <div class="charge-discount">
+                    <a class="item item-icon-right" href="#">
+                        优惠券
+                        <span class="red-tag">
+                          0张可用
+                        </span>
+
+                        <p>未使用</p>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <div class="item item-toggle">
+                        积分
+                        <span class="account-point">可用26积分，抵￥0.26</span>
+                        <label class="toggle toggle-assertive">
+                            <input type="checkbox">
+
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
             </div>
         </ion-content>
+        <div class="ft-footer-bar recharge-footer">
+            <p>应付 : ￥99.55
+                <span>(江西联通)</span>
+            </p>
+            <a href="">立即充值</a>
+        </div>
     </ion-view>
 </script>
 <script id="rechargeQq.html" type="text/ng-template">
@@ -2297,11 +2365,67 @@
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
-        <ion-content class="ft-content calm-bg">
-            <div>
-                QQ充值
+        <ion-content class="ft-content">
+            <div class="recharge-content">
+                <div class="charge-img-wrapper">
+                    <img src="./images/home/hb1.jpg" alt="">
+                </div>
+                <div class="list charge-list">
+                    <a class="item item-icon-right" href="#">
+                        充值类型
+                        <span class="">
+                          Q币(1元/个)
+                        </span>
+                        <i class="icon ion-ios-arrow-down"></i>
+                    </a>
+                    <a class="item item-icon-right" href="#">
+                        充值数量
+                        <span class="">
+                          10个
+                        </span>
+                        <i class="icon ion-ios-arrow-down"></i>
+                    </a>
+                    <div class="item item-icon-right" href="#">
+                        充值方式
+                        <label for="direct"><input id="direct" type="radio" name="chargeWay">直充</label>
+                        <label for="keywords"><input id="keywords" type="radio" name="chargeWay">卡密</label>
+                    </div>
+                    <a class="item item-input">充值账号
+                        <label class="item-input-wrapper" for="chargenum">
+                            <input type="tel" id="chargenum" ng-model="accNumber">
+                        </label>
+                    </a>
+                </div>
+                <div class="charge-discount">
+                    <a class="item item-icon-right" href="#">
+                        优惠券
+                        <span class="red-tag">
+                          0张可用
+                        </span>
+
+                        <p>未使用</p>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <div class="item item-toggle">
+                        积分
+                        <span class="account-point">可用26积分，抵￥0.26</span>
+                        <label class="toggle toggle-assertive">
+                            <input type="checkbox">
+
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
             </div>
         </ion-content>
+        <div class="ft-footer-bar recharge-footer">
+            <p>应付 : ￥99.55
+                <span>(江西联通)</span>
+            </p>
+            <a href="">立即充值</a>
+        </div>
     </ion-view>
 </script>
 <script id="rechargeGame.html" type="text/ng-template">
@@ -2316,6 +2440,14 @@
             <div>
                 游戏充值
             </div>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="getCoupon.html" type="text/ng-template">
+    <ion-nav-view name="getCoupon"></ion-nav-view>
+    <ion-view title="领券中心">
+        <ion-content>
+            领
         </ion-content>
     </ion-view>
 </script>

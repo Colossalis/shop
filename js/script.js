@@ -193,6 +193,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/msgsetting",
             templateUrl: "msgsetting.html"
         })
+        .state('getCoupon', {
+            url: "/getCoupon",
+            templateUrl: "getCoupon.html"
+        })
         .state('tabs.test', {
             url: "/test",
             views: {
@@ -281,7 +285,7 @@ app.controller("homeCtrl", function ($scope, $ionicSlideBoxDelegate, $interval, 
         {icon: "icon8.png", tag: "全球购"},
         {icon: "icon1.png", tag: "充值中心", url: "recharge"},
         {icon: "icon2.png", tag: "服装城"},
-        {icon: "icon4.png", tag: "优惠券", url: "coupon"},
+        {icon: "icon4.png", tag: "优惠券", url: "getCoupon"},
         {icon: "icon5.png", tag: "白拿白赚"},
         {icon: "icon6.png", tag: "我的关注"},
         {icon: "icon7.png", tag: "物流查询"},
@@ -569,6 +573,10 @@ app.controller("invoiceCtrl", function ($scope) {
 
 app.controller('rechTelCtrl', function ($scope) {
     console.log('rechTelCtrl');
+    $scope.accNumber = 13278784545;
+});
+app.controller('rDataCtrl', function ($scope) {
+    console.log('rDataCtrl');
     $scope.accNumber = 13278784545;
 });
 

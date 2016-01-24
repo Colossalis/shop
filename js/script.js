@@ -149,6 +149,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "goodsWatching",
             templateUrl: "goodsWatching.html"
         })
+        .state('allPortal', {
+            url: "allPortal",
+            templateUrl: "allPortal.html"
+        })
         .state('searchResult', {
             url: "searchResult",
             templateUrl: "searchResult.html"
@@ -229,6 +233,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/commentsList",
             templateUrl: "commentsList.html"
         })
+        .state('clothes', {
+            url: "/clothes",
+            templateUrl: "clothes.html"
+        })
 
         .state('recharge', {
             url: "/recharge",
@@ -284,12 +292,12 @@ app.controller("homeCtrl", function ($scope, $ionicSlideBoxDelegate, $interval, 
     $scope.lists = [
         {icon: "icon8.png", tag: "全球购"},
         {icon: "icon1.png", tag: "充值中心", url: "recharge"},
-        {icon: "icon2.png", tag: "服装城"},
+        {icon: "icon2.png", tag: "服装城",url:"clothes"},
         {icon: "icon4.png", tag: "优惠券", url: "getCoupon"},
         {icon: "icon5.png", tag: "白拿白赚"},
         {icon: "icon6.png", tag: "我的关注"},
         {icon: "icon7.png", tag: "物流查询"},
-        {icon: "icon3.png", tag: "全部"}
+        {icon: "icon3.png", tag: "全部",url:"allPortal"}
     ];
     $scope.activities = [];
     for (var j = 0; j < 4; j++) {
@@ -573,6 +581,18 @@ app.controller("invoiceCtrl", function ($scope) {
 app.controller('rechTelCtrl', function ($scope) {
     console.log('rechTelCtrl');
     $scope.accNumber = 13278784545;
+});
+app.controller('aPCtrl', function ($scope) {
+    $scope.portals = [];
+    for(var i = 0;i < 3;i++){
+        $scope.portals.push(
+            {image:"1",url:"",name:"全球购"},
+            {image:"2",url:"",name:"超市"},
+            {image:"3",url:"",name:"服装城"},
+            {image:"4",url:"",name:"充值"},
+            {image:"5",url:"",name:"看电影",small:"立减10元"}
+        )
+    }
 });
 app.controller('rDataCtrl', function ($scope) {
     console.log('rDataCtrl');

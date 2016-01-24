@@ -87,7 +87,7 @@
             <div class="ft-nav-icon-list">
                 <ul class="ft-home-icon-list">
                     <li ng-repeat="list in lists">
-                        <a ui-sref="{{list.url}}" class="">
+                        <a ui-sref="{{list.url}}" class="" nav-direction="forward">
                             <img src="images/{{list.icon}}" alt="">
                             <p>{{list.tag}}</p>
                         </a>
@@ -2481,7 +2481,7 @@
                             <div class="tickets-thumbnail-left">
                                 <img src="./images/home/second/im1.jpg" alt="">
                                 <p class="price price-red">￥<span>30</span></p>
-                                <p class="condition">满300可用</p>
+                                <p class="condition condition-red">满300可用</p>
                             </div>
                             <p class="rules">仅可购买家电产品仅可购买家电产品仅可购买家电产品</p>
                             <div class="bottom-color bottom-red">
@@ -2501,7 +2501,7 @@
                             <div class="tickets-thumbnail-left">
                                 <img src="./images/home/second/im1.jpg" alt="">
                                 <p class="price price-blue">￥<span>30</span></p>
-                                <p class="condition">满300可用</p>
+                                <p class="condition condition-blue">满300可用</p>
                             </div>
                             <p class="rules">仅可购买家电产品仅可购买家电产品仅可购买家电产品</p>
                             <div class="bottom-color bottom-blue">
@@ -2514,5 +2514,121 @@
         </ion-content>
     </ion-view>
 </script>
+
+<script id="allPortal.html" type="text/ng-template">
+    <ion-view title="百宝箱">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="ft-content" ng-controller="aPCtrl">
+            <div class="all-portal-wrapper">
+                <div class="portal-img-wrapper">
+                    <img src="./images/home/hb1.jpg" alt="">
+                </div>
+                <div class="list-wrapper">
+                    <ul>
+                        <li ng-repeat="portal in portals">
+                            <a ui-sref="portal.url">
+                                <img src="./images/icon{{portal.image}}.png" alt="">
+                                <p>{{portal.name}}</p>
+                                <i>{{portal.small}}</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="clothes.html" type="text/ng-template">
+    <ion-view title="服装城">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="ft-content">
+            <div class="charge-img-wrapper">
+                <ion-slide-box does-continue="true" show-pager="true">
+                    <ion-slide>
+                        <img src="images/home/hb1.jpg">
+                    </ion-slide>
+                    <ion-slide>
+                        <img src="images/home/hb2.jpg">
+                    </ion-slide>
+                    <ion-slide>
+                        <img src="images/home/hb3.jpg">
+                    </ion-slide>
+                    <ion-slide>
+                        <img src="images/home/hb4.jpg">
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+            <div class="second-block">
+                <div class="second-title">
+                    秒杀 <span>更多>></span>
+                </div>
+                <ion-scroll class="has-header" zooming="true" direction="x" style="width: 500px; height: 500px">
+                    <div style="width: 1000px; height: 200px;" class="second-scroll">
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <img src="./images/home/clothes/im1.jpg" alt="">
+                                    <p>乐事薯片乐事薯片乐事薯片乐事薯片</p>
+                                    <div>
+                                        <span class="price-red">￥99</span>
+                                        <span class="price-grey">￥198</span>
+                                        <span class="buy">抢</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="./images/home/clothes/im1.jpg" alt="">
+                                    <p>乐事薯片乐事薯片乐事薯片乐事薯片</p>
+                                    <div>
+                                        <span class="price-red">￥99</span>
+                                        <span class="price-grey">￥198</span>
+                                        <span class="buy">抢</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="./images/home/clothes/im1.jpg" alt="">
+                                    <p>乐事薯片乐事薯片乐事薯片乐事薯片</p>
+                                    <div>
+                                        <span class="price-red">￥99</span>
+                                        <span class="price-grey">￥198</span>
+                                        <span class="buy">抢</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="./images/home/clothes/im1.jpg" alt="">
+                                    <p>乐事薯片乐事薯片乐事薯片乐事薯片</p>
+                                    <div>
+                                        <span class="price-red">￥99</span>
+                                        <span class="price-grey">￥198</span>
+                                        <span class="buy">抢</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </ion-scroll>
+            </div>
+            <div class="third-block">
+
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
+
 </body>
 </html>

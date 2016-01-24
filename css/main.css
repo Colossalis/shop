@@ -3147,4 +3147,136 @@ span.red-tag{
 .charge-list label{
     background-color: #fff;
 }
+.charge-list input{
+    vertical-align: middle;
+}
 /*charge tabs ends*/
+/*home coupon tickets starts*/
+.coupon-tickets{
+
+}
+.coupon-tickets .get-coupon-title{
+    overflow: hidden;
+    background-color: #fff;
+    padding: 10px 12px;
+}
+.coupon-tickets .get-coupon-title h3{
+    font-size: 14px;
+    float: left;
+    margin: 0;
+}
+.coupon-tickets .get-coupon-title p{
+    margin: 0;
+    float: right;
+}
+.coupon-tickets .get-coupon-title span{
+    float: right;
+    font-size: 10px;
+    color: #888;
+}
+.coupon-tickets ul{
+
+}
+.coupon-tickets ul li{
+    border-top: 1px solid #e2e2e2;
+    padding: 12px;
+}
+.coupon-tickets .tickets-title{
+    overflow: hidden;
+}
+.coupon-tickets .tickets-title h4{
+    font-size: 10px;
+    float: left;
+    margin: 0;
+}
+.coupon-tickets .progress-wrapper{
+    width: 33%;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    height: 16px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    text-align: center;
+    float: right;
+    right: 0;
+}
+.coupon-tickets .progress-wrapper span{
+    font-size: 10px;
+    color: #3e3e3e;
+    line-height: 16px;
+    margin-top: -16px;
+    position: absolute;
+    margin-left: -30px;
+}
+.coupon-tickets .progress-wrapper .progress-content{
+    width: 69%;
+    background-color: #ffa2a2;
+    height: 15px;
+}
+.tickets-wrapper{
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    background-color:#fff;
+    border: 1px solid #e2e2e2;
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.tickets-wrapper .tickets-thumbnail-left{
+    padding: 12px 12px 12px 100px;
+    position: relative;
+
+}
+.tickets-wrapper .tickets-thumbnail-left img{
+    position: absolute;
+    left: 12px;
+    max-width: 80px;
+    max-height: 80px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    border:1px solid #e2e2e2;
+}
+.tickets-wrapper .rules{
+    width: 100%;
+    padding: 0 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tickets-wrapper .tickets-thumbnail-left .price {
+    font-size: 20px;
+    line-height: 49px;
+    margin: 0;
+}
+.tickets-wrapper .tickets-thumbnail-left .price-red {
+    color: #F15353;
+}
+.tickets-wrapper .tickets-thumbnail-left .price-blue {
+    color: #6acef1;
+}
+.tickets-wrapper .tickets-thumbnail-left .price span{
+    font-size: 46px;
+}
+.tickets-wrapper .tickets-thumbnail-left .condition{
+    font-size: 12px;
+    background-color: #FFD9D8;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    text-align: left;
+    overflow: hidden;
+    padding: 0 12px;
+    margin: 0;
+    width: 80%;
+}
+.coupon-tickets .bottom-color{
+    background: #f16d69;
+    color: #fff;
+    bottom: 0;
+    font-size: 10px;
+    padding-left: 12px;
+}
+/*home coupon tickets ends*/

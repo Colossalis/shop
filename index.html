@@ -425,10 +425,10 @@
                         </ion-item>
                         <div class="item ft-ol-third" href="#">
                             <div class="ft-number-wrapper">
-                                <span class="ft-decrease" ng-click="deCount(cartitem.count)">-</span>
+                                <a class="ft-decrease" ng-click="deCount(cartitem)">-</a>
 
                                 <input class="ft-num-input-box" type="tel" ng-model="cartitem.count">
-                                <span class="ft-increase" ng-click="inCount()">+</span>
+                                <a class="ft-increase" ng-click="inCount(cartitem)">+</a>
                             </div>
                             <span class="ft-expend">小计：{{(cartitem.price*cartitem.count) | currency}}</span>
                         </div>
@@ -2387,7 +2387,7 @@
                     </a>
                     <div class="item item-icon-right" href="#">
                         充值方式
-                        <label for="direct"><input id="direct" type="radio" name="chargeWay">直充</label>
+                        <label for="direct"><input id="direct" type="radio" name="chargeWay" class="direct">直充</label>
                         <label for="keywords"><input id="keywords" type="radio" name="chargeWay">卡密</label>
                     </div>
                     <a class="item item-input">充值账号
@@ -2446,8 +2446,71 @@
 <script id="getCoupon.html" type="text/ng-template">
     <ion-nav-view name="getCoupon"></ion-nav-view>
     <ion-view title="领券中心">
-        <ion-content>
-            领
+        <ion-content class="ft-content">
+            <div class="coupon-tickets">
+                <div class="charge-img-wrapper">
+                    <ion-slide-box does-continue="true" show-pager="true">
+                        <ion-slide>
+                            <img src="images/home/hb1.jpg">
+                        </ion-slide>
+                        <ion-slide>
+                            <img src="images/home/hb2.jpg">
+                        </ion-slide>
+                        <ion-slide>
+                            <img src="images/home/hb3.jpg">
+                        </ion-slide>
+                        <ion-slide>
+                            <img src="images/home/hb4.jpg">
+                        </ion-slide>
+                    </ion-slide-box>
+                </div>
+                <div class="get-coupon-title">
+                    <h3>每日抢券</h3>
+                    <p>每天10点抢全品类券</p>
+                </div>
+                <ul>
+                    <li>
+                        <div class="tickets-title">
+                            <h4>电视机专场，大牌过年惠不停</h4>
+                            <div class="progress-wrapper">
+                                <div class="progress-content"></div>
+                                <span>已领取69%</span>
+                            </div>
+                        </div>
+                        <div class="tickets-wrapper">
+                            <div class="tickets-thumbnail-left">
+                                <img src="./images/home/second/im1.jpg" alt="">
+                                <p class="price price-red">￥<span>30</span></p>
+                                <p class="condition">满300可用</p>
+                            </div>
+                            <p class="rules">仅可购买家电产品仅可购买家电产品仅可购买家电产品</p>
+                            <div class="bottom-color bottom-red">
+                                2016.01.22-2016.02.22
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tickets-title">
+                            <h4>电视机专场，大牌过年惠不停</h4>
+                            <div class="progress-wrapper">
+                                <div class="progress-content"></div>
+                                <span>已领取69%</span>
+                            </div>
+                        </div>
+                        <div class="tickets-wrapper">
+                            <div class="tickets-thumbnail-left">
+                                <img src="./images/home/second/im1.jpg" alt="">
+                                <p class="price price-blue">￥<span>30</span></p>
+                                <p class="condition">满300可用</p>
+                            </div>
+                            <p class="rules">仅可购买家电产品仅可购买家电产品仅可购买家电产品</p>
+                            <div class="bottom-color bottom-blue">
+                                2016.01.22-2016.02.22
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </ion-content>
     </ion-view>
 </script>

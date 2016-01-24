@@ -507,7 +507,7 @@ app.controller("cartCtrl", function ($scope, $ionicPopup) {
             pic: "im5.jpg",
             name: "乐事乐事乐事乐事乐事乐事",
             price: 99,
-            count: 2
+            count: 1
         },
         {
             activity: "满199.00元即享优惠",
@@ -515,20 +515,19 @@ app.controller("cartCtrl", function ($scope, $ionicPopup) {
             pic: "im6.jpg",
             name: "百草味百草味百草味百草味百草味百草味百草味百草味",
             price: 9,
-            count: 1
+            count: 2
         },
         {activity: "满299.00元即享优惠", selected: false, pic: "im7.jpg", name: "薯愿薯愿薯愿薯愿薯愿薯愿薯愿薯愿", price: 19, count: 3},
-        {activity: "满499.00元即享优惠", selected: false, pic: "im5.jpg", name: "好丽友好丽友好丽友好丽友", price: 19, count: 3},
-        {activity: "满599.00元即享优惠", selected: false, pic: "im6.jpg", name: "五谷磨房五谷磨房五谷磨房", price: 19, count: 3}
+        {activity: "满499.00元即享优惠", selected: false, pic: "im5.jpg", name: "好丽友好丽友好丽友好丽友", price: 19, count: 4},
+        {activity: "满599.00元即享优惠", selected: false, pic: "im6.jpg", name: "五谷磨房五谷磨房五谷磨房", price: 19, count: 5}
     ];
-    $scope.deCount = function (event) {
-        event.count = event.count--;
-        console.log("ss" + event.count);
+    $scope.inCount = function (cartitem) {
+        var idx = $scope.cartitems.indexOf(cartitem);
+        $scope.cartitems[idx].count =$scope.cartitems[idx].count - 1 + 2;
     };
-    $scope.inCount = function (event) {
-        console.log("s11s " + $scope.cartitem.count);
-        $scope.cartitems.count++;
-        console.log("s22s " + $scope.cartitems.count);
+    $scope.deCount = function (cartitem) {
+        var idx = $scope.cartitems.indexOf(cartitem);
+        $scope.cartitems[idx].count = ($scope.cartitems[idx].count - 1) <= 0? 1 : ($scope.cartitems[idx].count - 1);
     };
     $scope.doRefresh = function () {
         // Stop the ion-refresher from spinning

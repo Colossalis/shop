@@ -2551,7 +2551,12 @@
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
-        <ion-content class="ft-content">
+        <div class="ft-float-nav ft-sub-nav">
+            <ul>
+                <li ng-repeat="nav in navs" class="{{nav.class}}">{{nav.title}}</li>
+            </ul>
+        </div>
+        <ion-content class="ft-content" ng-controller="clothesCtrl">
             <div class="charge-img-wrapper">
                 <ion-slide-box does-continue="true" show-pager="true">
                     <ion-slide>
@@ -2572,49 +2577,16 @@
                 <div class="second-title">
                     秒杀 <span>更多>></span>
                 </div>
-                <ion-scroll class="has-header" zooming="true" direction="x" style="width: 500px; height: 500px">
-                    <div style="width: 1000px; height: 200px;" class="second-scroll">
+                <ion-scroll zooming="false" direction="x" style="width: 765px; height: 165px">
+                    <div style="width: 1900px; height: 165px;" class="second-scroll">
                         <ul>
-                            <li>
+                            <li ng-repeat="second in seconds">
                                 <a href="">
-                                    <img src="./images/home/clothes/im1.jpg" alt="">
-                                    <p>乐事薯片乐事薯片乐事薯片乐事薯片</p>
+                                    <img src="./images/home/clothes/im{{second.image}}.jpg" alt="">
+                                    <p>{{second.name}}</p>
                                     <div>
-                                        <span class="price-red">￥99</span>
-                                        <span class="price-grey">￥198</span>
-                                        <span class="buy">抢</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="./images/home/clothes/im1.jpg" alt="">
-                                    <p>乐事薯片乐事薯片乐事薯片乐事薯片</p>
-                                    <div>
-                                        <span class="price-red">￥99</span>
-                                        <span class="price-grey">￥198</span>
-                                        <span class="buy">抢</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="./images/home/clothes/im1.jpg" alt="">
-                                    <p>乐事薯片乐事薯片乐事薯片乐事薯片</p>
-                                    <div>
-                                        <span class="price-red">￥99</span>
-                                        <span class="price-grey">￥198</span>
-                                        <span class="buy">抢</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="./images/home/clothes/im1.jpg" alt="">
-                                    <p>乐事薯片乐事薯片乐事薯片乐事薯片</p>
-                                    <div>
-                                        <span class="price-red">￥99</span>
-                                        <span class="price-grey">￥198</span>
+                                        <span class="price-red">￥{{second.current}}</span>
+                                        <span class="price-grey">{{second.old | currency}}</span>
                                         <span class="buy">抢</span>
                                     </div>
                                 </a>
@@ -2624,8 +2596,84 @@
                 </ion-scroll>
             </div>
             <div class="third-block">
-
+                <div class="title-bar">
+                    <img src="./images/home/clothes/sort_pic.png" alt="">
+                    <span>更多>></span>
+                </div>
+                <div class="pic-wrapper third-pic-wrapper">
+                    <a href=""><img src="./images/home/clothes/cl8.jpg" alt=""></a>
+                    <a href=""><img src="./images/home/clothes/cl19.jpg" alt=""></a>
+                    <a href=""><img src="./images/home/clothes/cl19.jpg" alt=""></a>
+                    <a href=""><img src="./images/home/clothes/cl19.jpg" alt=""></a>
+                </div>
             </div>
+            <div class="third-block">
+                <div class="title-bar">
+                    <img src="./images/home/clothes/sort_pic.png" alt="">
+                </div>
+                <div class="pic-wrapper forth-pic-wrapper">
+                    <a href=""><img src="./images/home/clothes/cl8.jpg" alt=""></a>
+                    <a href=""><img src="./images/home/clothes/cl18.jpg" alt=""></a>
+                    <a href=""><img src="./images/home/clothes/cl18.jpg" alt=""></a>
+                </div>
+            </div>
+            <div class="third-block">
+                <div class="title-bar">
+                    <img src="./images/home/clothes/sort_pic.png" alt="">
+                    <span>更多>></span>
+                </div>
+                <div class="pic-wrapper fifth-pic-wrapper">
+                    <a href="" class="first-pic"><img src="./images/home/clothes/cl18.jpg" alt=""></a>
+                    <a href=""><img src="./images/home/clothes/brand1.png" alt=""></a>
+                    <a href=""><img src="./images/home/clothes/brand2.png" alt=""></a>
+                    <a href=""><img src="./images/home/clothes/brand1.png" alt=""></a>
+                    <div class="sub-wrapper">
+                        <a href="" class="last-pic"><img src="./images/home/clothes/cl8.jpg" alt=""></a>
+                        <a href="" class="last-pic"><img src="./images/home/clothes/cl8.jpg" alt=""></a>
+                        <a href="" class="last-pic"><img src="./images/home/clothes/cl8.jpg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="third-block">
+                <div class="title-bar">
+                    <img src="./images/home/clothes/sort_pic.png" alt="">
+                </div>
+                <div class="pic-wrapper sixth-pic-wrapper">
+                    <a href="" class="first-wrapper"><img src="./images/home/clothes/item2.jpg" alt=""></a>
+                    <a href="" class="two-wrapper"><img src="./images/home/clothes/item3.jpg" alt=""></a>
+                    <a href="" class="four-wrapper"><img src="./images/home/clothes/item4.jpg" alt=""></a>
+                    <a href="" class="four-wrapper"><img src="./images/home/clothes/item5.jpg" alt=""></a>
+                    <a href="" class="four-wrapper"><img src="./images/home/clothes/item4.jpg" alt=""></a>
+                    <a href="" class="four-wrapper"><img src="./images/home/clothes/item5.jpg" alt=""></a>
+                    <a href="" class="four-wrapper"><img src="./images/home/clothes/item4.jpg" alt=""></a>
+                    <a href="" class="four-wrapper"><img src="./images/home/clothes/item5.jpg" alt=""></a>
+                    <a href="" class="four-wrapper"><img src="./images/home/clothes/item4.jpg" alt=""></a>
+                    <a href="" class="four-wrapper"><img src="./images/home/clothes/item5.jpg" alt=""></a>
+                </div>
+            </div>
+            <div class="ft-sub-nav">
+                <ul>
+                    <li ng-repeat="nav in navs" class="{{nav.class}}">{{nav.title}}</li>
+                </ul>
+            </div>
+            <div class="ft-sort-tags" id="sortTag">
+                <ul>
+                    <li ng-repeat="tag in tags" class="{{tag.class}}">{{tag.title}}</li>
+                </ul>
+            </div>
+            <div class="ft-clothes-items">
+                <ul>
+                    <li ng-repeat="item in items">
+                        <a ui-sref="item.url">
+                            <img src="./images/home/clothes/{{item.image}}.jpg" alt="">
+                            <h3>{{item.title}}</h3>
+                            <p class="price">{{item.price|currency}}</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <ion-infinite-scroll on-infinite="load_more();" spinner="lines">
+            </ion-infinite-scroll>
         </ion-content>
     </ion-view>
 </script>

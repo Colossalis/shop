@@ -577,6 +577,55 @@ app.controller("invoiceCtrl", function ($scope) {
         {label: "耗材"}
     ];
 });
+app.controller("clothesCtrl", function ($scope, $timeout, $ionicScrollDelegate) {
+    $scope.seconds = [];
+    for(var i = 0; i < 3; i ++){
+        $scope.seconds.push(
+            {name:"乐事薯片190g*2乐事薯片乐事薯片乐事薯片",image:"1",current:99,old:198},
+            {name:"乐事薯片190g*2乐事薯片乐事薯片乐事薯片",image:"2",current:199,old:298},
+            {name:"乐事薯片190g*2乐事薯片乐事薯片乐事薯片",image:"8",current:399,old:898},
+            {name:"乐事薯片190g*2乐事薯片乐事薯片乐事薯片",image:"9",current:9,old:98}
+        )
+    }
+    $scope.navs = [
+        {class:"selected",title:"潮流女装"},
+        {class:" ",title:"品质男装"},
+        {class:" ",title:"时尚女鞋"},
+        {class:" ",title:"流行男鞋"}
+    ];
+    $scope.tags = [
+        {class:" ",title:"新品连衣裙"},
+        {class:"selected",title:"针织衫"},
+        {class:" ",title:"雪纺衫"},
+        {class:" ",title:"T恤"},
+        {class:" ",title:"春季卫衣"},
+        {class:" ",title:"百搭衬衫"},
+        {class:" ",title:"牛仔裤"}
+    ];
+    $scope.items = [
+        {title:"ochirly春季新品修身短款高领针织衫打底黑白套头极简主义春季新品修身短款高领针织衫打底黑白套L",price:559.5,image:"cl6",url:""},
+        {title:"ochirly春季新品修身短款高领针织衫打底黑白套头极简主义春季新品修身短款高领针织衫打底黑白套L",price:559.5,image:"cl7",url:""}
+    ];
+
+    $scope.load_more = function () {
+        $timeout(function () {
+            for(var i = 0;i < 6;i++){
+                $scope.items.push(
+                    {title:"ochirly春季新品修身短款高领针织衫打底黑白套头极简主义春季新品修身短款高领针织衫打底黑白套L",price:559.5,image:"cl6",url:""},
+                    {title:"ochirly春季新品修身短款高领针织衫打底黑白套头极简主义春季新品修身短款高领针织衫打底黑白套L",price:559.5,image:"cl7",url:""}
+                )
+            };
+            $scope.$broadcast("scroll.infiniteScrollComplete");
+        }, 200);
+    };
+    var toTop=document.getElementById("sortTag").offsetTop;
+    console.log(toTop);
+    $scope.offTop = $ionicScrollDelegate.getScrollPosition();
+    //if(offTop>toTop){
+        console.log($scope.offTop);
+    //}
+
+});
 
 app.controller('rechTelCtrl', function ($scope) {
     console.log('rechTelCtrl');

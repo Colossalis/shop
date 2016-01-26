@@ -3350,12 +3350,13 @@ span.red-tag{
     margin-top: 10px;
 }
 .second-title{
-    padding: 12px;
+    padding: 7px 12px 5px 15px;
 }
 .second-title span{
     float: right;
     right:0;
     color: #3e3e3e;
+    font-size: 10px;
 }
 .second-scroll{
 
@@ -3363,12 +3364,13 @@ span.red-tag{
 .second-scroll li{
     float: left;
     width: 110px;
-    margin-left: 12px;
+    margin-left: 10px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
     border: 1px solid #e2e2e2;
     position: relative;
+    overflow: hidden;
 }
 .second-scroll li p{
     width: 100%;
@@ -3376,11 +3378,12 @@ span.red-tag{
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0;
-    background-color: rgba(255,255,255,0.5);
-    color: #3e3e3e;
+    background-color: rgba(255,255,255,0.7);
+    color: #000;
     font-size: 10px;
     position: absolute;
-    top: 98px;
+    top: 88px;
+    padding: 0 5px;
 }
 .second-scroll li a{
     display: block;
@@ -3392,6 +3395,7 @@ span.red-tag{
     height: 108px;
 }
 .second-scroll li div{
+    padding: 4px;
     position: relative;
 }
 .second-scroll li div .price-red{
@@ -3409,15 +3413,202 @@ span.red-tag{
 .second-scroll li div .buy{
     position: absolute;
     right: 0;
-    top:0;
-    width: 30px;
-    height: 30px;
+    top:13px;
+    width: 27px;
+    height: 27px;
     -webkit-border-radius: 5px 0 0 5px;
     -moz-border-radius: 5px 0 0 5px;
     border-radius: 5px 0 0 5px;
     color: #fff;
     text-align: center;
-    line-height: 30px;
+    line-height: 27px;
     background-color: #f03e2b;
+}
+.third-block{
+    overflow: hidden;
+    width: 100%;
+    background-color: #fff;
+    margin-top: 10px;
+    border-top: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+}
+.title-bar{
+    border-bottom: 1px solid #e2e2e2;
+    margin: 0 2% 27px;
+    width: 96%;
+    padding: 13px;
+    height: 27px;
+    position: relative;
+}
+.title-bar img{
+    display: block;
+    margin: 0 auto;
+    height: 27px;
+    background-color: #fff;
+    padding: 0 8px;
+}
+.title-bar span{
+    float: right;
+    right: 0;
+    top: 16px;
+    font-size: 10px;
+    color: #3e3e3e;
+    position: absolute;
+    padding: 0 8px;
+    background: #fff;
+}
+.third-block .pic-wrapper{
+    width: 100%;
+    overflow: hidden;
+}
+.third-block .pic-wrapper a{
+    overflow: hidden;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    float: right;
+    margin-right: 2.5%;
+}
+.third-block .third-pic-wrapper a{
+    width: 28%;
+}
+.third-block .forth-pic-wrapper a{
+    width: 46.5%;
+}
+.third-block .pic-wrapper a:nth-child(1){
+    float: left;
+    margin-left: 2.5%;
+    margin-right: 0;
+}
+.third-block .sub-wrapper{
+    overflow: hidden;
+    width: 100%;
+}
+.third-block .third-pic-wrapper a:nth-child(1){
+    width: 65%;
+}
+.third-block .pic-wrapper a img{
+    width: 100%;
+}
+.third-block .fifth-pic-wrapper a{
+    width: 30%;
+}
+.third-block .fifth-pic-wrapper a.first-pic{
+    width: 62.5%;
+}
+.third-block .fifth-pic-wrapper a.last-pic{
+    width: 30%;
+}
+.third-block .sixth-pic-wrapper a.first-wrapper,
+.third-block .sixth-pic-wrapper a.two-wrapper{
+    width: 50%;
+    float: left;
+    border-radius: 0;
+    margin: 0;
+    border-left: 1px solid #e2e2e2;
+    margin-left: -1px;
+}
+.third-block .sixth-pic-wrapper a.first-wrapper{
+    margin-left: -2px;
+}
+.third-block .sixth-pic-wrapper a.four-wrapper{
+    width: 25%;
+    float: left;
+    margin: 0;
+    border-top: 1px solid #e2e2e2;
+    border-left: 1px solid #e2e2e2;
+    margin-left: -1px;
+    border-radius: 0;
+}
+.ft-sub-nav{
+    margin-top: 10px;
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e2e2;
+    border-top: 1px solid #e2e2e2;
+}
+.ft-sub-nav ul{
+    width: 100%;
+    overflow: hidden;
+}
+.ft-sub-nav li{
+    width: 25%;
+    float: left;
+    margin: 0;
+    font-size: 13px;
+    color: #3e3e3e;
+    text-align: center;
+}
+.ft-sub-nav li.selected{
+    color: #F15353;
+}
+.ft-float-nav{
+    position: fixed;
+    top: 44px;
+    background-color: #F15353;
+    z-index: 99;
+}
+.ft-sort-tags{
+    padding: 10px 0;
+}
+.ft-sort-tags li{
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border:1px solid #e2e2e2;
+    padding: 2px 10px;
+    margin: 3px 5px;
+    font-size: 10px;
+    color: #888888;
+    float: left;
+    text-align: center;
+}
+.ft-sort-tags li.selected{
+    color: #F15353;
+}
+.ft-clothes-items{
+    width: 100%;
+    padding-left: 9px;
+    overflow: hidden;
+}
+.ft-clothes-items ul{
+    overflow: hidden;
+    width: 100%;
+}
+.ft-clothes-items li{
+    width: 48%;
+    float: left;
+    margin: 9px 5px 0 0;
+    overflow: hidden;
+    background-color: #fff;
+}
+.ft-clothes-items li a{
+    width: 100%;
+}
+.ft-clothes-items li img{
+    width: 100%;
+}
+.ft-clothes-items li h3{
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 13px;
+    text-align: left;
+    white-space: normal;
+    height: 35px;
+    text-overflow: ellipsis;
+    line-height: 17px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding: 0 5px;
+    color: #3e3e3e;
+    margin: 0;
+}
+.ft-clothes-items li p{
+    color: #C13A3A;
+    font-size: 13px;
+    margin: 4px 0 10px 4px;
 }
 /*home clothes ends*/

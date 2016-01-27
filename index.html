@@ -463,7 +463,8 @@
                            spinner="ripple" class="icon-bubbles">
             </ion-refresher>
             <div class="ft-info-box">
-                <div class="ft-info-inner" ui-sref="accountsettings" nav-direction="forward">
+                <!--<div class="ft-info-inner" ui-sref="accountsettings" nav-direction="forward">-->
+                <div class="ft-info-inner" ui-sref="logIn" nav-direction="forward">
                     <div class="ft-pic-wrapper">
                         <img src="images/account/im3.png" alt="">
                     </div>
@@ -474,21 +475,19 @@
                         <span>账户管理、收货地址 <i class="icon ion-ios-arrow-right"></i></span>
                     </div>
                 </div>
-                <div class="ft-list-block ft-list-block-info">
-                    <div class="row">
-                        <div class="col">
-                            <a ui-sref="goodsWatching" nav-direction="forward" class="ft-block-item">
+                <div class="ft-list-block-info">
+                        <div class="goods-watching">
+                            <a ui-sref="goodsWatching" nav-direction="forward" class="">
                                 <span class="tab-title ng-binding">12</span>
                                 <span class="tab-title ng-binding">关注的商品</span>
                             </a>
                         </div>
-                        <div class="col">
-                            <a ui-sref="viewHist" nav-direction="forward" class="ft-block-item">
+                        <div class="view-hist">
+                            <a ui-sref="viewHist" nav-direction="forward" class="">
                                 <span class="tab-title ng-binding">22</span>
                                 <span class="tab-title ng-binding">浏览记录</span>
                             </a>
                         </div>
-                    </div>
                 </div>
             </div>
             <div class="all-order-list">
@@ -2674,6 +2673,74 @@
             </div>
             <ion-infinite-scroll on-infinite="load_more();" spinner="lines">
             </ion-infinite-scroll>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="logIn.html" type="text/ng-template">
+    <ion-view title="登录">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="ft-content" ng-controller="loginCtrl">
+            <div class="login-wrapper">
+                <div class="avatar-wrapper">
+                    <img src="./images/account/avatar.png" alt="">
+                </div>
+                <div class="input-wrapper">
+                    <div class="list">
+                        <span class="ft-reset" ng-click="reset()" ng-hide="resetBtn"><i class="icon ion-ios-close-empty"></i></span>
+                        <label class="item item-input">
+                            <span class="input-label">账号：</span>
+                            <input type="text" ng-model="username" placeholder="用户名/邮箱/手机号">
+                        </label>
+                        <span class="ft-reset" ng-click="resetk()" ng-hide="resetBtnk"><i class="icon ion-ios-close-empty"></i></span>
+                        <label class="item item-input">
+                            <span class="input-label">密码：</span>
+                            <input type="password" ng-model="password" placeholder="请输入密码">
+                        </label>
+                    </div>
+                    <button class="button button-block button-small button-assertive" ng-disabled="incomplete">
+                        登录
+                    </button>
+                </div>
+                <div class="quick-links">
+                    <p class="quick-sign" ui-sref="quickSign">手机快速注册</p>
+                    <p class="forget-key">找回密码</p>
+                </div>
+            </div>
+        </ion-content>
+        <div class="bar bar-footer">
+            <div class="row ft-footer-row">
+                <div class="col has-border"><i class="wc"></i>微信登录</div>
+                <div class="col"><i class="qq"></i>QQ登录</div>
+            </div>
+        </div>
+    </ion-view>
+</script>
+<script id="quickSign.html" type="text/ng-template">
+    <ion-view title="手机快速注册">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="ft-content" ng-controller="signupCtrl">
+            <div class="signup-wrapper">
+                <span class="ft-reset" ng-click="reset()" ng-hide="resetBtn"><i class="icon ion-ios-close-empty"></i></span>
+                <label class="item item-input">
+                    <input type="tel" ng-model="telnum" placeholder="请输入手机号">
+                </label>
+                <ion-checkbox ng-model="selected" class="check-nobg">
+                    同意<strong>{{market}}用户注册协议</strong>
+                </ion-checkbox>
+                <button class="button button-block button-small button-assertive" ng-disabled="incomplete" ng-click="showPop();">
+                    下一步
+                </button>
+            </div>
         </ion-content>
     </ion-view>
 </script>

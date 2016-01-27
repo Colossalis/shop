@@ -225,6 +225,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/goodsList",
             templateUrl: "goodsList.html"
         })
+        .state('logIn', {
+            url: "/logIn",
+            templateUrl: "logIn.html"
+        })
         .state('declineNote', {
             url: "/declineNote",
             templateUrl: "declineNote.html"
@@ -250,6 +254,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('myCoupon', {
             url: "/myCoupon",
             templateUrl: "myCoupon.html"
+        })
+        .state('quickSign', {
+            url: "/quickSign",
+            templateUrl: "quickSign.html"
         })
         .state('coupon', {
             url: "/coupon",
@@ -646,6 +654,86 @@ app.controller('aPCtrl', function ($scope) {
 app.controller('rDataCtrl', function ($scope) {
     console.log('rDataCtrl');
     $scope.accNumber = 13278784545;
+});
+
+app.controller('loginCtrl', function ($scope) {
+    $scope.incomplete = false;
+    $scope.username = "";
+    $scope.password = "";
+    $scope.resetBtn = true;
+    $scope.resetBtnk = true;
+    $scope.$watch('username', function() {$scope.test();});
+    $scope.$watch('password', function() {$scope.test();});
+    $scope.test = function() {
+        if($scope.username.length){
+            $scope.resetBtn = false;
+        }else{
+            $scope.resetBtn = true;
+        }
+        if($scope.password.length){
+            $scope.resetBtnk = false;
+        }else{
+            $scope.resetBtnk = true;
+        }
+        if($scope.username.length && ($scope.password.length >= 6)){
+            $scope.incomplete = false;
+        }else{
+            $scope.incomplete = true;
+        }
+    }
+    $scope.reset = function () {
+        $scope.username = "";
+    }
+    $scope.resetk = function () {
+        $scope.password = "";
+    }
+    console.log('loginCtrl');
+});
+
+app.controller('signupCtrl', function ($scope,$ionicPopup) {
+    $scope.incomplete = false;
+    $scope.telnum = "";
+    $scope.selected = true;
+    $scope.resetBtn = true;
+    $scope.$watch('telnum', function() {$scope.test();});
+    $scope.$watch('selected', function() {$scope.test();});
+    $scope.test = function() {
+        if($scope.telnum.length){
+            $scope.resetBtn = false;
+        }else{
+            $scope.resetBtn = true;
+        }
+        if(($scope.telnum.length == 11) && $scope.selected){
+            $scope.incomplete = false;
+        }else{
+            $scope.incomplete = true;
+        }
+    }
+    $scope.reset = function () {
+        $scope.telnum = "";
+    }
+    $scope.showPop = function(){
+        $ionicPopup.confirm({
+            title: "我们将发送短信验证码至："+$scope.telnum,
+            buttons: [
+                {
+                    text: "取消",
+                    onTap: function (e) {
+                        $scope.telnum = "";
+                    }
+                },
+                {
+                    text: "<b>确定</b>",
+                    type: "button-assertive",
+                    onTap: function (e) {
+                        console.log("anything");
+                        return true;
+                    }
+                }
+            ]
+        });
+    }
+    console.log('loginCtrl');
 });
 
 app.controller("merchCtrl", function ($scope, $ionicSlideBoxDelegate, $ionicSideMenuDelegate, $ionicPopup, $ionicHistory) {

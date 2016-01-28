@@ -8,7 +8,6 @@
     <title>Online Market</title>
     <script src="js/jquery-1.8.3.min.js"></script>
     <link href="css/ionic.min.css" rel="stylesheet">
-    <script src="js/main.js"></script>
     <script src="js/ionic.bundle.min.js"></script>
     <script src="js/script.js" charset="utf-8"></script>
     <link href="css/main.css" rel="stylesheet">
@@ -48,7 +47,7 @@
 
         <ion-nav-title>
             <div class="bar bar-header item-input-inset">
-                <label class="item-input-wrapper">
+                <label class="item-input-wrapper" ng-click="openSearch()">
                     <i class="icon ion-ios-search placeholder-icon"></i>
                     <input type="search" placeholder="Search">
                 </label>
@@ -270,33 +269,15 @@
         </ion-content>
     </ion-view>
 </script>
-<script id="searchPage.html" type="text/ng-template">
-    <ion-modal-view title="搜索" class="padding" ng-controller="sortCtrl">
-        <ion-nav-title>
-            <div class="bar bar-header item-input-inset">
-                <label class="item-input-wrapper">
-                    <i class="icon ion-ios-search placeholder-icon"></i>
-                    <input type="search" placeholder="Search">
-                </label>
-                <a class="button button-clear ion-ios-chatbubble-outline msgicon" ui-sref="tabs.merchandise"
-                   nav-transition="ios" nav-direction="forward"></a>
-            </div>
-            <!--search bar ends -->
-        </ion-nav-title>
-        <ion-content>
-            tags
-        </ion-content>
 
-    </ion-modal-view>
-</script>
 <!--sort page-->
 <script id="sort.html" type="text/ng-template">
     <ion-view title="分类" class="padding" ng-controller="sortCtrl">
         <ion-nav-title>
             <div class="bar bar-header item-input-inset">
-                <label class="item-input-wrapper">
+                <label class="item-input-wrapper" ng-click="openSearch();">
                     <i class="icon ion-ios-search placeholder-icon"></i>
-                    <input type="search" placeholder="Search" ng-click="openSearch();">
+                    <input type="search" placeholder="Search">
                 </label>
                 <a class="button button-clear ion-ios-chatbubble-outline msgicon" ui-sref="tabs.merchandise"
                    nav-transition="ios" nav-direction="forward"></a>
@@ -365,9 +346,9 @@
             <div class="bar bar-header item-input-inset">
                 <a class="button button-clear ion-ios-arrow-back back-btn" ui-sref="tabs.sort"
                    nav-transition="ios" nav-direction="back"></a>
-                <label class="item-input-wrapper">
+                <label class="item-input-wrapper" ng-click="openSearch();">
                     <i class="icon ion-ios-search placeholder-icon"></i>
-                    <input type="search" placeholder="Search" ng-click="openSearch();">
+                    <input type="search" placeholder="Search">
                 </label>
                 <a class="button button-clear ion-ios-chatbubble-outline msgicon" ui-sref="tabs.merchandise"
                    nav-transition="ios" nav-direction="forward"></a>
@@ -1673,23 +1654,24 @@
                     </ion-nav-buttons>
                 </ion-nav-bar>
                 <ion-content class="ft-merch-content">
+                    <div class="ft-slide-wrapper">
+                        <ion-slide-box auto-play="false" on-slide-changed="showPager($index)" show-pager="false">
+                            <ion-slide>
+                                <img src="images/merchandise/dis1.jpg">
+                            </ion-slide>
+                            <ion-slide>
+                                <img src="images/merchandise/dis3.jpg">
+                            </ion-slide>
+                            <ion-slide>
+                                <img src="images/merchandise/dis5.jpg">
+                            </ion-slide>
+                            <ion-slide>
+                                <img src="images/merchandise/dis4.jpg">
+                            </ion-slide>
+                        </ion-slide-box>
+                    </div>
                     <div class="ft-display">
-                        <div class="ft-slide-wrapper">
-                            <ion-slide-box auto-play="false" on-slide-changed="showPager($index)" show-pager="false">
-                                <ion-slide>
-                                    <img src="images/merchandise/dis1.jpg">
-                                </ion-slide>
-                                <ion-slide>
-                                    <img src="images/merchandise/dis3.jpg">
-                                </ion-slide>
-                                <ion-slide>
-                                    <img src="images/merchandise/dis5.jpg">
-                                </ion-slide>
-                                <ion-slide>
-                                    <img src="images/merchandise/dis4.jpg">
-                                </ion-slide>
-                            </ion-slide-box>
-                        </div>
+
                         <div class="ft-slide-detail">
                             <div class="arrow-box">
                                 <i class="icon ion-ios-arrow-thin-right"></i>
@@ -1704,7 +1686,7 @@
                             <em class="page-a">{{count}}</em>
                         </div>
                     </div>
-                    <div class="basic-info">
+                    <div class="basic-info" on-swipe-right="onSwipeRight()">
                         <div class="ft-goods-title">
                             <a href="#">
                                 <i class="icon ion-ios-arrow-right"></i>
@@ -2744,6 +2726,56 @@
         </ion-content>
     </ion-view>
 </script>
+<script id="signModal.html" type="text/ng-template">
+    <ion-view title="手机快速注册">
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear ion-ios-arrow-back" ng-click="$ionicGoBack()">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-content class="ft-content" ng-controller="signModalCtrl">
+            <div class="check-num-wrapper">
+                <p>请输入{{number}}收到的验证码</p>
+                <div class="input-wrapper">
+                    <div class="label-wrapper">
+                        <span class="ft-reset" ng-click="reset()" ng-hide="resetBtn"><i class="icon ion-ios-close-empty"></i></span>
+                        <label class="item item-input">
+                            <input type="tel" ng-model="checknum" placeholder="请输入短信验证码">
+                        </label>
+                    </div>
+                    <button class="button button-outline" ng-disabled="timeIncomplete" ng-model="decount" ng-click="sendCheck();">
+                        获取验证码<span ng-hide="!timeIncomplete">({{decount}})</span>
+                    </button>
+                </div>
+                <button class="button button-block button-small button-assertive" ng-disabled="incomplete" ng-click="nextStep();">
+                    下一步
+                </button>
+            </div>
+        </ion-content>
+    </ion-view>
+</script>
 
+<script id="searchModal.html" type="text/ng-template">
+    <div id="task-view" class="modal slide-in-up" ng-controller="searchCtrl">
+            <header class="bar bar-header item-input-inset">
+                <a  class="button button-clear ion-ios-arrow-back" ng-click="close()"></a>
+                <label class="item-input-wrapper">
+                    <i class="icon ion-ios-search placeholder-icon"></i>
+                    <input type="search" placeholder="Search">
+                </label>
+                <a  class="button button-clear" ng-click="search()">搜索</a>
+            </header>
+            <!--search bar ends -->
+        <!--</ion-nav-title>-->
+        <!--<header class="bar bar-header bar-secondary">-->
+            <!--<h1 class="title">New Task</h1>-->
+            <!--<button class="button button-clear button-primary" ng-click="close()">Done</button>-->
+        <!--</header>-->
+        <ion-content class="padding has-header">
+
+        </ion-content>
+    </div>
+</script>
 </body>
 </html>

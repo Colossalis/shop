@@ -269,10 +269,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 app.controller('ftCtrl', function ($scope, $state, $ionicPopover, $ionicHistory, $ionicActionSheet) {
     $scope.myMarket = "宝通";
     console.log("ftCtrl");
-    $scope.go_back = function () {
-        console.log("click back");
-        $ionicHistory.goBack();
-    };
     $scope.showMenu = function () {
         var hideSheet = $ionicActionSheet.show({
             titleText: "设置头像",
@@ -293,8 +289,16 @@ app.controller('ftCtrl', function ($scope, $state, $ionicPopover, $ionicHistory,
 app.controller('HomeTabCtrl', function ($scope) {
     console.log('HomeTabCtrl');
 });
-app.controller("homeCtrl", function ($scope, $ionicSlideBoxDelegate, $interval, $timeout) {
+app.controller('swipeCtrl', function ($scope,$state) {
+    console.log('swipeCtrl');
+
+});
+//主页面‘首页’
+app.controller("homeCtrl", function ($scope, $ionicSlideBoxDelegate, $interval, $timeout, $ionicModal) {
     //   alert("a");
+    $ionicModal.fromTemplateUrl('searchModal.html', function(modal) {
+        $scope.settingsModal = modal;
+    });
     $scope.items = ["111【百草味】坚果炒货 腰果190g*2袋 炭烧腰果190g*2袋 炭烧", "222【百草味】坚果炒货 腰果190g*2袋 炭烧腰果190g*2袋 炭烧"];
     var base = 1;
     $scope.lists = [
@@ -307,6 +311,7 @@ app.controller("homeCtrl", function ($scope, $ionicSlideBoxDelegate, $interval, 
         {icon: "icon7.png", tag: "物流查询"},
         {icon: "icon3.png", tag: "全部",url:"allPortal"}
     ];
+    //滚动内容的添加
     $scope.activities = [];
     for (var j = 0; j < 4; j++) {
         $scope.activities.push(
@@ -327,10 +332,13 @@ app.controller("homeCtrl", function ($scope, $ionicSlideBoxDelegate, $interval, 
             $scope.$broadcast("scroll.infiniteScrollComplete");
         }, 300);
     };
+    $scope.openSearch = function(){
+        $scope.settingsModal.show();
+    };
     $interval(function () {
         $ionicSlideBoxDelegate.next();
     }, 3000);
-
+    //活动列表的滚动
     var box = document.getElementById('marqBox');
     console.log(box + "//////////////////");
     console.log(box.innerHTML + "--------");
@@ -358,12 +366,27 @@ app.controller("homeCtrl", function ($scope, $ionicSlideBoxDelegate, $interval, 
         }
     }
 });
+app.controller('searchCtrl', function($scope,$state) {
+    $scope.close = function() {
+        $scope.modal.hide();
+    }
+    $scope.search = function() {
+        $scope.modal.hide();
+        $state.go('searchResult');
+    }
+});
+//主页面‘分类’页面，未实现检测设备高度与宽度进行列表宽高的设置
 app.controller("sortCtrl", function ($scope, $ionicModal) {
+    $ionicModal.fromTemplateUrl('searchModal.html', function(modal) {
+        $scope.settingsModal = modal;
+    });
     $scope.soLists = [];
     var base = 1;
     for (var i = 0; i < 20; i++, base++)
         $scope.soLists.push(["大类 ", base].join(""));
-
+    $scope.openSearch = function(){
+        $scope.settingsModal.show();
+    };
     //    $scope.boxWidth = document.body.clientWidth - 90;
     //    $scope.boxHeight = window.screen.height - 90;
     //    console.log(document.body.clientWidth+"==document.body.clientWidth");
@@ -381,7 +404,11 @@ app.controller("sortCtrl", function ($scope, $ionicModal) {
     //    sreenWidth.style.backgroundColor = "#f00";
 
 });
-app.controller('resultCtrl', function ($scope) {
+//搜索结果页面，未实现按照相应规则进行排序
+app.controller('resultCtrl', function ($scope,$ionicModal) {
+    $ionicModal.fromTemplateUrl('searchModal.html', function(modal) {
+        $scope.settingsModal = modal;
+    });
     $scope.orderRule = "\'title\'";
         console.log($scope.orderRule);
     $scope.rules = ["综合","销量","价格","筛选"];
@@ -392,7 +419,10 @@ app.controller('resultCtrl', function ($scope) {
         console.log(orderGroup);
         $scope.orderRule = "\'" + orderGroup[idx] + "\'";
         console.log($scope.orderRule);
-    }
+    };
+    $scope.openSearch = function(){
+        $scope.settingsModal.show();
+    };
     $scope.items=[];
     for(var i=0;i<5000;i++)
         $scope.items.push(
@@ -403,12 +433,14 @@ app.controller('resultCtrl', function ($scope) {
             {title:[i+1,"French坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧"].join(""),price:33.99,rate:94,image:5,amount:13654,url:"merchandise"}
         );
 });
+//主页面‘我的’
 app.controller("accCtrl", function ($scope) {
     $scope.doRefresh = function () {
         // Stop the ion-refresher from spinning
         $scope.$broadcast("scroll.refreshComplete");
     };
 });
+//关注的商品列表，进行删除操作
 app.controller("gWCtrl", function ($scope,$ionicPopup) {
     $scope.items=[
         {title:"Chinese坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧",price:33.00,activities:"满66减5 满166减15 满266减25 满366减35 满466减45 满566减55 满666减65 满766减75 满866减85",image:1},
@@ -444,6 +476,7 @@ app.controller("gWCtrl", function ($scope,$ionicPopup) {
             });
     };
 });
+//浏览记录页面商品的删除功能
 app.controller("vHCtrl", function ($scope,$ionicPopup) {
     $scope.items=[
         {title:"wtf坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧",price:55.00,image:1},
@@ -453,7 +486,7 @@ app.controller("vHCtrl", function ($scope,$ionicPopup) {
     ];
     var count=$scope.items.length;
     console.log("gWCtrl22222222");
-    $scope.clear_all=function(){
+    $scope.clear_all=function(){    //清空浏览记录后浏览记录中不会有任何商品
         console.log("co"+count);
         $ionicPopup.confirm({
             title: "清空记录",
@@ -478,12 +511,11 @@ app.controller("vHCtrl", function ($scope,$ionicPopup) {
                 }
             });
     };
-    console.log("gWCtrl++++++++");
-    $scope.delete_item=function(item){
+    $scope.delete_item=function(item){    //从浏览记录中删除商品，商品被从列表中删除
         var idx = $scope.items.indexOf(item);
         $ionicPopup.confirm({
-            title: "取消关注",
-            template: "确认取消关注该商品？",
+            title: "删除记录",
+            template: "确认从浏览记录中删除该商品？",
             buttons: [
                 {text: "取消"},
                 {
@@ -506,17 +538,14 @@ app.controller("vHCtrl", function ($scope,$ionicPopup) {
     };
 });
 app.controller("fillorderCtrl", function ($scope, $ionicHistory) {
-    $scope.go_back = function () {
-        $ionicHistory.goBack();
-    };
+    console.log("as");
 });
 app.controller("dNCtrl", function ($scope, $ionicHistory) {
 console.log("as");
 });
 app.controller("cartCtrl", function ($scope, $ionicPopup) {
     console.log("s11s ++++");
-    //console.log("s11s " + $scope.cartitem.count);
-    $scope.cartitems = [
+    $scope.cartitems = [    //购物车内商品的添加
         {
             activity: "满99.00元即享优惠",
             selected: true,
@@ -537,19 +566,19 @@ app.controller("cartCtrl", function ($scope, $ionicPopup) {
         {activity: "满499.00元即享优惠", selected: false, pic: "im5.jpg", name: "好丽友好丽友好丽友好丽友", price: 19, count: 4},
         {activity: "满599.00元即享优惠", selected: false, pic: "im6.jpg", name: "五谷磨房五谷磨房五谷磨房", price: 19, count: 5}
     ];
-    $scope.inCount = function (cartitem) {
+    $scope.inCount = function (cartitem) {    //增加商品
         var idx = $scope.cartitems.indexOf(cartitem);
-        $scope.cartitems[idx].count =$scope.cartitems[idx].count - 1 + 2;
+        $scope.cartitems[idx].count =$scope.cartitems[idx].count - 1 + 2;    //-1+2，直接+1会被认为是字符串拼接操作
     };
-    $scope.deCount = function (cartitem) {
+    $scope.deCount = function (cartitem) {    //减少商品，最小值为1
         var idx = $scope.cartitems.indexOf(cartitem);
         $scope.cartitems[idx].count = ($scope.cartitems[idx].count - 1) <= 0? 1 : ($scope.cartitems[idx].count - 1);
     };
-    $scope.doRefresh = function () {
+    $scope.doRefresh = function () {    //刷新页面
         // Stop the ion-refresher from spinning
         $scope.$broadcast("scroll.refreshComplete");
     };
-    $scope.showConfirm = function (cartitem) {
+    $scope.showConfirm = function (cartitem) {    //弹出窗口，确认是否删除商品，点击确认后商品删除
         var idx = $scope.cartitems.indexOf(cartitem);
         $ionicPopup.confirm({
             title: "删除商品",
@@ -576,7 +605,7 @@ app.controller("cartCtrl", function ($scope, $ionicPopup) {
     };
 
 });
-
+//确认订单页面确认发票信息
 app.controller("invoiceCtrl", function ($scope) {
     $scope.items = [
         {label: "电脑配件", selected: true},
@@ -585,6 +614,7 @@ app.controller("invoiceCtrl", function ($scope) {
         {label: "耗材"}
     ];
 });
+//服装城页面添加数据
 app.controller("clothesCtrl", function ($scope, $timeout, $ionicScrollDelegate) {
     $scope.seconds = [];
     for(var i = 0; i < 3; i ++){
@@ -615,7 +645,7 @@ app.controller("clothesCtrl", function ($scope, $timeout, $ionicScrollDelegate) 
         {title:"ochirly春季新品修身短款高领针织衫打底黑白套头极简主义春季新品修身短款高领针织衫打底黑白套L",price:559.5,image:"cl7",url:""}
     ];
 
-    $scope.load_more = function () {
+    $scope.load_more = function () {    //底部无限加载商品
         $timeout(function () {
             for(var i = 0;i < 6;i++){
                 $scope.items.push(
@@ -626,19 +656,21 @@ app.controller("clothesCtrl", function ($scope, $timeout, $ionicScrollDelegate) 
             $scope.$broadcast("scroll.infiniteScrollComplete");
         }, 200);
     };
+    //未实现滚动到相应位置显示顶部fixed分类导航栏
     var toTop=document.getElementById("sortTag").offsetTop;
     console.log(toTop);
     $scope.offTop = $ionicScrollDelegate.getScrollPosition();
     //if(offTop>toTop){
         console.log($scope.offTop);
     //}
-
+    //未实现滚动到相应位置显示顶部fixed分类导航栏
 });
-
+//话费充值页面自动填写绑定的手机账号
 app.controller('rechTelCtrl', function ($scope) {
     console.log('rechTelCtrl');
     $scope.accNumber = 13278784545;
 });
+//首页上方点击全部进入百宝箱页面
 app.controller('aPCtrl', function ($scope) {
     $scope.portals = [];
     for(var i = 0;i < 3;i++){
@@ -651,11 +683,12 @@ app.controller('aPCtrl', function ($scope) {
         )
     }
 });
+//流量充值页面自动填写绑定的手机账号
 app.controller('rDataCtrl', function ($scope) {
     console.log('rDataCtrl');
     $scope.accNumber = 13278784545;
 });
-
+//登录页面输入内容的检测，重置按钮的设置
 app.controller('loginCtrl', function ($scope) {
     $scope.incomplete = false;
     $scope.username = "";
@@ -689,7 +722,7 @@ app.controller('loginCtrl', function ($scope) {
     }
     console.log('loginCtrl');
 });
-
+//手机号注册页面填写手机号发送验证码
 app.controller('signupCtrl', function ($scope,$ionicPopup) {
     $scope.incomplete = false;
     $scope.telnum = "";
@@ -735,8 +768,50 @@ app.controller('signupCtrl', function ($scope,$ionicPopup) {
     }
     console.log('loginCtrl');
 });
+//手机注册页面填写验证码
+app.controller('signModalCtrl', function ($scope,$timeout) {
+    var countNumber = 20;   //修改发送验证码计时时间
+    $scope.incomplete = true;
+    $scope.timeIncomplete = false;
+    $scope.checknum = "";
+    $scope.resetBtn = true;
+    $scope.decount = countNumber;
+    $scope.$watch('checknum', function() {$scope.test();});
+    $scope.test = function() {  //检验输入的验证码
+        if($scope.checknum.length){
+            $scope.resetBtn = false;
+        }else{
+            $scope.resetBtn = true;
+        }
+        if(($scope.checknum.length == 6)){
+            $scope.incomplete = false;
+        }else{
+            $scope.incomplete = true;
+        }
+    }
+    $scope.reset = function () {  //重置input中内容
+        $scope.checknum = "";
+    }
+    $scope.sendCheck = function () {  //发送验证码计时
+        $scope.decount --;
+        if($scope.decount > 0){
+            $timeout(function () {
+                $scope.sendCheck();
+            }, 1000);
+            $scope.timeIncomplete = true;
+        }else{
+            $scope.timeIncomplete = false;
+            $scope.decount = countNumber;
+        }
+    }
+    $scope.startCount = function () {
+        $scope.sendCheck();
+    }
 
-app.controller("merchCtrl", function ($scope, $ionicSlideBoxDelegate, $ionicSideMenuDelegate, $ionicPopup, $ionicHistory) {
+    console.log('signinCtrl');
+});
+//商品详情页面controller
+app.controller("merchCtrl", function ($scope,$state, $ionicSlideBoxDelegate, $ionicSideMenuDelegate, $ionicPopup, $ionicHistory) {
     $scope.index = 1;
     $scope.count = $ionicSlideBoxDelegate.slidesCount();
     $scope.go_back = function () {
@@ -748,6 +823,10 @@ app.controller("merchCtrl", function ($scope, $ionicSlideBoxDelegate, $ionicSide
     }
     $scope.toggleSide = function () {
         $ionicSideMenuDelegate.toggleRight();
+    };
+    $scope.onSwipeRight = function(){
+        console.log('right');
+        $state.go('coupon');
     };
     $scope.showHints = function () {
         $ionicPopup.alert({

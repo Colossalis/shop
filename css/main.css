@@ -1046,6 +1046,37 @@ ion-slide img {
     background: #F15353;
     border-color: #F15353;
 }
+.check-num-wrapper{
+    padding: 20px;
+}
+.check-num-wrapper .input-wrapper{
+    width: 100%;
+    position: relative;
+    padding: 6px 120px 10px 0;
+    overflow: hidden;
+}
+.check-num-wrapper .input-wrapper .label-wrapper{
+    position: relative;
+    float: left;
+    width: 100%;
+    margin-left: 1px;
+}
+.check-num-wrapper .input-wrapper .label-wrapper .ft-reset{
+    right: 5px;
+}
+.check-num-wrapper label{
+
+}
+.check-num-wrapper .input-wrapper button{
+    border-color: #FFBBB6;
+    color: #ef473a;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    font-size: 12px;
+    background-color: #fff;
+    width: 110px;
+}
 /*login page ends*/
 /*more settings*/
 .ft-wide-button {

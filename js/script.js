@@ -153,6 +153,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "allPortal",
             templateUrl: "allPortal.html"
         })
+        .state('myPocket', {
+            url: "myPocket",
+            templateUrl: "myPocket.html"
+        })
         .state('searchResult', {
             url: "searchResult",
             templateUrl: "searchResult.html"

@@ -513,7 +513,7 @@
             </div>
             <div class="all-order-list">
                 <div class="list">
-                    <a class="item item-icon-left item-icon-right" href="#">
+                    <a class="item item-icon-left item-icon-right" ui-sref="myPocket">
                         <i class="icon ion-folder"></i>
                         我的钱包
                         <span class="item-note">
@@ -611,6 +611,17 @@
                 </div>
             </div>
             <a class="button button-assertive ft-wide-button">退出登录</a>
+        </ion-content>
+    </ion-view>
+</script>
+<script id="myPocket.html" type="text/ng-template">
+    <ion-nav-view name="myPocket"></ion-nav-view>
+    <ion-view title="我的钱包">
+        <ion-nav-buttons side="left">
+            <a class="button button-clear icon ion-ios-arrow-back" ui-sref="tabs.account" nav-direction="back"></a>
+        </ion-nav-buttons>
+        <ion-content>
+
         </ion-content>
     </ion-view>
 </script>
@@ -2757,23 +2768,41 @@
 </script>
 
 <script id="searchModal.html" type="text/ng-template">
-    <div id="task-view" class="modal slide-in-up" ng-controller="searchCtrl">
-            <header class="bar bar-header item-input-inset">
-                <a  class="button button-clear ion-ios-arrow-back" ng-click="close()"></a>
-                <label class="item-input-wrapper">
-                    <i class="icon ion-ios-search placeholder-icon"></i>
-                    <input type="search" placeholder="Search">
-                </label>
-                <a  class="button button-clear" ng-click="search()">搜索</a>
-            </header>
-            <!--search bar ends -->
-        <!--</ion-nav-title>-->
-        <!--<header class="bar bar-header bar-secondary">-->
-            <!--<h1 class="title">New Task</h1>-->
-            <!--<button class="button button-clear button-primary" ng-click="close()">Done</button>-->
-        <!--</header>-->
-        <ion-content class="padding has-header">
-
+    <div class="modal slide-in-up" ng-controller="searchCtrl">
+        <header class="bar bar-header item-input-inset">
+            <a class="button button-clear ion-ios-arrow-back" ng-click="close()"></a>
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder="Search">
+            </label>
+            <a class="button button-clear search-btn" ng-click="search()">搜索</a>
+        </header>
+        <ion-content class="padding has-header stable-bg">
+            <div class="search-page-wrapper">
+                <div class="hot-search">
+                    热搜
+                    <span>年货</span>
+                    <span>口罩</span>
+                    <span>路由器</span>
+                    <span>腰果</span>
+                    <span>年货</span>
+                    <span>口罩</span>
+                    <span>路由器</span>
+                    <span>腰果</span>
+                </div>
+                <div class="search-history">
+                    <h3>历史搜索</h3>
+                    <ul>
+                        <li>杏仁</li>
+                        <li>iPad</li>
+                        <li>腰果</li>
+                        <li>大衣</li>
+                    </ul>
+                </div>
+                <div class="btn-wrapper">
+                    <button class="button button-outline button-block button-small">清空历史搜索</button>
+                </div>
+            </div>
         </ion-content>
     </div>
 </script>

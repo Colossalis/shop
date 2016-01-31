@@ -1,35 +1,83 @@
-/**
- * Created by Administrator on 2015/12/8.
- */
+angular.module('ionicApp', ['ionic'])
+
+    .controller('RootCtrl', function($scope) {
+        console.log('RootCtrl');
+        $scope.onControllerChanged = function(oldController, oldIndex, newController, newIndex) {
+            console.log('Controller changed', oldController, oldIndex, newController, newIndex);
+            console.log(arguments);
+        };
+    })
 
 
-//
-//var box = document.getElementById('marqBox');
-//alert($("#marqBox").html());
-//box.innerHTML += box.innerHTML;
-//box.scrollTop = 0;
-//var iheight = 18;
-//var timer = null;
-//alert("b")
-//function start() {
-//    alert("a");
-//    console.log('11111111111111');
-//    timer = setInterval(scroll, 50);
-//    box.scrollTop++;
-//}
-//start();
-//
-//function scroll() {
-//    if (box.scrollTop % iheight == 0) {
-//        clearInterval(timer);
-//        setTimeout(start, 1000);
-//        console.log("box.scrollTop % iheight == 0")
-//    } else {
-//        box.scrollTop++;
-//        //console.log(box.scrollTop);
-//        console.log('22');
-//        if (box.scrollTop >= box.scrollHeight / 2) {
-//            box.scrollTop = 0;
-//        }
-//    }
-//}
+    .controller('HomeCtrl', function($scope, $timeout, $ionicModal, $ionicActionSheet) {
+        console.log('HomeCtrl');
+        $scope.items = [];
+
+        $ionicModal.fromTemplateUrl('newTask.html', function(modal) {
+            $scope.settingsModal = modal;
+        });
+
+        var removeItem = function(item, button) {
+            $ionicActionSheet.show({
+                buttons: [],
+                destructiveText: 'Delete Task',
+                cancelText: 'Cancel',
+                cancel: function() {
+                    return true;
+                },
+                destructiveButtonClicked: function() {
+                    $scope.items.splice($scope.items.indexOf(item), 1);
+                    return true;
+                }
+            });
+        };
+
+        var completeItem = function(item, button) {
+            item.isCompleted = true;
+        };
+
+        $scope.onReorder = function(el, start, end) {
+            ionic.Utils.arrayMove($scope.items, start, end);
+        };
+
+        $scope.onRefresh = function() {
+            console.log('ON REFRESH');
+
+            $timeout(function() {
+                $scope.$broadcast('scroll.refreshComplete');
+            }, 1000);
+        }
+
+
+        $scope.removeItem = function(item) {
+            removeItem(item);
+        };
+
+        $scope.newTask = function() {
+            $scope.settingsModal.show();
+        };
+
+        // Create the items
+        for(var i = 0; i < 25; i++) {
+            $scope.items.push({
+                title: 'Task ' + (i + 1),
+                buttons: [{
+                    text: 'Done',
+                    type: 'button-success',
+                    onButtonClicked: completeItem,
+                }, {
+                    text: 'Delete',
+                    type: 'button-danger',
+                    onButtonClicked: removeItem,
+                }]
+            });
+        }
+
+    })
+
+    .controller('TaskCtrl', function($scope) {
+        $scope.close = function() {
+            $scope.modal.hide();
+            console.log('TaskCtrl');
+        }
+    });

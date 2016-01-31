@@ -1078,6 +1078,11 @@ ion-slide img {
     width: 110px;
 }
 /*login page ends*/
+/*my pocket starts*/
+.my-pocket .col{
+    border:1px solid #f00;
+}
+/*my pocket ends*/
 /*more settings*/
 .ft-wide-button {
     width: 90%;

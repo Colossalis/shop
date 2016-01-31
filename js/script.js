@@ -269,10 +269,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         });
     $urlRouterProvider.otherwise("/tab/home");
 });
-
-app.controller('ftCtrl', function ($scope, $state, $ionicPopover, $ionicHistory, $ionicActionSheet) {
-    $scope.myMarket = "宝通";
-    console.log("ftCtrl");
+//body的控制器
+app.controller('ftCtrl', function ($scope) {
+    $scope.myMarket = "宝通";     //在全局中添加商城的名称
+});
+//我的账户控制器，添加上拉菜单
+app.controller('setCtrl', function ($scope, $state, $ionicPopover, $ionicHistory, $ionicActionSheet) {
     $scope.showMenu = function () {
         var hideSheet = $ionicActionSheet.show({
             titleText: "设置头像",
@@ -290,16 +292,8 @@ app.controller('ftCtrl', function ($scope, $state, $ionicPopover, $ionicHistory,
         });
     };
 });
-app.controller('HomeTabCtrl', function ($scope) {
-    console.log('HomeTabCtrl');
-});
-app.controller('swipeCtrl', function ($scope,$state) {
-    console.log('swipeCtrl');
-
-});
 //主页面‘首页’
 app.controller("homeCtrl", function ($scope, $ionicSlideBoxDelegate, $interval, $timeout, $ionicModal) {
-    //   alert("a");
     $ionicModal.fromTemplateUrl('searchModal.html', function(modal) {
         $scope.settingsModal = modal;
     });
@@ -321,7 +315,6 @@ app.controller("homeCtrl", function ($scope, $ionicSlideBoxDelegate, $interval, 
         $scope.activities.push(
             {tag: "热", title: j}
         );
-        console.log(j);
     }
     $scope.doRefresh = function () {
         for (var i = 0; i < 2; i++, base++)
@@ -344,19 +337,15 @@ app.controller("homeCtrl", function ($scope, $ionicSlideBoxDelegate, $interval, 
     }, 3000);
     //活动列表的滚动
     var box = document.getElementById('marqBox');
-    console.log(box + "//////////////////");
-    console.log(box.innerHTML + "--------");
     box.innerHTML += box.innerHTML;
-    console.log("*****************" + box.innerHTML + "+++++++");
     box.scrollTop = 0;
-    var iheight = 18;
+    var iheight = 18;   //设置滚动内容的高度
     var timer = null;
 
     function start() {
         timer = setInterval(scroll, 50);
         box.scrollTop++;
     }
-
     start();
     function scroll() {
         if (box.scrollTop % iheight == 0) {
@@ -371,10 +360,10 @@ app.controller("homeCtrl", function ($scope, $ionicSlideBoxDelegate, $interval, 
     }
 });
 app.controller('searchCtrl', function($scope,$state) {
-    $scope.close = function() {
+    $scope.close = function() {     //点击后退按钮关闭modal
         $scope.modal.hide();
     }
-    $scope.search = function() {
+    $scope.search = function() {       //点击搜索按钮关闭modal跳转到搜索结果页面
         $scope.modal.hide();
         $state.go('searchResult');
     }
@@ -391,21 +380,6 @@ app.controller("sortCtrl", function ($scope, $ionicModal) {
     $scope.openSearch = function(){
         $scope.settingsModal.show();
     };
-    //    $scope.boxWidth = document.body.clientWidth - 90;
-    //    $scope.boxHeight = window.screen.height - 90;
-    //    console.log(document.body.clientWidth+"==document.body.clientWidth");
-    //    console.log(document.body.clientHeight+"==document.body.clientHeight");
-    //    console.log(document.body.offsetHeight+"==document.body.offsetHeight");
-    //    console.log(document.body.scrollHeight+"==document.body.scrollHeight");
-    //    console.log(window.screen.height+"==window.screen.height");
-    //    console.log(window.screen.availHeight+"==window.screen.availHeight");
-    //    angular.element('#ullist a').css("color","red");
-    //    //var sreenWidth = $('#ullist');
-    //    var screenWidth = document.body.clientWidth - 90;
-    //    var screenHeight = window.screen.height - 90;
-    //    //angular.element('#scrollBox').css({width:screenWidth,height:screenHeight})
-    //    console.log(sreenWidth+"==id");
-    //    sreenWidth.style.backgroundColor = "#f00";
 
 });
 //搜索结果页面，未实现按照相应规则进行排序
@@ -414,15 +388,11 @@ app.controller('resultCtrl', function ($scope,$ionicModal) {
         $scope.settingsModal = modal;
     });
     $scope.orderRule = "\'title\'";
-        console.log($scope.orderRule);
     $scope.rules = ["综合","销量","价格","筛选"];
     var orderGroup = ['rate','amount','price','title'];
     $scope.show_no = function(rule){
         var idx = $scope.rules.indexOf(rule);
-        console.log(idx);
-        console.log(orderGroup);
         $scope.orderRule = "\'" + orderGroup[idx] + "\'";
-        console.log($scope.orderRule);
     };
     $scope.openSearch = function(){
         $scope.settingsModal.show();
@@ -453,7 +423,6 @@ app.controller("gWCtrl", function ($scope,$ionicPopup) {
         {title:"Japan坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧",price:22.99,activities:"满66减5 满166减15 满266减25 满366减35 满466减45 满566减55 满666减65 满766减75 满866减85",image:4},
         {title:"French坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧",price:33.99,activities:"满66减5 满166减15 满266减25 满366减35 满466减45 满566减55 满666减65 满766减75 满866减85",image:5}
     ];
-    console.log("gWCtrl++++++++");
     $scope.delete_item=function(item){
         var idx = $scope.items.indexOf(item);
         $ionicPopup.confirm({
@@ -472,10 +441,8 @@ app.controller("gWCtrl", function ($scope,$ionicPopup) {
         })
             .then(function (res) {
                 if (res) {
-                    console.log("已删除");
                     $scope.items.splice(idx, 1);
                 } else {
-                    console.log("取消删除");
                 }
             });
     };
@@ -489,9 +456,7 @@ app.controller("vHCtrl", function ($scope,$ionicPopup) {
         {title:"wtf坚果炒货 腰果19 0 g *2袋 炭烧腰果1 9 0 g * 2袋 炭烧坚果炒货 腰果19 0g *2袋 炭烧腰果190g*2袋 炭烧",price:55.99,image:5}
     ];
     var count=$scope.items.length;
-    console.log("gWCtrl22222222");
     $scope.clear_all=function(){    //清空浏览记录后浏览记录中不会有任何商品
-        console.log("co"+count);
         $ionicPopup.confirm({
             title: "清空记录",
             template: "确认清空浏览记录？",
@@ -508,10 +473,8 @@ app.controller("vHCtrl", function ($scope,$ionicPopup) {
         })
             .then(function (res) {
                 if (res) {
-                    console.log("已删除");
                     $scope.items.splice(0,count);
                 } else {
-                    console.log("取消删除");
                 }
             });
     };
@@ -533,22 +496,17 @@ app.controller("vHCtrl", function ($scope,$ionicPopup) {
         })
             .then(function (res) {
                 if (res) {
-                    console.log("已删除");
                     $scope.items.splice(idx, 1);
                 } else {
-                    console.log("取消删除");
                 }
             });
     };
 });
 app.controller("fillorderCtrl", function ($scope, $ionicHistory) {
-    console.log("as");
 });
 app.controller("dNCtrl", function ($scope, $ionicHistory) {
-console.log("as");
 });
 app.controller("cartCtrl", function ($scope, $ionicPopup) {
-    console.log("s11s ++++");
     $scope.cartitems = [    //购物车内商品的添加
         {
             activity: "满99.00元即享优惠",
@@ -601,9 +559,7 @@ app.controller("cartCtrl", function ($scope, $ionicPopup) {
             .then(function (res) {
                 if (res) {
                     $scope.cartitems.splice(idx, 1);
-                    console.log("已删除");
                 } else {
-                    console.log("取消删除");
                 }
             });
     };
@@ -662,16 +618,11 @@ app.controller("clothesCtrl", function ($scope, $timeout, $ionicScrollDelegate) 
     };
     //未实现滚动到相应位置显示顶部fixed分类导航栏
     var toTop=document.getElementById("sortTag").offsetTop;
-    console.log(toTop);
     $scope.offTop = $ionicScrollDelegate.getScrollPosition();
-    //if(offTop>toTop){
-        console.log($scope.offTop);
-    //}
     //未实现滚动到相应位置显示顶部fixed分类导航栏
 });
 //话费充值页面自动填写绑定的手机账号
 app.controller('rechTelCtrl', function ($scope) {
-    console.log('rechTelCtrl');
     $scope.accNumber = 13278784545;
 });
 //首页上方点击全部进入百宝箱页面
@@ -689,7 +640,6 @@ app.controller('aPCtrl', function ($scope) {
 });
 //流量充值页面自动填写绑定的手机账号
 app.controller('rDataCtrl', function ($scope) {
-    console.log('rDataCtrl');
     $scope.accNumber = 13278784545;
 });
 //登录页面输入内容的检测，重置按钮的设置
@@ -724,7 +674,6 @@ app.controller('loginCtrl', function ($scope) {
     $scope.resetk = function () {
         $scope.password = "";
     }
-    console.log('loginCtrl');
 });
 //手机号注册页面填写手机号发送验证码
 app.controller('signupCtrl', function ($scope,$ionicPopup) {
@@ -770,7 +719,6 @@ app.controller('signupCtrl', function ($scope,$ionicPopup) {
             ]
         });
     }
-    console.log('loginCtrl');
 });
 //手机注册页面填写验证码
 app.controller('signModalCtrl', function ($scope,$timeout) {
@@ -811,8 +759,6 @@ app.controller('signModalCtrl', function ($scope,$timeout) {
     $scope.startCount = function () {
         $scope.sendCheck();
     }
-
-    console.log('signinCtrl');
 });
 //商品详情页面controller
 app.controller("merchCtrl", function ($scope,$state, $ionicSlideBoxDelegate, $ionicSideMenuDelegate, $ionicPopup, $ionicHistory) {
@@ -829,7 +775,6 @@ app.controller("merchCtrl", function ($scope,$state, $ionicSlideBoxDelegate, $io
         $ionicSideMenuDelegate.toggleRight();
     };
     $scope.onSwipeRight = function(){
-        console.log('right');
         $state.go('coupon');
     };
     $scope.showHints = function () {
